@@ -77,7 +77,7 @@ export default function Hero() {
           />
         </div>
         <span className="text-[var(--ec-accent)] font-black text-xl md:text-3xl animate-pulse">×</span>
-        <div className="bg-white rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl border border-slate-100">
+        <div className="bg-slate-900 rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl">
           <img 
             src="/energy-concerns-logo.png" 
             alt="Energy Concerns" 
