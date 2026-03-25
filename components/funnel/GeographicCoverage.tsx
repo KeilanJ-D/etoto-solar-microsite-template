@@ -49,7 +49,7 @@ export default function GeographicCoverage() {
             Where Your Leads Should Be Coming From
           </h2>
           <p className="text-base md:text-lg text-slate-500 max-w-2xl mx-auto">
-            You cover Leicester and Nottinghamshire, but your website has zero area-specific pages. Your biggest local competitor has 23.
+            You cover Leicester and Nottinghamshire, but you have zero area-specific pages. Your biggest local competitor has 23.
           </p>
         </div>
 

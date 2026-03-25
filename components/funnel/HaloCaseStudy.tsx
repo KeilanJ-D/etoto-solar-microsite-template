@@ -174,7 +174,7 @@ export default function HaloCaseStudy() {
             </a>
           </div>
           <p className="text-center text-sm text-slate-500 mt-4">
-            <span className="font-semibold">Todd</span> — your site can look like either of these, plus the chameleon brand identity you&apos;re building. That&apos;s what Option B delivers.
+            Your site can look like either of these, plus the chameleon brand identity you&apos;re building. That&apos;s what Option B delivers.
           </p>
         </div>
       </div>

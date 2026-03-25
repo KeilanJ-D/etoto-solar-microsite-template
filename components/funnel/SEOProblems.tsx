@@ -21,7 +21,7 @@ const issues = [
     pages: ['Entire site'],
     impact: 'HIGH',
     detail: 'Zero blog posts. Zero indexable content pages beyond homepage, solar, EV, contact, careers, and finance.',
-    context: 'Your competitors have dozens of blog posts targeting high-intent keywords. Energy Concerns has literally nothing for Google to index. This is the single biggest missed opportunity on your site.',
+    context: 'Your competitors have dozens of blog posts targeting high-intent keywords. You have literally nothing for Google to index. This is the single biggest missed opportunity on your site.',
     fix: 'Publish the 10 SEO articles we have prepared. Establish a monthly publishing cadence. Target keywords your competitors are ranking for.'
   },
   {

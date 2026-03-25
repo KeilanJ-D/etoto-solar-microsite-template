@@ -52,8 +52,8 @@ const scoreCards = [
     maxScore: 100, 
     status: 'WEAK', 
     statusColour: '#DC2626', 
-    detail: 'Current site does not reflect the brand Todd is building. Chameleon identity not present. Looks like a tradesman template, not Octopus Energy.',
-    context: 'You told us you want to look like Octopus Energy — established, credible, a brand. Your current site looks like a generic electrician template. The chameleon identity that makes Energy Concerns unique is completely absent. The site does not reflect the premium, adaptable brand you are building.'
+    detail: 'Your current site doesn\'t reflect the brand you\'re building. Your chameleon identity isn\'t present anywhere. Looks like a tradesman template, not Octopus Energy.',
+    context: 'You told us you want to look like Octopus Energy — established, credible, a brand. Your current site looks like a generic electrician template. The chameleon identity that makes you unique is completely absent. The site doesn\'t reflect the premium, adaptable brand you\'re building.'
   },
   { 
     icon: Target, 
@@ -195,7 +195,7 @@ export default function Problems() {
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 bg-[#DC2626] rounded-full animate-ping" />
               <p className="text-slate-700 text-sm md:text-lg">
-                Combined, these issues are costing Energy Concerns an estimated <span className="font-bold text-[#DC2626]">£36,000+ annually</span>
+                Combined, these issues are costing you an estimated <span className="font-bold text-[#DC2626]">£36,000+ annually</span>
               </p>
             </div>
             <p className="text-xs md:text-sm text-slate-500 max-w-xl">

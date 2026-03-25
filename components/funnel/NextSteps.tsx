@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { MessageCircle, Calendar, FileText, Rocket, ArrowRight } from 'lucide-react'
+import { KeyRound, Palette, FileText, Rocket, ArrowRight } from 'lucide-react'
 
 export default function NextSteps() {
   const [isVisible, setIsVisible] = useState(false)
@@ -24,24 +24,24 @@ export default function NextSteps() {
 
   const steps = [
     {
-      icon: MessageCircle,
-      title: 'Reply to This Page',
-      description: 'Let us know your thoughts — questions, feedback, or ready to proceed.',
+      icon: KeyRound,
+      title: 'Share Your WordPress Login',
+      description: 'So we can embed SolaFlow on your current site this week. It goes live within hours of receiving access.',
     },
     {
-      icon: Calendar,
-      title: 'Schedule a Call',
-      description: '15-minute chat to discuss the options and answer any questions.',
+      icon: Palette,
+      title: 'Give Joel the Design Brief',
+      description: 'Same brief you gave the graphic designer. We\'ll compare outputs and pick the strongest direction.',
     },
     {
       icon: FileText,
-      title: 'Choose Your Path',
-      description: 'Option A (upgrade existing) or Option B (fresh SolaFlow build).',
+      title: 'Review the 10 Blog Articles',
+      description: 'Download them, read them, approve them. We publish them on your current site immediately.',
     },
     {
       icon: Rocket,
-      title: 'We Get to Work',
-      description: 'Implementation begins within 48 hours of sign-off.',
+      title: 'Choose Your Website Option',
+      description: 'Upgrade (£2,500) or new build (£5,000). The work starts the moment your brand arrives.',
     },
   ]
 
@@ -54,7 +54,7 @@ export default function NextSteps() {
             What Happens Next
           </h2>
           <p className="text-base md:text-lg text-slate-500">
-            Four simple steps to transform your online presence
+            Four actions to get the ball rolling
           </p>
         </div>
 
@@ -110,10 +110,10 @@ export default function NextSteps() {
         <div className={`mt-10 transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="bg-[#0D9488] rounded-xl p-6 text-center">
             <p className="text-xl md:text-2xl font-bold text-white mb-2">
-              No pressure. Just a conversation.
+              Your branding blueprint arrives Monday.
             </p>
             <p className="text-teal-100 text-sm md:text-base">
-              We built this because we believe in what you&apos;re doing. Let&apos;s chat about how we can help Energy Concerns reach more homeowners.
+              The faster we move, the sooner your site matches your vision.
             </p>
           </div>
         </div>

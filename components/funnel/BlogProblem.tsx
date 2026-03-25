@@ -54,7 +54,7 @@ export default function BlogProblem() {
               <div className="flex items-start gap-3">
                 <XCircle className="w-5 h-5 text-[#DC2626] mt-0.5" />
                 <div>
-                  <p className="font-semibold text-[#1A1A2E]">0 blog posts</p>
+                  <p className="font-semibold text-[#1A1A2E]">You have 0 blog posts</p>
                   <p className="text-sm text-[#64748B]">Not even one. Nothing for Google to index.</p>
                 </div>
               </div>
@@ -98,7 +98,7 @@ export default function BlogProblem() {
                 <span className="text-sm font-semibold text-[var(--ec-accent)]">&quot;Hundreds of articles&quot;</span>
               </div>
               <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
-                <span className="font-medium text-slate-700">Energy Concerns</span>
+                <span className="font-medium text-slate-700">You</span>
                 <span className="text-sm font-bold text-[#DC2626]">0</span>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function BlogProblem() {
             <h3 className="text-lg font-bold text-[#1A1A2E]">The Good News</h3>
           </div>
           <p className="text-[#166534]">
-            We have already written <span className="font-bold">10 SEO-optimised articles</span> for Energy Concerns — 6,498 words of high-quality, keyword-targeted content ready to publish on your blog today. Scroll down to see them.
+            We&apos;ve already written <span className="font-bold">10 SEO-optimised articles</span> for you — 6,498 words of high-quality, keyword-targeted content ready to publish on your blog today. Scroll down to see them.
           </p>
         </div>
 

@@ -17,10 +17,10 @@ export default function Transition() {
   }, [])
 
   const meetingPoints = [
-    { icon: Building2, text: 'Your site lost you a commercial job — it looks "too residential." The new site needs a commercial section.' },
+    { icon: Building2, text: 'Your site lost you a commercial job — it looks "too residential." Your new site needs a commercial section.' },
     { icon: Sparkles, text: 'You want to look like Octopus Energy — established, credible, a brand, not just an electrician.' },
-    { icon: Zap, text: 'The chameleon identity is your differentiator — "we adapt solutions to your home." It needs to be everywhere.' },
-    { icon: Calculator, text: 'SolaFlow is configured with your pricing — it needs embedding on the site this week.' },
+    { icon: Zap, text: 'Your chameleon identity is your differentiator — "we adapt solutions to your home." It needs to be everywhere.' },
+    { icon: Calculator, text: 'SolaFlow is configured with your pricing — it needs embedding on your site this week.' },
   ]
 
   return (
