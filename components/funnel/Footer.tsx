@@ -11,17 +11,17 @@ export default function Footer() {
               alt="ETOTO Media" 
               className="h-8 md:h-10 object-contain"
             />
-            <span className="text-white/30">×</span>
+            <span className="text-white/30 text-xl font-light">&times;</span>
             <img 
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/solar%20path%20logo-gb9aYzjnVnp3LFRgT565BJqotuLeRG.png" 
-              alt="Solar Path" 
+              src="/energy-concerns-logo.png" 
+              alt="Energy Concerns" 
               className="h-8 md:h-10 object-contain"
             />
           </div>
           
           <div className="text-center md:text-right">
             <p className="text-white/40 text-xs md:text-sm">
-              Prepared exclusively for Solar Path by ETOTO Media
+              Prepared exclusively for Todd at Energy Concerns
             </p>
             <p className="text-white/30 text-[10px] md:text-xs mt-1">
               March 2026 — Confidential
@@ -31,13 +31,13 @@ export default function Footer() {
         
         <div className="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
           <p className="text-white/30 text-xs md:text-sm">
-            © 2026 ETOTO Media. All rights reserved.
+            &copy; 2026 ETOTO Media. All rights reserved.
           </p>
           <div className="flex items-center gap-4 md:gap-6">
-            <a href="https://etotomedia.com" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#E8192C] text-xs md:text-sm transition-colors">
+            <a href="https://etotomedia.com" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#0D9488] text-xs md:text-sm transition-colors">
               etotomedia.com
             </a>
-            <a href="mailto:keilan.jd@etotomedia.com" className="text-white/40 hover:text-[#E8192C] text-xs md:text-sm transition-colors">
+            <a href="mailto:keilan.jd@etotomedia.com" className="text-white/40 hover:text-[#0D9488] text-xs md:text-sm transition-colors">
               keilan.jd@etotomedia.com
             </a>
           </div>
