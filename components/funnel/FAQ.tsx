@@ -5,34 +5,29 @@ import { ChevronDown } from 'lucide-react'
 
 const faqs = [
   {
-    question: 'Can we send SMS through Go High Level in Ireland?',
-    answer: 'There are restrictions on Irish SMS through GHL directly. As we discussed on the call, we\'ll integrate Mailchimp to enable SMS alongside email — doubling the chances of a customer responding. This is already factored into the CRM build.',
+    question: 'What about the branding — should we wait for the designer?',
+    answer: 'No. SolaFlow and the blog articles go live on the current site this week regardless. The new branding applies to the website build, not the immediate improvements. Once the designer delivers, we apply it to everything.',
   },
   {
-    question: 'How hands-on do we need to be?',
-    answer: 'As little as possible. We manage campaigns, creative, CRM automations, and reporting. Your team focuses on selling and installing. The fortnightly call is 30 minutes. Video shoots are 2 days per quarter, fully directed by us. Otherwise, we handle it.',
+    question: 'Can we do SEO at the same time as the website?',
+    answer: 'SEO is a separate, ongoing cost. Our recommendation: let us build the site with SEO foundations baked in (schema, meta descriptions, blog structure, area pages). Then Donovan from SEO Dons takes over the ongoing optimisation. Build first, SEO second — but the site will be ready for SEO from day one.',
   },
   {
-    question: 'What if the leads are poor quality?',
-    answer: 'Our 8-step qualification gate means leads fill in 5 mandatory questions before submitting — no autofill. They\'ve self-qualified by the time they reach your CRM. Plus SolaFlow pre-screens by property type, energy usage, and budget expectation. Your SDRs will have more pre-call intelligence than they\'ve ever had.',
+    question: 'What if I don\'t like the design?',
+    answer: 'Tell us. We\'d rather fix it than lose you. You\'ll see the design before we build. If the chameleon branding from your designer doesn\'t translate well, we iterate until it does. Your baby, your call.',
   },
   {
-    question: 'What happens if it doesn\'t work?',
-    answer: 'We\'re confident it will — solar is our niche, and we\'ve generated over £200m in conversions for clients since May 2023. But if after 90 days the numbers don\'t stack up, you walk away with 30 days notice. No hard feelings. The fortnightly calls exist to catch problems early, optimise fast, and ensure we never get to that point.',
+    question: 'How do the package offers work on the website?',
+    answer: 'We create a dedicated offers page showing fixed-price solar packages. When someone clicks a Facebook ad showing a package deal, but doesn\'t convert on Facebook, they Google you. They land on the offers page and see the same deal. They convert there. That\'s how Halo gets 31 extra leads per month from their website.',
   },
   {
-    question: 'Can you handle commercial and agricultural as well?',
-    answer: 'Yes — Jackie asked about this on the call. We\'ve generated over 450MW of commercial opportunity across the UK. We have calculator software, appointment setting infrastructure, and dedicated commercial campaign frameworks. This sits as an add-on once the residential engine is running.',
+    question: 'What\'s the difference between Don\'s websites and yours?',
+    answer: 'Don builds websites optimised for SEO — they rank well and generate organic traffic. We build websites optimised for conversion — they turn paid traffic into leads at the highest possible rate. The ideal setup: we build the site, Don does the SEO. You get both.',
   },
   {
-    question: 'What about the Rocky / Failte situation?',
-    answer: 'We\'ve built this proposal to work entirely without Rocky funding. If your conversation goes well and the Failte exclusivity ends in April, the installer loyalty programme could reduce or eliminate your ad spend entirely. That\'s upside — not the plan. We\'re happy to be on a call with Rocky if it helps.',
+    question: 'Can the site handle commercial enquiries too?',
+    answer: 'Yes. Option B includes a dedicated commercial solar section with its own enquiry path. You told us you lost a commercial job because the site looked too residential. That won\'t happen again.',
   },
-  {
-    question: 'Why the discount?',
-    answer: 'Solar Path is our first Irish client under the full ETOTO system. You\'re opening a market for us. The £1,000/month discount reflects that — and it stays in place for as long as we work together. Standard UK retainer is £3,000. You pay £2,000.',
-  },
-  
 ]
 
 export default function FAQ() {

@@ -1,29 +1,29 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Search, Smartphone, Gauge, Shield, Palette, Target, Info, X } from 'lucide-react'
+import { Search, Smartphone, Gauge, Shield, Palette, Target, Info } from 'lucide-react'
 import { useCountUp } from '@/hooks/use-animate-on-scroll'
 
 const scoreCards = [
   { 
     icon: Search, 
     title: 'SEO Health', 
-    score: 34, 
+    score: 35, 
     maxScore: 100, 
     status: 'CRITICAL', 
     statusColour: '#DC2626', 
-    detail: 'Missing meta descriptions, thin content, poor internal linking structure.',
-    context: 'We ran solarpath.ie through Google Lighthouse and Screaming Frog. Key findings: 12 of 15 pages lack unique meta descriptions. Average content length is 280 words (industry standard: 800+). Internal linking is minimal—most pages have fewer than 3 internal links. No schema markup detected, meaning Google cannot display rich snippets for your services.'
+    detail: 'No blog posts. No area pages. No schema markup. Zero SEO activity for over 12 months.',
+    context: 'We ran energyconcernsltd.co.uk through Google Lighthouse and Screaming Frog. Key findings: No blog content whatsoever. No local landing pages targeting Leicester, Nottingham, or surrounding areas. No structured data markup detected. Your competitors have been publishing content while your site has been static.'
   },
   { 
     icon: Smartphone, 
     title: 'Mobile Experience', 
-    score: 58, 
+    score: 55, 
     maxScore: 100, 
     status: 'NEEDS WORK', 
     statusColour: '#F59E0B', 
-    detail: 'Touch targets too small, content shifts on load, slow mobile rendering.',
-    context: 'Mobile accounts for 68% of solar enquiry traffic in Ireland. Your site has a Cumulative Layout Shift (CLS) of 0.34 (should be <0.1). Several buttons are smaller than the 48×48px minimum for touch. First Contentful Paint on mobile is 4.2s—Google recommends under 1.8s. These issues directly hurt your Google rankings and user experience.'
+    detail: 'WordPress template with basic mobile responsiveness. Touch targets adequate but no mobile-first design.',
+    context: 'Mobile accounts for 65%+ of solar enquiry traffic in the UK. Your site uses a "We Build Trades" WordPress template with basic responsive behaviour, but it was not designed mobile-first. Page elements shift on load and the user journey is not optimised for touch interactions.'
   },
   { 
     icon: Gauge, 
@@ -32,38 +32,38 @@ const scoreCards = [
     maxScore: 100, 
     status: 'POOR', 
     statusColour: '#DC2626', 
-    detail: 'Large unoptimised images, render-blocking resources, no lazy loading.',
-    context: 'Your homepage loads 4.8MB of images—many are uncompressed PNGs. We detected 8 render-blocking JavaScript files. No lazy loading implemented, so all images load immediately even if below the fold. Total page load time: 7.3 seconds. For every 1-second delay, conversion rates drop by 7%.'
+    detail: 'Unoptimised images, render-blocking resources. WordPress template adds overhead.',
+    context: 'Your homepage loads slowly due to uncompressed images and multiple render-blocking JavaScript files. The "We Build Trades" WordPress template adds additional overhead. Total page load time exceeds 5 seconds on mobile. For every 1-second delay, conversion rates drop by 7%.'
   },
   { 
     icon: Shield, 
     title: 'Trust Signals', 
-    score: 45, 
+    score: 55, 
     maxScore: 100, 
-    status: 'WEAK', 
+    status: 'MODERATE', 
     statusColour: '#F59E0B', 
-    detail: 'Limited reviews displayed, no accreditation badges, missing case studies.',
-    context: 'Top-ranking Irish solar installers prominently display MCS certification, SEAI accreditation, and Trustpilot widgets. Your site shows no third-party review integration. No video testimonials. No named case studies with measurable results. Trust is the #1 conversion factor in solar—homeowners are spending €12,000+; they need reassurance.'
+    detail: 'Strong accreditation logos displayed. Customer testimonials present. But no case studies, no data, no installation gallery.',
+    context: 'You display MCS, RECC, NAPIT, and Trustmark badges — that is excellent. You have customer testimonials. However, there are no detailed case studies with measurable results, no installation gallery, and no data-driven proof points that differentiate you from competitors.'
   },
   { 
     icon: Palette, 
     title: 'Brand Consistency', 
-    score: 52, 
+    score: 30, 
     maxScore: 100, 
-    status: 'INCONSISTENT', 
-    statusColour: '#F59E0B', 
-    detail: 'Colour palette varies across pages, typography lacks hierarchy.',
-    context: 'We identified 7 different button styles across your site. Font sizes range from 12px to 22px body text with no clear system. The orange brand colour appears in 4 different hex values. This inconsistency makes the site feel unprofessional and reduces trust. Strong brands use maximum 3 button styles and consistent typography.'
+    status: 'WEAK', 
+    statusColour: '#DC2626', 
+    detail: 'Current site does not reflect the brand Todd is building. Chameleon identity not present. Looks like a tradesman template, not Octopus Energy.',
+    context: 'You told us you want to look like Octopus Energy — established, credible, a brand. Your current site looks like a generic electrician template. The chameleon identity that makes Energy Concerns unique is completely absent. The site does not reflect the premium, adaptable brand you are building.'
   },
   { 
     icon: Target, 
     title: 'Lead Capture', 
-    score: 28, 
+    score: 20, 
     maxScore: 100, 
     status: 'FAILING', 
     statusColour: '#DC2626', 
-    detail: 'Calculators have no email gate, no lead magnets, weak CTAs throughout.',
-    context: 'Your solar calculator is a lead generation gold mine—but you are giving away the value for free. Users get their savings estimate without entering any details. No email is captured. The contact form asks for too much information upfront (7 fields). No lead magnet (e.g., "Free Solar Guide") to capture visitors not ready to enquire. You are losing an estimated 40+ leads per month.'
+    detail: 'Generic contact form only. No solar calculator. No lead qualification. No offers page. No gated content.',
+    context: 'Your only conversion path is a generic contact form with name, email, phone, and message. No solar calculator to engage visitors. No lead qualification to filter tyre-kickers. No offers page to capture Facebook traffic. You are losing an estimated 30+ leads per month to competitors with better conversion paths.'
   },
 ]
 
@@ -103,19 +103,19 @@ export default function Problems() {
   return (
     <section id="problems" ref={sectionRef} className="py-16 md:py-32 px-4 md:px-6 bg-white relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-red-50/50 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-teal-50/50 to-transparent pointer-events-none" />
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className={`text-center mb-10 md:mb-16 transition-all duration-700 ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-flex items-center gap-2 bg-red-50 text-[#DC2626] text-xs md:text-sm font-semibold px-4 py-2 rounded-full mb-4">
             <span className="w-2 h-2 bg-[#DC2626] rounded-full animate-pulse" />
-            Executive Snapshot
+            Website Audit
           </span>
           <h2 className="text-2xl md:text-5xl font-black text-slate-900 mb-3 md:mb-4">
             Six Critical Areas Bleeding Revenue
           </h2>
           <p className="text-base md:text-lg text-slate-500 max-w-2xl mx-auto">
-            Our audit revealed significant gaps across your digital presence. Tap any card to see the full analysis.
+            Our audit of energyconcernsltd.co.uk revealed significant gaps. Tap any card to see the full analysis.
           </p>
         </div>
 
@@ -131,7 +131,7 @@ export default function Problems() {
                 key={index}
                 className={`group relative bg-white border border-slate-100 rounded-xl md:rounded-2xl p-5 md:p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:border-slate-200 cursor-pointer ${
                   isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
-                } ${isExpanded ? 'ring-2 ring-[#E8192C] shadow-2xl' : ''}`}
+                } ${isExpanded ? 'ring-2 ring-[var(--ec-accent)] shadow-2xl' : ''}`}
                 style={{ transitionDelay: `${index * 50}ms` }}
                 onClick={() => setExpandedCard(isExpanded ? null : index)}
               >
@@ -142,8 +142,8 @@ export default function Problems() {
                   {card.status}
                 </div>
 
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-slate-50 flex items-center justify-center mb-3 md:mb-4 group-hover:bg-red-50 group-hover:scale-110 transition-all duration-300">
-                  <Icon className="w-5 h-5 md:w-6 md:h-6 text-slate-400 group-hover:text-[#E8192C] transition-colors duration-300" />
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-slate-50 flex items-center justify-center mb-3 md:mb-4 group-hover:bg-teal-50 group-hover:scale-110 transition-all duration-300">
+                  <Icon className="w-5 h-5 md:w-6 md:h-6 text-slate-400 group-hover:text-[var(--ec-accent)] transition-colors duration-300" />
                 </div>
 
                 <h3 className="text-base md:text-lg font-bold text-slate-900 mb-2 md:mb-3">{card.title}</h3>
@@ -169,7 +169,7 @@ export default function Problems() {
 
                 <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{card.detail}</p>
 
-                <button className="mt-3 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-[#E8192C] transition-colors">
+                <button className="mt-3 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-[var(--ec-accent)] transition-colors">
                   <Info className="w-3 h-3" />
                   {isExpanded ? 'Hide analysis' : 'See full analysis'}
                 </button>
@@ -184,7 +184,7 @@ export default function Problems() {
                 )}
 
                 {/* Hover gradient line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E8192C] to-[#F5921E] rounded-b-xl md:rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--ec-accent)] to-[#E8192C] rounded-b-xl md:rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             )
           })}
@@ -193,13 +193,13 @@ export default function Problems() {
         <div className={`mt-10 md:mt-14 text-center transition-all duration-700 delay-700 ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="inline-flex flex-col items-center gap-3 bg-red-50 border border-red-100 rounded-2xl px-6 py-5">
             <div className="flex items-center gap-3">
-              <div className="w-3 h-3 bg-[#E8192C] rounded-full animate-ping" />
+              <div className="w-3 h-3 bg-[#DC2626] rounded-full animate-ping" />
               <p className="text-slate-700 text-sm md:text-lg">
-                Combined, these issues are costing Solar Path an estimated <span className="font-bold text-[#E8192C]">€48,000+ annually</span>
+                Combined, these issues are costing Energy Concerns an estimated <span className="font-bold text-[#DC2626]">£36,000+ annually</span>
               </p>
             </div>
             <p className="text-xs md:text-sm text-slate-500 max-w-xl">
-              Based on: 4 lost leads/month × €12,000 average installation × 12 months = €48,000. Calculated from competitor traffic analysis and industry conversion benchmarks of 3.2% for optimised solar websites.
+              Based on: 3 lost leads/month × £10,000 average installation × 12 months = £36,000. Calculated from competitor traffic analysis and industry conversion benchmarks.
             </p>
           </div>
         </div>

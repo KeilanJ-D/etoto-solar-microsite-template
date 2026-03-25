@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Calendar, FileText, TrendingDown, Zap } from 'lucide-react'
+import { FileText, TrendingDown, Zap, XCircle } from 'lucide-react'
 
 export default function BlogProblem() {
   const [isVisible, setIsVisible] = useState(false)
@@ -33,10 +33,10 @@ export default function BlogProblem() {
             Content Strategy
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-[#1A1A2E] mb-4">
-            Your Blog Is Dead in the Water
+            Your Blog Doesn&apos;t Exist.
           </h2>
           <p className="text-lg text-[#64748B] max-w-2xl mx-auto">
-            Content is the engine of organic growth. Yours has stalled completely.
+            It&apos;s not dead — it was never born.
           </p>
         </div>
 
@@ -52,68 +52,77 @@ export default function BlogProblem() {
             
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <FileText className="w-5 h-5 text-[#DC2626] mt-0.5" />
+                <XCircle className="w-5 h-5 text-[#DC2626] mt-0.5" />
                 <div>
-                  <p className="font-semibold text-[#1A1A2E]">9 blog posts total</p>
-                  <p className="text-sm text-[#64748B]">All published on the same day — clearly a one-time effort</p>
+                  <p className="font-semibold text-[#1A1A2E]">0 blog posts</p>
+                  <p className="text-sm text-[#64748B]">Not even one. Nothing for Google to index.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Calendar className="w-5 h-5 text-[#DC2626] mt-0.5" />
-                <div>
-                  <p className="font-semibold text-[#1A1A2E]">1 post two months later</p>
-                  <p className="text-sm text-[#64748B]">Then nothing since. Google notices this inactivity.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <TrendingDown className="w-5 h-5 text-[#DC2626] mt-0.5" />
+                <XCircle className="w-5 h-5 text-[#DC2626] mt-0.5" />
                 <div>
                   <p className="font-semibold text-[#1A1A2E]">Zero topical authority</p>
-                  <p className="text-sm text-[#64748B]">No content clusters, no internal linking, no expertise signals</p>
+                  <p className="text-sm text-[#64748B]">No content clusters, no keyword presence, no expertise signals.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <XCircle className="w-5 h-5 text-[#DC2626] mt-0.5" />
+                <div>
+                  <p className="font-semibold text-[#1A1A2E]">No SEO for 12+ months</p>
+                  <p className="text-sm text-[#64748B]">Google has nothing to rank. Your competitors are pulling ahead.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* AI-powered solution */}
-          <div className={`bg-[#F0FDF4] border border-[#BBF7D0] rounded-2xl p-8 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Competitor comparison */}
+          <div className={`bg-slate-50 border border-slate-200 rounded-2xl p-8 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-[#DCFCE7] flex items-center justify-center">
-                <Zap className="w-6 h-6 text-[#16A34A]" />
+              <div className="w-12 h-12 rounded-xl bg-slate-200 flex items-center justify-center">
+                <FileText className="w-6 h-6 text-slate-600" />
               </div>
-              <h3 className="text-xl font-bold text-[#1A1A2E]">The Solution</h3>
+              <h3 className="text-xl font-bold text-[#1A1A2E]">Your Competitors</h3>
             </div>
             
-            <p className="text-[#166534] mb-6">
-              With the power of AI, there is <span className="font-bold">no excuse</span> to not have hyper-optimised blog content running on autopilot.
-            </p>
-            
-            <div className="space-y-3">
-              {[
-                'Weekly SEO-optimised articles published automatically',
-                'Content clusters targeting high-intent keywords',
-                'Local content for each county you serve',
-                'FAQ sections that capture featured snippets',
-                'Internal linking that builds topical authority'
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#16A34A] flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span className="text-[#166534] font-medium">{item}</span>
-                </div>
-              ))}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-100">
+                <span className="font-medium text-slate-700">Geo Green Power</span>
+                <span className="text-sm font-semibold text-[var(--ec-accent)]">20+ blog posts, 100+ total pages</span>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-100">
+                <span className="font-medium text-slate-700">Spectrum Energy</span>
+                <span className="text-sm font-semibold text-[var(--ec-accent)]">23 town pages + articles</span>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-100">
+                <span className="font-medium text-slate-700">Solar & Battery Company</span>
+                <span className="text-sm font-semibold text-[var(--ec-accent)]">&quot;Hundreds of articles&quot;</span>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
+                <span className="font-medium text-slate-700">Energy Concerns</span>
+                <span className="text-sm font-bold text-[#DC2626]">0</span>
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Solution teaser */}
+        <div className={`bg-[#F0FDF4] border border-[#BBF7D0] rounded-2xl p-8 mb-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-[#DCFCE7] flex items-center justify-center">
+              <Zap className="w-5 h-5 text-[#16A34A]" />
+            </div>
+            <h3 className="text-lg font-bold text-[#1A1A2E]">The Good News</h3>
+          </div>
+          <p className="text-[#166534]">
+            We have already written <span className="font-bold">10 SEO-optimised articles</span> for Energy Concerns — 6,498 words of high-quality, keyword-targeted content ready to publish on your blog today. Scroll down to see them.
+          </p>
+        </div>
+
         {/* Bottom message */}
-        <div className={`bg-gradient-to-r from-[#1A1A2E] to-[#2D2D44] rounded-2xl p-8 text-center transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`bg-gradient-to-r from-[#1A1A2E] to-[#2D2D44] rounded-2xl p-8 text-center transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-white/90 text-lg md:text-xl font-medium">
-            Your competitors are publishing <span className="text-[#E8192C] font-bold">consistently — weekly or fortnightly</span>. 
-            Your blog has been inactive since late 2025. Every week you wait, they pull further ahead.
+            Every competitor in Leicester is publishing content. 
+            <span className="text-[var(--ec-accent)] font-bold"> Your website has literally nothing for Google to index</span> beyond a handful of service pages.
           </p>
         </div>
       </div>

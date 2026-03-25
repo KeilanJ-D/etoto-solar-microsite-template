@@ -6,29 +6,29 @@ import { AlertCircle, ArrowRight, Check } from 'lucide-react'
 const stages = [
   { 
     stage: 'AWARENESS', 
-    current: 'No blog content, no educational resources', 
-    fix: 'Content hub with solar guides & calculators',
-    leakPercent: 40,
-    colour: '#E8192C'
+    current: 'No blog, no guides, no educational content', 
+    fix: '10 SEO articles ready to publish + ongoing blog strategy',
+    leakPercent: 50,
+    colour: 'var(--ec-accent)'
   },
   { 
     stage: 'INTEREST', 
-    current: 'Calculators exist but results are ungated', 
-    fix: 'Email-gated tools + downloadable guides',
-    leakPercent: 60,
+    current: 'No calculator, no pricing transparency', 
+    fix: 'SolaFlow quiz funnel — configured and ready to embed',
+    leakPercent: 65,
     colour: '#F5921E'
   },
   { 
     stage: 'CONSIDERATION', 
-    current: 'Generic contact form with no qualification', 
-    fix: 'Multi-step quiz that pre-qualifies leads',
-    leakPercent: 75,
+    current: 'Generic contact form, no lead qualification', 
+    fix: 'Multi-step quiz that pre-qualifies and recommends a system',
+    leakPercent: 80,
     colour: '#F59E0B'
   },
   { 
     stage: 'DECISION', 
-    current: 'No urgency triggers, limited social proof', 
-    fix: 'Testimonial carousel + limited-time offers',
+    current: 'No package offers, no urgency triggers', 
+    fix: 'Offers page + testimonial showcase + limited-time packages',
     leakPercent: 85,
     colour: '#DC2626'
   },
@@ -68,7 +68,7 @@ export default function LeakyFunnel() {
             Your Funnel Is Leaking at Every Stage
           </h2>
           <p className="text-lg text-[#64748B] max-w-2xl mx-auto">
-            Visitors arrive, but they leave without converting. Here is exactly where they drop off.
+            Visitors arrive, but they leave without converting. Here is exactly where they drop off — and what we will fix.
           </p>
         </div>
 
@@ -135,10 +135,10 @@ export default function LeakyFunnel() {
         <div className={`text-center transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="inline-flex flex-col items-center bg-white border border-[#E2E8F0] rounded-2xl p-8 shadow-lg">
             <span className="text-[#64748B] text-sm mb-2">Current Estimated Conversion Rate</span>
-            <span className="text-5xl font-black text-[#E8192C]">0.8%</span>
+            <span className="text-5xl font-black text-[#DC2626]">0.5%</span>
             <div className="flex items-center gap-2 mt-3">
               <AlertCircle className="w-4 h-4 text-[#F59E0B]" />
-              <span className="text-[#64748B] text-sm">Industry average: 2.5-4%</span>
+              <span className="text-[#64748B] text-sm">Industry benchmark: 2.5-4%</span>
             </div>
           </div>
         </div>

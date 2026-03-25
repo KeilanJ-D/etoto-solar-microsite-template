@@ -1,27 +1,51 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Check, Sparkles, ArrowRight, Gift, AlertCircle } from 'lucide-react'
+import { Check, Sparkles, Star } from 'lucide-react'
 
-const includedItems = [
-  'Full Meta Ads management (creative, targeting, optimisation)',
-  'CRM setup in Go High Level + lead nurturing automation',
-  'Fortnightly performance calls',
-  'Dedicated account manager',
-  'Landing page optimisation',
-  'Competitor monitoring',
-  'Blog content strategy guidance (SEO delivery is separate — ask us for pricing)',
+const options = [
+  {
+    title: 'Upgrade Current Site',
+    price: '£2,500',
+    priceNote: 'one-off',
+    timeline: '2 weeks from brand delivery',
+    bestFor: 'Fast turnaround, budget-conscious, solid foundation',
+    features: [
+      'New branding applied to existing WordPress',
+      'SolaFlow calculator embedded',
+      'Product pages (Fox ESS, Sigenergy, AIKO)',
+      'Area pages (Leicester, Nottingham, key towns)',
+      'Blog functionality + 10 articles published',
+      'Mobile optimisation + speed improvements',
+      'Improved conversion paths',
+    ],
+    featured: false,
+  },
+  {
+    title: 'Full New Build',
+    price: '£5,000',
+    priceNote: 'one-off',
+    timeline: '4 weeks from brand delivery',
+    bestFor: 'The Octopus Energy vision. Built for scale.',
+    features: [
+      'Complete redesign from scratch',
+      'Full chameleon brand implementation',
+      'SolaFlow as native feature',
+      'Commercial solar section',
+      'Package/offers pages (the CRO goldmine)',
+      'Interactive product comparisons',
+      'Full blog + case studies',
+      'EV charger section with pricing',
+    ],
+    featured: true,
+  },
 ]
 
-const separateItems = [
-  { item: 'Ad budget (recommended)', value: '€2,400/month (£2,070)', note: 'Paid direct to Meta — gives you 100% control' },
-  { item: 'Video production', value: '€5,790/shoot (£5,000)', note: '2 days on-site, quarterly. First shoot included in Month 1.' },
-]
-
-const bonusItems = [
-  { item: 'SolaFlow lead-gated calculator', value: '€230/m (£200/m)', note: 'Normally charged monthly — yours free for life' },
-  { item: '10 SEO articles (14,590 words)', value: 'Priceless', note: 'Ready-to-publish blog content showcasing our capabilities' },
-  { item: 'Technical SEO audit + insights', value: 'Free', note: 'Actionable recommendations if you choose to pursue SEO' },
+const bothInclude = [
+  '10 SEO blog articles (already written)',
+  'SolaFlow calculator (already configured)',
+  'Ongoing ad management (existing £2,500/mo retainer)',
+  'CRM infrastructure + lead automation',
 ]
 
 export default function Investment() {
@@ -44,139 +68,94 @@ export default function Investment() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-28 px-4 md:px-6 bg-gradient-to-br from-slate-50 via-white to-red-50/30 relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-28 px-4 md:px-6 bg-gradient-to-br from-slate-50 via-white to-teal-50/30 relative overflow-hidden">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-flex items-center gap-2 bg-[#E8192C]/10 text-[#E8192C] text-sm font-semibold px-4 py-2 rounded-full mb-6">
+          <span className="inline-flex items-center gap-2 bg-[var(--ec-accent)]/10 text-[var(--ec-accent)] text-sm font-semibold px-4 py-2 rounded-full mb-6">
             <Sparkles className="w-4 h-4" />
             The Investment
           </span>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
-            One Retainer. Full Service.
+            Two Options. Both Include Everything You Need.
           </h2>
           <p className="text-base md:text-lg text-slate-500 max-w-2xl mx-auto">
-            Transparent pricing. Ad budget in your control. No hidden costs.
+            Choose based on budget and timeline. Either way, SolaFlow and the 10 blog articles go live this week.
           </p>
         </div>
 
-        {/* Main pricing card */}
-        <div className={`bg-white border-2 border-[#E8192C] rounded-3xl overflow-hidden shadow-2xl shadow-[#E8192C]/10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}>
-          {/* Discount banner */}
-          <div className="bg-[#E8192C] text-white py-3 px-6 text-center">
-            <p className="font-semibold text-sm md:text-base">
-              Launch Partner Discount — <span className="line-through opacity-75">£3,000</span> now <span className="font-black">£2,000/month</span> (~€2,300)
-            </p>
-          </div>
-
-          <div className="p-6 md:p-10">
-            {/* Price display */}
-            <div className="text-center mb-8">
-              <div className="flex items-baseline justify-center gap-2">
-                <span className="text-5xl md:text-7xl font-black text-slate-900">£2,000</span>
-                <span className="text-xl text-slate-500">/month</span>
-              </div>
-              <p className="text-slate-500 mt-2">3-month minimum commitment · ~€2,300/month</p>
-            </div>
-
-            {/* Included items */}
-            <div className="mb-8">
-              <h3 className="font-bold text-slate-900 mb-4">Included in the retainer:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {includedItems.map((item, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-start gap-3"
-                    style={{
-                      opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? 'translateX(0)' : 'translateX(-10px)',
-                      transition: `all 0.5s ease ${400 + index * 50}ms`
-                    }}
-                  >
-                    <Check className="w-5 h-5 text-[#22C55E] flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-slate-700">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Separate line items */}
-            <div className="bg-slate-50 rounded-xl p-6 mb-8">
-              <div className="flex items-center gap-2 mb-4">
-                <AlertCircle className="w-5 h-5 text-slate-500" />
-                <h3 className="font-bold text-slate-900">Separate Line Items (not included in retainer)</h3>
-              </div>
-              <div className="space-y-4">
-                {separateItems.map((item, index) => (
-                  <div key={index} className="flex flex-col md:flex-row md:items-center justify-between gap-1 md:gap-4 pb-3 border-b border-slate-200 last:border-0 last:pb-0">
-                    <div>
-                      <span className="font-medium text-slate-900">{item.item}</span>
-                      <p className="text-xs text-slate-500">{item.note}</p>
-                    </div>
-                    <span className="font-bold text-slate-700">{item.value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Bonus items */}
-            <div className="bg-[#F5921E]/10 border border-[#F5921E]/30 rounded-xl p-6 mb-8">
-              <div className="flex items-center gap-2 mb-4">
-                <Gift className="w-5 h-5 text-[#F5921E]" />
-                <h3 className="font-bold text-slate-900">Bonus: Included Free</h3>
-              </div>
-              <div className="space-y-4">
-                {bonusItems.map((bonus, index) => (
-                  <div key={index} className="flex flex-col md:flex-row md:items-center justify-between gap-1">
-                    <div>
-                      <span className="text-sm font-medium text-slate-700">{bonus.item}</span>
-                      <p className="text-xs text-slate-500">{bonus.note}</p>
-                    </div>
-                    <span className="text-sm font-semibold text-[#F5921E]">{bonus.value}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 pt-4 border-t border-[#F5921E]/30 flex items-center justify-between">
-                <span className="font-bold text-slate-900">Total Bonus Value</span>
-                <span className="font-black text-[#F5921E]">£10,000s in insight (if/when implemented)</span>
-              </div>
-            </div>
-
-            {/* Comparison callout */}
-            <div className="bg-slate-900 rounded-xl p-6">
-              <h3 className="font-bold text-white mb-3">The Consolidation Opportunity</h3>
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                <div className="text-center md:text-left">
-                  <p className="text-slate-400 text-sm">Current combined spend (3+ providers)</p>
-                  <p className="text-2xl font-bold text-slate-400 line-through">~€5,000/month</p>
+        {/* Option cards */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {options.map((option, index) => (
+            <div 
+              key={option.title}
+              className={`relative rounded-xl md:rounded-2xl p-6 md:p-8 transition-all duration-300 hover:shadow-xl ${
+                option.featured 
+                  ? 'bg-slate-900 text-white border-2 border-[var(--ec-accent)]' 
+                  : 'bg-white border-2 border-slate-200'
+              }`}
+            >
+              {option.featured && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--ec-accent)] text-white text-xs font-bold px-4 py-1 rounded-full flex items-center gap-1">
+                  <Star className="w-3 h-3" fill="white" />
+                  RECOMMENDED
                 </div>
-                <ArrowRight className="w-6 h-6 text-[#E8192C] hidden md:block" />
-                <div className="text-center md:text-right">
-                  <p className="text-slate-400 text-sm">ETOTO All-in-One (retainer + ad spend)</p>
-                  <p className="text-2xl font-bold text-[#22C55E]">~€4,700/month</p>
+              )}
+              
+              <div className="mb-6">
+                <h3 className={`text-xl md:text-2xl font-bold mb-2 ${option.featured ? 'text-white' : 'text-slate-900'}`}>
+                  {option.title}
+                </h3>
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className={`text-3xl md:text-4xl font-black ${option.featured ? 'text-[var(--ec-accent)]' : 'text-slate-900'}`}>
+                    {option.price}
+                  </span>
+                  <span className={`text-sm ${option.featured ? 'text-slate-400' : 'text-slate-500'}`}>{option.priceNote}</span>
                 </div>
+                <p className={`text-sm ${option.featured ? 'text-slate-400' : 'text-slate-500'}`}>
+                  Timeline: {option.timeline}
+                </p>
               </div>
-              <p className="text-sm text-slate-400 mt-4 text-center md:text-left">
-                One partner. One invoice. One strategy. Better results — and you save ~€300/month vs your current setup.
-              </p>
+              
+              <div className="space-y-2 mb-6">
+                {option.features.map((feature, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${option.featured ? 'text-[var(--ec-accent)]' : 'text-green-500'}`} />
+                    <span className={`text-sm ${option.featured ? 'text-slate-300' : 'text-slate-600'}`}>{feature}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <div className={`pt-4 border-t ${option.featured ? 'border-slate-700' : 'border-slate-100'}`}>
+                <p className={`text-xs font-semibold uppercase tracking-wide mb-1 ${option.featured ? 'text-slate-500' : 'text-slate-400'}`}>
+                  Best for
+                </p>
+                <p className={`text-sm font-medium ${option.featured ? 'text-white' : 'text-slate-700'}`}>
+                  {option.bestFor}
+                </p>
+              </div>
             </div>
+          ))}
+        </div>
+
+        {/* Both include */}
+        <div className={`bg-slate-100 rounded-xl md:rounded-2xl p-6 mb-8 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h3 className="font-bold text-slate-900 mb-4">Both Options Include:</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {bothInclude.map((item, index) => (
+              <div key={index} className="flex items-start gap-2">
+                <Check className="w-4 h-4 text-[var(--ec-accent)] mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-slate-600">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* ROI tie-in */}
-        <div className={`mt-8 bg-[#E8192C]/5 border border-[#E8192C]/20 rounded-xl p-6 text-center transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="text-slate-700">
-            Based on the 90-day projections above: <span className="font-bold text-[#E8192C]">€53,250 net profit</span> (£45,950) on a €18,750 (£16,170) investment.
-            <br className="hidden md:block" />
-            <span className="font-semibold text-slate-900">That's a 3.8× return in 90 days — using conservative €25 CPL assumptions.</span>
-          </p>
-        </div>
-
-        {/* Trust note */}
-        <div className={`mt-6 text-center transition-all duration-700 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="text-sm text-slate-500">
-            No long-term lock-in. After 3 months, continue month-to-month or walk away with 30 days notice.
-            <span className="font-semibold text-slate-700"> We earn your business every month.</span>
+        {/* Recommendation callout */}
+        <div className={`bg-teal-50 border border-teal-100 rounded-xl md:rounded-2xl p-6 text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-slate-700 text-sm md:text-base">
+            <span className="font-semibold">Our recommendation:</span> We&apos;d go with Option B. It&apos;s the full vision. But Option A is a smart move if you want results fast and budget&apos;s tight. 
+            <span className="font-semibold text-[var(--ec-accent)]"> Either way, SolaFlow goes live this week.</span>
           </p>
         </div>
       </div>

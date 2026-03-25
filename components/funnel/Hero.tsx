@@ -9,9 +9,9 @@ export default function Hero() {
   const [showStats, setShowStats] = useState(false)
   const [expandedStat, setExpandedStat] = useState<number | null>(null)
   
-  const seoScore = useCountUp(34, 1500, showStats)
+  const seoScore = useCountUp(35, 1500, showStats)
   const issues = useCountUp(6, 1200, showStats)
-  const revenue = useCountUp(48, 1800, showStats)
+  const revenue = useCountUp(36, 1800, showStats)
 
   useEffect(() => {
     setIsVisible(true)
@@ -25,39 +25,39 @@ export default function Hero() {
       suffix: '/100', 
       label: 'SEO Score', 
       color: '#DC2626',
-      context: 'Based on Google Lighthouse audit of solarpath.ie. Industry benchmark for solar installers is 65+. Your score of 34 indicates severe technical SEO deficiencies including missing meta descriptions on 80% of pages, no structured data markup, and poor Core Web Vitals.'
+      context: 'Based on Google Lighthouse audit of energyconcernsltd.co.uk. No SEO activity for over a year. No blog posts. No schema markup. No local landing pages.'
     },
     { 
       value: issues, 
       suffix: '', 
       label: 'Critical Issues', 
       color: '#E8192C',
-      context: 'Six fundamental problems identified: (1) No email capture on calculators, (2) Missing local SEO for key counties, (3) Blog dormant since 2024, (4) No lead magnets, (5) Poor mobile conversion paths, (6) Weak trust signals vs competitors.'
+      context: '(1) No blog or content, (2) No product pages for Fox ESS, Sigenergy, or AIKO, (3) No area pages for Leicester/Notts towns, (4) Generic contact form — no lead qualification, (5) Looks residential — lost a commercial job, (6) No SEO for 12+ months.'
     },
     { 
       value: revenue, 
-      prefix: '€', 
+      prefix: '£', 
       suffix: 'K+', 
       label: 'Revenue at Risk', 
       color: '#F5921E',
-      context: 'Calculation: Average solar installation = €12,000 AOV. Conservative estimate of 4 lost leads/month due to poor SEO visibility and conversion issues. 4 leads × €12,000 × 12 months = €48,000 annually. Based on competitor traffic analysis and industry conversion benchmarks.'
+      context: '3 lost leads/month × £10,000 AOV × 12 months = £36,000. Conservative estimate based on competitor traffic analysis.'
     },
   ]
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center px-4 md:px-6 py-16 md:py-20 bg-gradient-to-br from-white via-slate-50/50 to-red-50/30 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center items-center px-4 md:px-6 py-16 md:py-20 bg-gradient-to-br from-white via-slate-50/50 to-teal-50/30 overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-72 h-72 md:w-96 md:h-96 bg-[#E8192C]/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="absolute bottom-1/4 -right-20 w-80 h-80 md:w-[500px] md:h-[500px] bg-[#F5921E]/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-[#E8192C]/3 to-[#F5921E]/3 rounded-full blur-3xl opacity-50" />
+        <div className="absolute top-1/4 -left-20 w-72 h-72 md:w-96 md:h-96 bg-[var(--ec-accent)]/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 md:w-[500px] md:h-[500px] bg-[#E8192C]/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-[var(--ec-accent)]/3 to-[#E8192C]/3 rounded-full blur-3xl opacity-50" />
       </div>
 
       {/* Floating particles */}
       {[...Array(6)].map((_, i) => (
         <div
           key={i}
-          className="absolute w-2 h-2 bg-[#E8192C]/20 rounded-full animate-float hidden md:block"
+          className="absolute w-2 h-2 bg-[var(--ec-accent)]/20 rounded-full animate-float hidden md:block"
           style={{
             left: `${15 + i * 15}%`,
             top: `${20 + (i % 3) * 25}%`,
@@ -67,7 +67,7 @@ export default function Hero() {
         />
       ))}
 
-      {/* Logos - Fixed with dark background cards */}
+      {/* Logos - ETOTO × Energy Concerns */}
       <div className={`flex items-center gap-4 md:gap-8 mb-8 md:mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <div className="bg-slate-900 rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl">
           <img 
@@ -76,11 +76,11 @@ export default function Hero() {
             className="h-6 md:h-10 object-contain"
           />
         </div>
-        <span className="text-[#E8192C] font-black text-xl md:text-3xl animate-pulse">×</span>
-        <div className="bg-slate-900 rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl">
+        <span className="text-[var(--ec-accent)] font-black text-xl md:text-3xl animate-pulse">×</span>
+        <div className="bg-white rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl border border-slate-100">
           <img 
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/solar%20path%20logo-gb9aYzjnVnp3LFRgT565BJqotuLeRG.png" 
-            alt="Solar Path" 
+            src="/energy-concerns-logo.png" 
+            alt="Energy Concerns" 
             className="h-6 md:h-10 object-contain"
           />
         </div>
@@ -89,27 +89,27 @@ export default function Hero() {
       {/* Badge */}
       <div className={`mb-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
         <span className="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-600 text-xs md:text-sm font-medium px-4 py-2 rounded-full shadow-sm">
-          <span className="w-2 h-2 bg-[#E8192C] rounded-full animate-pulse" />
-          Exclusive Website Audit — March 2026
+          <span className="w-2 h-2 bg-[var(--ec-accent)] rounded-full animate-pulse" />
+          ETOTO Media × Energy Concerns — March 2026
         </span>
       </div>
 
       {/* Main headline */}
       <div className={`text-center max-w-5xl transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
         <h1 className="text-3xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-6 text-balance">
-          Your Website Is Leaking Leads.
-          <span className="block text-[#E8192C] relative">
-            Your Pipeline Should Be Full.
-            <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#E8192C]/20" viewBox="0 0 200 8" preserveAspectRatio="none">
+          Your Brand Deserves a Website That Sells.
+          <span className="block text-[var(--ec-accent)] relative">
+            Let&apos;s Build It.
+            <svg className="absolute -bottom-2 left-0 w-full h-3 text-[var(--ec-accent)]/20" viewBox="0 0 200 8" preserveAspectRatio="none">
               <path d="M0,5 Q50,0 100,5 T200,5" fill="none" stroke="currentColor" strokeWidth="3" className="animate-draw" />
             </svg>
           </span>
         </h1>
         <p className="text-base md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          A forensic website audit, real Irish campaign data, a 90-day growth plan, and 10 ready-to-publish blog articles — built specifically for <span className="font-semibold text-slate-900">Ken and Jackie at Solar Path</span>.
+          We audited energyconcernsltd.co.uk, sat down with <span className="font-semibold text-slate-900">Todd</span>, and built a complete website strategy — including your live solar calculator and 10 ready-to-publish blog articles.
         </p>
         <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto mt-3">
-          Scroll down. This is everything you need to hit 50 installs a month.
+          Scroll down. This is everything you need.
         </p>
       </div>
 
@@ -129,7 +129,7 @@ export default function Hero() {
                 {stat.prefix}{stat.value}{stat.suffix}
               </p>
               <p className="text-xs md:text-sm text-slate-500 font-medium mt-1 md:mt-2">{stat.label}</p>
-              <button className="mt-2 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-[#E8192C] transition-colors">
+              <button className="mt-2 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-[var(--ec-accent)] transition-colors">
                 <Info className="w-3 h-3" />
                 <span className="hidden md:inline">How we calculated this</span>
                 <span className="md:hidden">Details</span>
@@ -153,7 +153,7 @@ export default function Hero() {
       {/* CTA Button */}
       <a 
         href="#problems"
-        className={`mt-10 md:mt-12 inline-flex items-center gap-2 md:gap-3 bg-[#E8192C] hover:bg-[#D01622] text-white px-6 md:px-10 py-3 md:py-4 text-base md:text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-[#E8192C]/30 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`mt-10 md:mt-12 inline-flex items-center gap-2 md:gap-3 bg-[var(--ec-accent)] hover:bg-[#0B7B70] text-white px-6 md:px-10 py-3 md:py-4 text-base md:text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-[var(--ec-accent)]/30 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         style={{ transitionDelay: '700ms' }}
       >
         See What We Found
