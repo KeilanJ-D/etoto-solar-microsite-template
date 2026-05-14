@@ -91,12 +91,11 @@ export default function Reviews() {
         <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="flex items-center justify-center gap-3 mb-6">
             <Image
-              src="/logos/etoto-logo-black.png"
+              src="/logos/etoto-logo.png"
               alt="ETOTO Media"
-              width={140}
-              height={46}
-              className="h-10 md:h-12"
-              style={{ width: 'auto' }}
+              width={48}
+              height={48}
+              className="w-10 h-10 md:w-12 md:h-12"
             />
           </div>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3">

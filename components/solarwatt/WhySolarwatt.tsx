@@ -56,12 +56,11 @@ export default function WhySolarwatt() {
           {/* Logo strip with ETOTO */}
           <div className="flex items-center justify-center gap-4 mb-8">
             <Image
-              src="/logos/etoto-logo-black.png"
+              src="/logos/etoto-logo.png"
               alt="ETOTO Media"
-              width={120}
+              width={40}
               height={40}
-              className="h-8 md:h-9"
-              style={{ width: 'auto' }}
+              className="w-9 h-9 md:w-10 md:h-10"
             />
             <span className="text-slate-300 text-xl">×</span>
             <Image

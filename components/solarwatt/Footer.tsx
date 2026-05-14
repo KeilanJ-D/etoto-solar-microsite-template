@@ -10,12 +10,11 @@ export default function Footer() {
           {/* Dual branding with ETOTO logo */}
           <div className="flex items-center gap-3 md:gap-4">
             <Image
-              src="/logos/etoto-logo-black.png"
+              src="/logos/etoto-logo.png"
               alt="ETOTO Media"
-              width={100}
-              height={32}
-              className="h-6 md:h-7 brightness-0 invert"
-              style={{ width: 'auto' }}
+              width={28}
+              height={28}
+              className="w-6 h-6 md:w-7 md:h-7"
             />
             <span className="text-white/30 text-lg">×</span>
             <Image

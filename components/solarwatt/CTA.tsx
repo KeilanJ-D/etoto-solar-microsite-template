@@ -31,12 +31,11 @@ export default function CTA() {
         {/* Dual branding with ETOTO logo */}
         <div className={`flex items-center justify-center gap-4 md:gap-6 mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
           <Image
-            src="/logos/etoto-logo-black.png"
+            src="/logos/etoto-logo.png"
             alt="ETOTO Media"
-            width={120}
-            height={40}
-            className="h-8 md:h-10"
-            style={{ width: 'auto' }}
+            width={44}
+            height={44}
+            className="w-10 h-10 md:w-11 md:h-11"
           />
           <span className="text-slate-300 text-2xl">×</span>
           <Image
@@ -94,12 +93,11 @@ export default function CTA() {
             <div className="relative">
               <div className="flex items-center justify-center gap-3 mb-6">
                 <Image
-                  src="/logos/etoto-logo-black.png"
+                  src="/logos/etoto-logo.png"
                   alt="ETOTO Media"
-                  width={100}
-                  height={32}
-                  className="h-6 brightness-0 invert"
-                  style={{ width: 'auto' }}
+                  width={28}
+                  height={28}
+                  className="w-7 h-7"
                 />
                 <span className="text-white/30 text-lg">×</span>
                 <Image

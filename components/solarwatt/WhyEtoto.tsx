@@ -103,12 +103,11 @@ export default function WhyEtoto() {
             />
             <span className="text-slate-300 text-xl">×</span>
             <Image
-              src="/logos/etoto-logo-black.png"
+              src="/logos/etoto-logo.png"
               alt="ETOTO Media"
-              width={120}
+              width={40}
               height={40}
-              className="h-8 md:h-9"
-              style={{ width: 'auto' }}
+              className="w-9 h-9 md:w-10 md:h-10"
             />
           </div>
           
@@ -240,12 +239,11 @@ export default function WhyEtoto() {
                     </h4>
                     <div className="flex items-center gap-2 mb-2">
                       <Image
-                        src="/logos/etoto-logo-black.png"
+                        src="/logos/etoto-logo.png"
                         alt="ETOTO Media"
-                        width={80}
-                        height={26}
-                        className="h-5 md:h-6"
-                        style={{ width: 'auto' }}
+                        width={24}
+                        height={24}
+                        className="w-5 h-5 md:w-6 md:h-6"
                       />
                     </div>
                     <p className="text-xs text-amber-600 font-semibold mt-2">South East Energy Efficiency Awards 2026</p>
@@ -268,12 +266,11 @@ export default function WhyEtoto() {
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                 <div className="flex items-center gap-3 mb-3">
                   <Image
-                    src="/logos/etoto-logo-black.png"
+                    src="/logos/etoto-logo.png"
                     alt="ETOTO"
-                    width={100}
-                    height={32}
-                    className="h-7 md:h-8 brightness-0 invert"
-                    style={{ width: 'auto' }}
+                    width={36}
+                    height={36}
+                    className="w-8 h-8 md:w-9 md:h-9"
                   />
                 </div>
                 <p className="text-amber-300 text-xs font-semibold">Award-Winning Marketing Agency</p>

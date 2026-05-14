@@ -75,12 +75,11 @@ export default function Hero() {
       <div className={`flex items-center gap-4 md:gap-8 mb-8 md:mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <div className="bg-slate-900 rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl hover:scale-105 transition-transform">
           <Image
-            src="/logos/etoto-logo-black.png"
+            src="/logos/etoto-logo.png"
             alt="ETOTO Media"
-            width={120}
+            width={40}
             height={40}
-            className="h-7 md:h-9 brightness-0 invert"
-            style={{ width: 'auto' }}
+            className="w-8 h-8 md:w-10 md:h-10"
           />
         </div>
         <span className="text-[#006068] font-black text-xl md:text-3xl animate-pulse">×</span>
