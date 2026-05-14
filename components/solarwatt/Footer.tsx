@@ -9,16 +9,13 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
           {/* Dual branding with ETOTO logo */}
           <div className="flex items-center gap-3 md:gap-4">
-            <div className="flex items-center gap-2">
-              <Image
-                src="/logos/etoto-logo.png"
-                alt="ETOTO Media"
-                width={32}
-                height={32}
-                className="w-8 h-8"
-              />
-              <span className="text-white font-black tracking-tight">ETOTO</span>
-            </div>
+            <Image
+              src="/logos/etoto-logo-black.png"
+              alt="ETOTO Media"
+              width={100}
+              height={32}
+              className="h-6 md:h-7 w-auto brightness-0 invert"
+            />
             <span className="text-white/30 text-lg">×</span>
             <Image
               src="/logos/solarwatt-logo.png"

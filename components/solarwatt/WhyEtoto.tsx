@@ -238,13 +238,12 @@ export default function WhyEtoto() {
                     </h4>
                     <div className="flex items-center gap-2 mb-2">
                       <Image
-                        src="/logos/etoto-logo.png"
+                        src="/logos/etoto-logo-black.png"
                         alt="ETOTO Media"
-                        width={28}
-                        height={28}
-                        className="w-6 h-6 md:w-7 md:h-7"
+                        width={80}
+                        height={26}
+                        className="h-5 md:h-6 w-auto"
                       />
-                      <span className="text-sm md:text-base text-slate-700 font-semibold">ETOTO Media</span>
                     </div>
                     <p className="text-xs text-amber-600 font-semibold mt-2">South East Energy Efficiency Awards 2026</p>
                   </div>
@@ -266,18 +265,15 @@ export default function WhyEtoto() {
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                 <div className="flex items-center gap-3 mb-3">
                   <Image
-                    src="/logos/etoto-logo.png"
+                    src="/logos/etoto-logo-black.png"
                     alt="ETOTO"
-                    width={40}
-                    height={40}
-                    className="w-10 h-10 border-2 border-white/30 rounded-xl"
+                    width={100}
+                    height={32}
+                    className="h-7 md:h-8 w-auto brightness-0 invert"
                   />
-                  <div>
-                    <p className="text-white font-black text-lg md:text-xl">ETOTO Media</p>
-                    <p className="text-amber-300 text-xs font-semibold">Award-Winning Marketing Agency</p>
-                  </div>
                 </div>
-                <p className="text-white/80 text-sm md:text-base font-medium">
+                <p className="text-amber-300 text-xs font-semibold">Award-Winning Marketing Agency</p>
+                <p className="text-white/80 text-sm md:text-base font-medium mt-1">
                   South East Energy Efficiency Awards 2026
                 </p>
               </div>

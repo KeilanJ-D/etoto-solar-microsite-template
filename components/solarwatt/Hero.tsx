@@ -74,16 +74,13 @@ export default function Hero() {
       {/* Logos - ETOTO × SOLARWATT with actual logos */}
       <div className={`flex items-center gap-4 md:gap-8 mb-8 md:mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <div className="bg-slate-900 rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl hover:scale-105 transition-transform">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/logos/etoto-logo.png"
-              alt="ETOTO Media"
-              width={40}
-              height={40}
-              className="w-8 h-8 md:w-10 md:h-10"
-            />
-            <span className="text-white font-black text-lg md:text-2xl tracking-tight">ETOTO</span>
-          </div>
+          <Image
+            src="/logos/etoto-logo-black.png"
+            alt="ETOTO Media"
+            width={120}
+            height={40}
+            className="h-7 md:h-9 w-auto brightness-0 invert"
+          />
         </div>
         <span className="text-[#006068] font-black text-xl md:text-3xl animate-pulse">×</span>
         <div className="bg-white rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl border border-slate-200 hover:scale-105 transition-transform">

@@ -30,16 +30,13 @@ export default function CTA() {
       <div className="max-w-3xl mx-auto relative">
         {/* Dual branding with ETOTO logo */}
         <div className={`flex items-center justify-center gap-4 md:gap-6 mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
-          <div className="flex items-center gap-2">
-            <Image
-              src="/logos/etoto-logo.png"
-              alt="ETOTO Media"
-              width={40}
-              height={40}
-              className="w-9 h-9 md:w-10 md:h-10"
-            />
-            <span className="font-black text-slate-900 text-lg md:text-xl tracking-tight">ETOTO</span>
-          </div>
+          <Image
+            src="/logos/etoto-logo-black.png"
+            alt="ETOTO Media"
+            width={120}
+            height={40}
+            className="h-8 md:h-10 w-auto"
+          />
           <span className="text-slate-300 text-2xl">×</span>
           <Image
             src="/logos/solarwatt-logo.png"
@@ -95,11 +92,11 @@ export default function CTA() {
             <div className="relative">
               <div className="flex items-center justify-center gap-3 mb-6">
                 <Image
-                  src="/logos/etoto-logo.png"
+                  src="/logos/etoto-logo-black.png"
                   alt="ETOTO Media"
-                  width={32}
+                  width={100}
                   height={32}
-                  className="w-8 h-8"
+                  className="h-6 w-auto brightness-0 invert"
                 />
                 <span className="text-white/30 text-lg">×</span>
                 <Image
