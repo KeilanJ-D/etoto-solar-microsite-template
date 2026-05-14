@@ -62,12 +62,7 @@ export default function SolaFlowSection() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          /* BMW + SOLARWATT trust badge - removed per request */
           
-          <span className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            Live tool · embedded for SOLARWATT
-          </span>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4 text-balance">
             We&apos;ll bake SOLARWATT into{' '}
             <span className="text-[#0066B3]">SolaFlow</span> for every installer.
