@@ -5,13 +5,16 @@ import {
   Award,
   Banknote,
   Building2,
+  Crown,
   Megaphone,
   ShieldCheck,
+  Star,
   TrendingUp,
+  Trophy,
   Zap,
 } from 'lucide-react'
 import { useCountUp } from '@/hooks/use-animate-on-scroll'
-import { ETOTO_AWARDS, ETOTO_STATS } from '@/lib/etoto-data'
+import { ETOTO_STATS } from '@/lib/etoto-data'
 import Image from 'next/image'
 
 export default function WhyEtoto() {
@@ -42,7 +45,7 @@ export default function WhyEtoto() {
           observer.disconnect()
         }
       },
-      { threshold: 0.5 },
+      { threshold: 0.2 },
     )
     if (awardsRef.current) observer.observe(awardsRef.current)
     return () => observer.disconnect()
@@ -153,7 +156,7 @@ export default function WhyEtoto() {
         </div>
 
         {/* Three pillars */}
-        <div className={`grid md:grid-cols-3 gap-4 md:gap-6 mb-16 md:mb-20 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`grid md:grid-cols-3 gap-4 md:gap-6 mb-20 md:mb-28 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {pillars.map((p, i) => {
             const Icon = p.icon
             return (
@@ -174,54 +177,159 @@ export default function WhyEtoto() {
           })}
         </div>
 
-        {/* Awards section - clean, no box wrapper */}
-        <div ref={awardsRef}>
-          <div className={`text-center mb-8 transition-all duration-700 ${awardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-amber-600">
+        {/* ============================================ */}
+        {/* AWARDS SECTION - PROMINENT & CELEBRATED */}
+        {/* ============================================ */}
+        <div ref={awardsRef} className="relative">
+          {/* Decorative glow */}
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-100/50 via-amber-50/30 to-amber-100/50 rounded-3xl blur-3xl -z-10 scale-110" />
+          
+          {/* Header - more prominent */}
+          <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${awardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-xs md:text-sm font-bold px-5 py-2.5 rounded-full mb-6 shadow-lg shadow-amber-500/30">
+              <Trophy className="w-4 h-4" />
+              The Only Agency in Our Space to Be Recognised
+            </div>
+            <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-4">
               2026 Industry Recognition
+            </h3>
+            <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
+              Officially recognised by the <span className="font-semibold text-amber-600">South East Energy Efficiency Awards</span> — 
+              the first and only marketing agency in UK renewables to receive this honour.
             </p>
           </div>
           
-          <div className={`grid md:grid-cols-3 gap-4 md:gap-6 items-stretch transition-all duration-700 ${awardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            {ETOTO_AWARDS.map((award, i) => (
-              <div
-                key={i}
-                className="group bg-gradient-to-br from-amber-50 to-white border border-amber-200/60 rounded-2xl p-5 md:p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <Award className="h-6 w-6 text-white" />
+          {/* Awards layout - 2 cards + image side by side */}
+          <div className={`grid lg:grid-cols-2 gap-6 md:gap-8 items-stretch transition-all duration-700 delay-200 ${awardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            
+            {/* Left: Award cards stacked */}
+            <div className="flex flex-col gap-4 md:gap-6">
+              {/* Award 1 - Winner */}
+              <div className="group relative bg-gradient-to-br from-amber-50 via-white to-amber-50 border-2 border-amber-300 rounded-3xl p-6 md:p-8 hover:shadow-2xl hover:shadow-amber-200/50 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                {/* Winner ribbon */}
+                <div className="absolute top-4 right-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                  <Crown className="w-3 h-3" />
+                  WINNER
+                </div>
+                
+                <div className="flex items-start gap-5">
+                  <div className="shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                    <Trophy className="h-8 w-8 md:h-10 md:w-10 text-white" />
                   </div>
-                  <div>
-                    <p className="text-sm md:text-base font-bold text-slate-900 leading-snug">{award.title}</p>
-                    <p className="text-xs text-slate-600 mt-1">{award.recipient}</p>
-                    <p className="text-[10px] text-amber-600 font-semibold mt-1">{award.ceremony}</p>
+                  <div className="flex-1">
+                    <h4 className="text-lg md:text-xl lg:text-2xl font-black text-slate-900 leading-tight mb-2">
+                      Business Development Director of the Year
+                    </h4>
+                    <p className="text-sm md:text-base text-slate-700 font-semibold">
+                      Keilan James-Devereux, Co-Founder
+                    </p>
+                    <div className="flex items-center gap-2 mt-3">
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 text-amber-500 fill-amber-500" />
+                        ))}
+                      </div>
+                      <span className="text-xs text-amber-600 font-semibold">South East Energy Efficiency Awards 2026</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
+              
+              {/* Award 2 - Highly Commended */}
+              <div className="group relative bg-gradient-to-br from-slate-50 via-white to-amber-50/50 border-2 border-amber-200 rounded-3xl p-6 md:p-8 hover:shadow-2xl hover:shadow-amber-200/50 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                {/* Highly Commended badge */}
+                <div className="absolute top-4 right-4 bg-gradient-to-r from-slate-700 to-slate-800 text-amber-300 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                  <Award className="w-3 h-3" />
+                  HIGHLY COMMENDED
+                </div>
+                
+                <div className="flex items-start gap-5">
+                  <div className="shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                    <Award className="h-8 w-8 md:h-10 md:w-10 text-amber-400" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-lg md:text-xl lg:text-2xl font-black text-slate-900 leading-tight mb-2">
+                      Energy Consultancy of the Year
+                    </h4>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Image
+                        src="/logos/etoto-logo.png"
+                        alt="ETOTO Media"
+                        width={28}
+                        height={28}
+                        className="w-6 h-6 md:w-7 md:h-7"
+                      />
+                      <span className="text-sm md:text-base text-slate-700 font-semibold">ETOTO Media</span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-3">
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 text-amber-500 fill-amber-500" />
+                        ))}
+                      </div>
+                      <span className="text-xs text-amber-600 font-semibold">South East Energy Efficiency Awards 2026</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             
-            {/* Awards photo */}
-            <div className="relative rounded-2xl overflow-hidden group min-h-[180px] shadow-lg">
+            {/* Right: Awards photo - larger and more prominent */}
+            <div className={`relative rounded-3xl overflow-hidden group min-h-[350px] md:min-h-[420px] shadow-2xl shadow-amber-200/30 transition-all duration-700 delay-300 ${awardsVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
               <Image
                 src="/awards/etoto-eea-awards.jpeg"
                 alt="ETOTO Media - South East Energy Efficiency Awards 2026"
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-3 right-3">
-                <p className="text-white font-semibold text-xs md:text-sm">South East Energy Efficiency Awards 2026</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              
+              {/* Overlay content */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <Image
+                    src="/logos/etoto-logo.png"
+                    alt="ETOTO"
+                    width={40}
+                    height={40}
+                    className="w-10 h-10 border-2 border-white/30 rounded-xl"
+                  />
+                  <div>
+                    <p className="text-white font-black text-lg md:text-xl">ETOTO Media</p>
+                    <p className="text-amber-300 text-xs font-semibold">Award-Winning Marketing Agency</p>
+                  </div>
+                </div>
+                <p className="text-white/80 text-sm md:text-base font-medium">
+                  South East Energy Efficiency Awards 2026
+                </p>
+              </div>
+              
+              {/* Trophy decorations */}
+              <div className="absolute top-4 right-4 bg-amber-500/90 backdrop-blur-sm rounded-full p-2 shadow-lg">
+                <Trophy className="w-5 h-5 text-white" />
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Side-stat line */}
-        <div className={`text-center mt-12 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">
-            {ETOTO_STATS.proofPoints.installedCapacityMWp} MWp installed · {ETOTO_STATS.proofPoints.annualGenerationGWh.toLocaleString()} GWh / year · {ETOTO_STATS.proofPoints.co2OffsetTonnes.toLocaleString()} tonnes CO₂ offset
-          </p>
+          
+          {/* Impact stats line - more prominent */}
+          <div className={`mt-12 md:mt-16 text-center transition-all duration-700 delay-500 ${awardsVisible ? 'opacity-100' : 'opacity-0'}`}>
+            <div className="inline-flex flex-wrap items-center justify-center gap-4 md:gap-8 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-2xl px-6 md:px-10 py-4 md:py-5 shadow-xl">
+              <div className="text-center">
+                <p className="text-2xl md:text-3xl font-black text-[#006068]">{ETOTO_STATS.proofPoints.installedCapacityMWp}</p>
+                <p className="text-[10px] md:text-xs text-slate-400 font-semibold uppercase tracking-wide">MWp Installed</p>
+              </div>
+              <div className="w-px h-10 bg-slate-700 hidden md:block" />
+              <div className="text-center">
+                <p className="text-2xl md:text-3xl font-black text-amber-500">{ETOTO_STATS.proofPoints.annualGenerationGWh.toLocaleString()}</p>
+                <p className="text-[10px] md:text-xs text-slate-400 font-semibold uppercase tracking-wide">GWh / Year</p>
+              </div>
+              <div className="w-px h-10 bg-slate-700 hidden md:block" />
+              <div className="text-center">
+                <p className="text-2xl md:text-3xl font-black text-emerald-500">{ETOTO_STATS.proofPoints.co2OffsetTonnes.toLocaleString()}</p>
+                <p className="text-[10px] md:text-xs text-slate-400 font-semibold uppercase tracking-wide">Tonnes CO₂ Offset</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
