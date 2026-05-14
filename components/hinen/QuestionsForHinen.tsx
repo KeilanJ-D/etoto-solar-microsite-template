@@ -3,7 +3,7 @@
 import { useAnimateOnScroll } from "@/hooks/use-animate-on-scroll";
 import { HelpCircle } from "lucide-react";
 
-export function QuestionsForHinen() {
+export default function QuestionsForHinen() {
   const { ref, isVisible } = useAnimateOnScroll();
 
   const questions = [

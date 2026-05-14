@@ -3,7 +3,7 @@
 import { useAnimateOnScroll } from "@/hooks/use-animate-on-scroll";
 import Image from "next/image";
 
-export function Footer() {
+export default function Footer() {
   const { ref, isVisible } = useAnimateOnScroll();
 
   return (

@@ -2,7 +2,7 @@
 
 import { useAnimateOnScroll } from "@/hooks/use-animate-on-scroll";
 
-export function SolaFlowHero() {
+export default function SolaFlowHero() {
   const { ref, isVisible } = useAnimateOnScroll();
 
   return (

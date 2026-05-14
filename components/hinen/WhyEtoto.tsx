@@ -4,7 +4,7 @@ import { useAnimateOnScroll } from "@/hooks/use-animate-on-scroll";
 import Image from "next/image";
 import { Award, TrendingUp, Users, Zap } from "lucide-react";
 
-export function WhyEtoto() {
+export default function WhyEtoto() {
   const { ref, isVisible } = useAnimateOnScroll();
 
   const achievements = [

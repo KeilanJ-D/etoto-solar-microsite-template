@@ -4,7 +4,7 @@ import { useAnimateOnScroll } from "@/hooks/use-animate-on-scroll";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
-export function FinalCTA() {
+export default function FinalCTA() {
   const { ref, isVisible } = useAnimateOnScroll();
 
   return (

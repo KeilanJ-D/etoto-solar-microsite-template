@@ -3,7 +3,7 @@
 import { useAnimateOnScroll } from "@/hooks/use-animate-on-scroll";
 import { Zap, Users, TrendingUp, ArrowRight } from "lucide-react";
 
-export function LaneDefinition() {
+export default function LaneDefinition() {
   const { ref, isVisible } = useAnimateOnScroll();
 
   const lanes = [

@@ -3,7 +3,7 @@
 import { useAnimateOnScroll } from "@/hooks/use-animate-on-scroll";
 import { Check } from "lucide-react";
 
-export function TheAsk() {
+export default function TheAsk() {
   const { ref, isVisible } = useAnimateOnScroll();
 
   const deliverables = [

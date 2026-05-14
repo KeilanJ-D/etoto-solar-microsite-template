@@ -2,7 +2,7 @@
 
 import { useAnimateOnScroll } from "@/hooks/use-animate-on-scroll";
 
-export function CommercialsOverview() {
+export default function CommercialsOverview() {
   const { ref, isVisible } = useAnimateOnScroll();
 
   return (
