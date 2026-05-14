@@ -1,14 +1,51 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { ChevronRight, ExternalLink, Play, Sparkles, Trophy, Video, X } from 'lucide-react'
-import { ETOTO_CASE_STUDIES, ETOTO_CLIENTS, ETOTO_LINKS, type CaseStudy } from '@/lib/etoto-data'
+import { useEffect, useRef, useState } from 'react'
+import { Play, Sparkles, Trophy, X } from 'lucide-react'
+import { type CaseStudy } from '@/lib/etoto-data'
 
-type Filter = 'all' | 'solar' | 'air-source' | 'air-con'
+// Only the 4 video testimonials to keep
+const FEATURED_STUDIES: CaseStudy[] = [
+  {
+    id: "jem",
+    client: "JEM Energy",
+    headline: "Our first solar client — still with us 2+ years later",
+    thumbnail: "/case-studies/jem-energy.png",
+    youtubeId: "TmYby-YVlOA",
+    technologies: ["solar"],
+    featured: true,
+  },
+  {
+    id: "ab-renewables",
+    client: "AB Renewables",
+    headline: "£4,000,000 in sales delivered",
+    thumbnail: "/case-studies/ab-renewables.png",
+    youtubeId: "ipBXG6yk5KA",
+    technologies: ["solar"],
+    metrics: [{ label: "Total sales", value: "£4M" }],
+  },
+  {
+    id: "genbatt",
+    client: "Genbatt",
+    headline: "20+ MWp of battery storage delivered",
+    thumbnail: "/case-studies/genbatt.png",
+    youtubeId: "PnPr8OfpfFA",
+    technologies: ["solar"],
+  },
+  {
+    id: "halo",
+    client: "Halo Renewables",
+    headline: "67 deals closed in a single month",
+    thumbnail: "/case-studies/halo-renewables.png",
+    youtubeId: "cIuNH45hxVg",
+    technologies: ["solar"],
+    metrics: [{ label: "Deals / month", value: "67" }],
+    featured: true,
+  },
+]
 
 export default function CaseStudies() {
   const [isVisible, setIsVisible] = useState(false)
-  const [filter, setFilter] = useState<Filter>('all')
   const [openStudy, setOpenStudy] = useState<CaseStudy | null>(null)
   const sectionRef = useRef<HTMLElement>(null)
 
@@ -25,21 +62,6 @@ export default function CaseStudies() {
     if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
   }, [])
-
-  const filtered = useMemo(() => {
-    const list =
-      filter === 'all'
-        ? ETOTO_CASE_STUDIES
-        : ETOTO_CASE_STUDIES.filter((s) => s.technologies.includes(filter))
-    return [...list].sort((a, b) => Number(!!b.featured) - Number(!!a.featured))
-  }, [filter])
-
-  const filters: { id: Filter; label: string }[] = [
-    { id: 'all', label: 'All wins' },
-    { id: 'solar', label: 'Solar' },
-    { id: 'air-source', label: 'Air Source' },
-    { id: 'air-con', label: 'Air Con' },
-  ]
 
   return (
     <section
@@ -75,31 +97,9 @@ export default function CaseStudies() {
           </p>
         </div>
 
-        {/* Filter chips */}
-        <div
-          className={`flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-10 transition-all duration-700 delay-100 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
-        >
-          {filters.map((f) => (
-            <button
-              key={f.id}
-              type="button"
-              onClick={() => setFilter(f.id)}
-              className={`px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold border transition-all duration-300 ${
-                filter === f.id
-                  ? 'bg-slate-900 text-white border-slate-900 shadow-md scale-105'
-                  : 'bg-white text-slate-700 border-slate-200 hover:border-[#0066B3] hover:text-[#0066B3] hover:scale-105'
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Case study grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mb-12 md:mb-16">
-          {filtered.map((study, i) => (
+        {/* Video testimonials grid - 4 videos only */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
+          {FEATURED_STUDIES.map((study, i) => (
             <button
               key={study.id}
               type="button"
@@ -107,7 +107,7 @@ export default function CaseStudies() {
               className={`group text-left bg-white rounded-2xl border border-slate-100 hover:border-[#0066B3]/30 hover:shadow-xl transition-all duration-500 overflow-hidden hover:-translate-y-2 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
-              style={{ transitionDelay: `${200 + i * 60}ms` }}
+              style={{ transitionDelay: `${200 + i * 100}ms` }}
             >
               <div className="aspect-[16/10] bg-slate-100 relative overflow-hidden">
                 {study.thumbnail ? (
@@ -123,23 +123,14 @@ export default function CaseStudies() {
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
-                <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                  {study.technologies.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-sm text-[10px] md:text-[11px] font-bold text-white capitalize tracking-wide"
-                    >
-                      {t.replace('-', ' ')}
-                    </span>
-                  ))}
-                </div>
-                {study.youtubeId && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/95 group-hover:bg-white group-hover:scale-125 flex items-center justify-center shadow-2xl transition-all duration-300">
-                      <Play className="h-5 w-5 md:h-6 md:w-6 text-[#0066B3] ml-0.5" />
-                    </div>
+                
+                {/* Play button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/95 group-hover:bg-white group-hover:scale-125 flex items-center justify-center shadow-2xl transition-all duration-300">
+                    <Play className="h-6 w-6 md:h-7 md:w-7 text-[#0066B3] ml-1" />
                   </div>
-                )}
+                </div>
+                
                 {study.featured && (
                   <div className="absolute top-3 right-3">
                     <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#F5921E] text-white text-[10px] md:text-[11px] font-bold shadow-lg animate-pulse">
@@ -150,8 +141,8 @@ export default function CaseStudies() {
                 )}
               </div>
               <div className="p-4 md:p-5">
-                <div className="font-black text-sm md:text-base text-slate-900 leading-tight">{study.client}</div>
-                <div className="text-[11px] md:text-sm text-slate-600 font-medium mt-1.5 leading-snug">
+                <div className="font-black text-base md:text-lg text-slate-900 leading-tight">{study.client}</div>
+                <div className="text-sm text-slate-600 font-medium mt-1.5 leading-snug">
                   {study.headline}
                 </div>
                 {study.metrics && (
@@ -159,7 +150,7 @@ export default function CaseStudies() {
                     {study.metrics.map((m) => (
                       <span
                         key={m.label}
-                        className="px-2 py-1 rounded-md bg-slate-50 border border-slate-100 text-[10px] md:text-[11px] group-hover:bg-[#0066B3]/5 transition-colors"
+                        className="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-100 text-xs group-hover:bg-[#0066B3]/5 transition-colors"
                       >
                         <span className="text-slate-500 font-semibold">{m.label}: </span>
                         <span className="text-[#0066B3] font-black">{m.value}</span>
@@ -170,74 +161,6 @@ export default function CaseStudies() {
               </div>
             </button>
           ))}
-        </div>
-
-        {/* Client portfolio wall */}
-        <div
-          className={`transition-all duration-700 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <div className="text-center mb-6">
-            <p className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400">
-              A few of the {ETOTO_CLIENTS.length}+ installers we&apos;re actively running campaigns for
-            </p>
-          </div>
-
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-3 max-w-5xl mx-auto">
-            {ETOTO_CLIENTS.map((client, i) => (
-              <div
-                key={client.name}
-                className="group relative overflow-hidden rounded-xl border border-slate-100 bg-slate-50/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  boxShadow: '0 0 20px 6px rgba(0, 102, 179, 0.06)',
-                  transitionDelay: `${i * 50}ms`,
-                }}
-              >
-                <div className="relative aspect-square overflow-hidden">
-                  <img
-                    src={client.image}
-                    alt={client.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4 md:pb-6">
-                    <span className="text-white font-bold text-xs md:text-sm text-center px-2 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
-                      {client.name}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom CTA strip */}
-          <div className="mt-10 md:mt-12 grid sm:grid-cols-2 gap-3 md:gap-4 max-w-3xl mx-auto">
-            <a
-              href={ETOTO_LINKS.videoFolder}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between gap-3 px-5 md:px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all hover:-translate-y-1 shadow-lg hover:shadow-xl"
-            >
-              <span className="flex items-center gap-3 min-w-0">
-                <Video className="w-5 h-5 text-[#F5921E] shrink-0" />
-                <span className="text-sm md:text-base truncate">See our video content portfolio</span>
-              </span>
-              <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
-              href={ETOTO_LINKS.webDesignPortfolio}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between gap-3 px-5 md:px-6 py-4 rounded-xl bg-white border-2 border-slate-200 hover:border-[#0066B3] text-slate-900 hover:text-[#0066B3] font-bold transition-all hover:-translate-y-1"
-            >
-              <span className="flex items-center gap-3 min-w-0">
-                <ChevronRight className="w-5 h-5 text-[#0066B3] shrink-0" />
-                <span className="text-sm md:text-base truncate">See websites we&apos;ve built</span>
-              </span>
-              <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </div>
         </div>
       </div>
 

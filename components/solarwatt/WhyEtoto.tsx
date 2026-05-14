@@ -8,7 +8,6 @@ import {
   Megaphone,
   ShieldCheck,
   TrendingUp,
-  Trophy,
   Zap,
 } from 'lucide-react'
 import { useCountUp } from '@/hooks/use-animate-on-scroll'
@@ -225,50 +224,48 @@ export default function WhyEtoto() {
           })}
         </div>
 
-        {/* Awards row with photo */}
+        {/* Awards section - simplified: 2 cards + image inline */}
         <div
-          className={`bg-slate-900 rounded-xl md:rounded-2xl p-6 md:p-8 mb-10 transition-all duration-700 delay-600 ${
+          className={`transition-all duration-700 delay-600 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="flex items-center gap-3 mb-5 md:mb-6">
-            <Trophy className="w-6 h-6 text-[#F5921E]" />
-            <h3 className="text-lg md:text-xl font-bold text-white">2026 industry recognition</h3>
+          <div className="text-center mb-8">
+            <p className="text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-slate-400">
+              2026 Industry Recognition
+            </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Awards cards */}
-            <div className="grid gap-3 md:gap-4">
-              {ETOTO_AWARDS.map((award, i) => (
-                <div
-                  key={i}
-                  className="bg-white/5 border border-white/10 rounded-xl p-4 md:p-5 flex items-start gap-3 hover:bg-white/10 transition-all"
-                >
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-[#F5921E]/15 border border-[#F5921E]/25 flex items-center justify-center">
-                    <Award className="h-5 w-5 text-[#F5921E]" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-sm md:text-base font-bold text-white leading-snug">{award.title}</p>
-                    <p className="text-[11px] md:text-xs text-slate-300 mt-1 leading-snug">{award.recipient}</p>
-                    <p className="text-[10px] md:text-[11px] text-slate-400 mt-0.5 leading-snug">
-                      {award.ceremony}
-                    </p>
-                  </div>
+          <div className="grid md:grid-cols-3 gap-4 md:gap-6 items-stretch">
+            {/* Award cards */}
+            {ETOTO_AWARDS.map((award, i) => (
+              <div
+                key={i}
+                className="bg-white border border-slate-200 rounded-xl p-5 md:p-6 flex items-start gap-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="shrink-0 w-12 h-12 rounded-xl bg-[#F5921E]/10 border border-[#F5921E]/20 flex items-center justify-center">
+                  <Award className="h-6 w-6 text-[#F5921E]" />
                 </div>
-              ))}
-            </div>
+                <div className="min-w-0">
+                  <p className="text-base md:text-lg font-bold text-slate-900 leading-snug">{award.title}</p>
+                  <p className="text-xs md:text-sm text-slate-600 mt-1.5 leading-snug">{award.recipient}</p>
+                  <p className="text-[10px] md:text-xs text-slate-400 mt-1 leading-snug">
+                    {award.ceremony}
+                  </p>
+                </div>
+              </div>
+            ))}
             
             {/* Awards photo */}
-            <div className="relative rounded-xl overflow-hidden group">
+            <div className="relative rounded-xl overflow-hidden group h-full min-h-[200px]">
               <Image
                 src="/awards/etoto-eea-awards.jpeg"
                 alt="ETOTO Media - South East Energy Efficiency Awards 2026"
-                width={600}
-                height={400}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3">
                 <p className="text-white/90 text-xs font-semibold">South East Energy Efficiency Awards 2026</p>
               </div>
             </div>
@@ -277,7 +274,7 @@ export default function WhyEtoto() {
 
         {/* Side-stat line */}
         <div
-          className={`text-center transition-all duration-700 delay-700 ${
+          className={`text-center mt-10 transition-all duration-700 delay-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
