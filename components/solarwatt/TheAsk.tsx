@@ -1,18 +1,18 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { CheckCircle, PoundSterling, Calendar, Target, Users, Rocket, Key, Briefcase, Building2, Monitor, UserCheck, Database } from 'lucide-react'
+import { CheckCircle, PoundSterling, Calendar, Target, Users, Rocket, ArrowRight, Sparkles } from 'lucide-react'
 import { useCountUp } from '@/hooks/use-animate-on-scroll'
 import Image from 'next/image'
 
 export default function TheAsk() {
   const [isVisible, setIsVisible] = useState(false)
+  const [activeReq, setActiveReq] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
 
   const investment = useCountUp(63, 1500, isVisible)
   const daysToFirstAd = useCountUp(14, 1200, isVisible)
   const installers = useCountUp(40, 1500, isVisible)
-  const leads = useCountUp(5, 1200, isVisible)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,121 +28,160 @@ export default function TheAsk() {
     return () => observer.disconnect()
   }, [])
 
-  const metrics = [
-    { icon: PoundSterling, prefix: '£', value: investment, suffix: 'K', label: 'SOLARWATT Cash', sublabel: 'all-in across 6 months · £1,575 per onboarded installer', color: '#0066B3' },
-    { icon: Calendar, value: daysToFirstAd, suffix: 'd', label: 'Time to First Ad Live', sublabel: 'from signed approval', color: '#F5921E' },
-    { icon: Target, value: installers, suffix: '', label: 'Sprint Outcome', sublabel: 'Onboarded installer partners by 31 Dec 2026', color: '#10B981' },
-    { icon: Users, prefix: '~', value: leads, suffix: 'K', label: 'Brand Presence', sublabel: 'UK homeowner leads + impressions across both tracks', color: '#8B5CF6' },
-  ]
+  // Auto-cycle through requirements
+  useEffect(() => {
+    if (!isVisible) return
+    const interval = setInterval(() => {
+      setActiveReq(prev => (prev + 1) % 6)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [isVisible])
 
   const requirements = [
-    { icon: Briefcase, text: 'Approval of the £63K SOLARWATT commitment across the two tracks.' },
-    { icon: Key, text: 'Sign-off on the soft incentive (Shepperton training day + free showroom display unit) for the first 40 onboarded installers.' },
-    { icon: Building2, text: 'Confirmation of SOLARWATT\'s pick for the second External track installer (we name Green Energy Solar as the first).' },
-    { icon: Monitor, text: 'Admin partner access to SOLARWATT\'s existing UK Meta Business Manager + LinkedIn Campaign Manager + IG/FB business accounts + solarwatt.co.uk domain (for landing page embed).' },
-    { icon: UserCheck, text: 'Confirmation of Neal Goddard or nominated SOLARWATT UK lead as named contact for installer-onboarding 1:1s.' },
-    { icon: Database, text: 'Approval of CRM access for Peter, Neal, Paula, William + any other nominated SOLARWATT team members.' },
+    { emoji: '💰', text: '£63K commitment across both tracks' },
+    { emoji: '🎓', text: 'Sign-off on soft incentive (training + display unit)' },
+    { emoji: '🤝', text: 'Confirm second External track installer pick' },
+    { emoji: '🔑', text: 'Admin access to Meta + LinkedIn + domain' },
+    { emoji: '📞', text: 'Named contact for installer onboarding 1:1s' },
+    { emoji: '📊', text: 'CRM access for the SOLARWATT team' },
   ]
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-28 px-4 md:px-6 bg-gradient-to-br from-slate-900 to-slate-800 relative overflow-hidden">
-      {/* Animated background blobs */}
+    <section ref={sectionRef} className="py-16 md:py-28 px-4 md:px-6 bg-slate-900 relative overflow-hidden">
+      {/* Animated background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0066B3]/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#F5921E]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#006068]/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#EF4136]/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
       
       {/* Floating particles */}
-      {[...Array(6)].map((_, i) => (
+      {[...Array(8)].map((_, i) => (
         <div
           key={i}
-          className="absolute w-1.5 h-1.5 bg-white/10 rounded-full animate-float hidden md:block"
+          className="absolute w-2 h-2 bg-white/10 rounded-full animate-float hidden md:block"
           style={{
-            left: `${10 + i * 15}%`,
-            top: `${20 + (i % 3) * 25}%`,
-            animationDelay: `${i * 0.5}s`,
-            animationDuration: `${5 + i}s`,
+            left: `${10 + i * 12}%`,
+            top: `${15 + (i % 4) * 20}%`,
+            animationDelay: `${i * 0.4}s`,
+            animationDuration: `${4 + i}s`,
           }}
         />
       ))}
 
       <div className="max-w-5xl mx-auto relative z-10">
-        {/* Header with logos */}
+        {/* Header */}
         <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Image
-              src="/logos/solarwatt-logo.png"
-              alt="SOLARWATT"
-              width={120}
-              height={28}
-              className="h-6 md:h-7 w-auto brightness-0 invert opacity-80"
-            />
-          </div>
-          <span className="inline-flex items-center gap-2 bg-[#0066B3] text-white text-sm font-semibold px-4 py-2 rounded-full mb-6">
+          <span className="inline-flex items-center gap-2 bg-[#EF4136] text-white text-sm font-semibold px-4 py-2 rounded-full mb-6">
             <Rocket className="w-4 h-4" />
-            The Ask + What We Need From SOLARWATT
+            Approve the Sprint
           </span>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white mb-4">
-            Approve the Sprint. <span className="text-[#0066B3]">First Ad Live in 14 Days.</span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4">
+            First Ad Live in{' '}
+            <span className="text-[#006068] inline-flex items-baseline">
+              {daysToFirstAd}
+              <span className="text-2xl md:text-4xl ml-1">days</span>
+            </span>
           </h2>
+          <p className="text-lg text-slate-400 max-w-xl mx-auto">
+            40 installers in 6 months isn&apos;t optimistic — it&apos;s the floor. We under-promise and over-deliver.
+          </p>
         </div>
 
-        {/* Key metrics */}
-        <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {metrics.map((metric, index) => {
-            const Icon = metric.icon
-            return (
-              <div 
-                key={index}
-                className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 text-center hover:bg-white/10 hover:-translate-y-2 transition-all duration-300"
-                style={{ transitionDelay: `${300 + index * 100}ms` }}
+        {/* Big metrics - visual */}
+        <div className={`grid md:grid-cols-3 gap-6 mb-16 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="group relative bg-gradient-to-br from-[#006068] to-[#004d4d] rounded-3xl p-8 text-center overflow-hidden hover:scale-[1.02] transition-transform">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="relative">
+              <PoundSterling className="w-10 h-10 text-white/50 mx-auto mb-4" />
+              <p className="text-5xl md:text-6xl font-black text-white">£{investment}K</p>
+              <p className="text-white/70 font-semibold mt-2">
+                <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={80} height={20} className="h-4 w-auto inline brightness-0 invert mx-1" />
+                investment
+              </p>
+              <p className="text-xs text-white/50 mt-1">All-in across 6 months</p>
+            </div>
+          </div>
+          
+          <div className="group relative bg-gradient-to-br from-[#EF4136] to-[#c9352c] rounded-3xl p-8 text-center overflow-hidden hover:scale-[1.02] transition-transform">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="relative">
+              <Calendar className="w-10 h-10 text-white/50 mx-auto mb-4" />
+              <p className="text-5xl md:text-6xl font-black text-white">{daysToFirstAd}</p>
+              <p className="text-white/70 font-semibold mt-2">Days to first ad</p>
+              <p className="text-xs text-white/50 mt-1">From signed approval</p>
+            </div>
+          </div>
+          
+          <div className="group relative bg-gradient-to-br from-slate-700 to-slate-800 rounded-3xl p-8 text-center overflow-hidden hover:scale-[1.02] transition-transform border border-[#10B981]/30">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#10B981]/20 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="relative">
+              <Target className="w-10 h-10 text-[#10B981]/70 mx-auto mb-4" />
+              <p className="text-5xl md:text-6xl font-black text-[#10B981]">{installers}</p>
+              <p className="text-white/70 font-semibold mt-2">
+                <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={80} height={20} className="h-4 w-auto inline brightness-0 invert mx-1" />
+                installers
+              </p>
+              <p className="text-xs text-white/50 mt-1">By 31 Dec 2026</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Requirements - animated carousel style */}
+        <div className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 md:p-10 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex items-center gap-3 mb-8">
+            <Sparkles className="w-6 h-6 text-[#EF4136]" />
+            <h3 className="text-xl font-bold text-white">What we need to start the clock</h3>
+          </div>
+          
+          {/* Progress dots */}
+          <div className="flex justify-center gap-2 mb-8">
+            {requirements.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveReq(i)}
+                className={`w-2 h-2 rounded-full transition-all ${activeReq === i ? 'bg-[#EF4136] w-8' : 'bg-white/30 hover:bg-white/50'}`}
+              />
+            ))}
+          </div>
+
+          {/* Active requirement */}
+          <div className="relative h-24 md:h-20">
+            {requirements.map((req, i) => (
+              <div
+                key={i}
+                className={`absolute inset-0 flex items-center justify-center gap-4 transition-all duration-500 ${activeReq === i ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
               >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3 transition-transform group-hover:scale-110 group-hover:rotate-6" style={{ backgroundColor: `${metric.color}20` }}>
-                  <Icon className="w-5 h-5" style={{ color: metric.color }} />
-                </div>
-                <p className="text-2xl md:text-3xl font-black text-white">
-                  {metric.prefix}{metric.value}{metric.suffix}
-                </p>
-                <p className="text-sm font-semibold text-white mt-1">{metric.label}</p>
-                <p className="text-xs text-slate-400 mt-1">{metric.sublabel}</p>
+                <span className="text-4xl">{req.emoji}</span>
+                <p className="text-lg md:text-xl text-white font-medium">{req.text}</p>
               </div>
-            )
-          })}
-        </div>
+            ))}
+          </div>
 
-        {/* Requirements */}
-        <div className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl md:rounded-2xl p-6 md:p-8 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h3 className="text-xl font-bold text-white mb-6">What We Need From SOLARWATT to Start the Clock</h3>
-          <div className="space-y-4">
-            {requirements.map((req, index) => {
-              const Icon = req.icon
-              return (
-                <div 
-                  key={index}
-                  className={`flex items-start gap-4 transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
-                  style={{ transitionDelay: `${500 + index * 80}ms` }}
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#0066B3]/20 border border-[#0066B3]/30 text-[#0066B3] flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div className="flex items-start gap-3 pt-2">
-                    <span className="w-6 h-6 rounded-full bg-[#0066B3] text-white text-xs font-bold flex items-center justify-center flex-shrink-0">
-                      {index + 1}
-                    </span>
-                    <p className="text-slate-300 text-sm md:text-base leading-relaxed">{req.text}</p>
-                  </div>
-                </div>
-              )
-            })}
+          {/* All requirements list - smaller */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-8 pt-8 border-t border-white/10">
+            {requirements.map((req, i) => (
+              <div
+                key={i}
+                onClick={() => setActiveReq(i)}
+                className={`flex items-center gap-2 p-3 rounded-xl cursor-pointer transition-all ${activeReq === i ? 'bg-white/10 border border-white/20' : 'hover:bg-white/5'}`}
+              >
+                <span className="text-xl">{req.emoji}</span>
+                <span className={`text-xs ${activeReq === i ? 'text-white' : 'text-white/60'}`}>{i + 1}. {req.text.split(' ').slice(0, 3).join(' ')}...</span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Start CTA */}
-        <div className={`mt-10 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-3 bg-[#10B981] text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer">
+        {/* CTA */}
+        <div className={`mt-12 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="inline-flex items-center gap-3 bg-[#10B981] text-white px-8 py-5 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer group">
             <CheckCircle className="w-6 h-6" />
-            Ready to Start the 6-Month Sprint
+            Ready to Start the Sprint
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </div>
+          <p className="text-slate-500 text-sm mt-4">
+            We&apos;ve done this before. 40 is conservative.
+          </p>
         </div>
       </div>
     </section>

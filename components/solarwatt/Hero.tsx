@@ -25,7 +25,7 @@ export default function Hero() {
       value: installers, 
       suffix: '', 
       label: 'Onboarded Installers', 
-      color: '#0066B3',
+      color: '#006068',
       icon: Building2,
       context: 'Target: 40 SOLARWATT-installing partners by 31 Dec 2026. Using ETOTO\'s 5,500-strong MCS-accredited installer marketing list — the largest in the UK.'
     },
@@ -34,7 +34,7 @@ export default function Hero() {
       prefix: '£', 
       suffix: 'K', 
       label: 'Total Investment', 
-      color: '#F5921E',
+      color: '#EF4136',
       icon: Sun,
       context: '£48K internal (£8K/m × 6 months) + £15K external sponsored ad spend. Cost per onboarded installer: £1,575.'
     },
@@ -52,16 +52,16 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col justify-center items-center px-4 md:px-6 py-16 md:py-20 bg-gradient-to-br from-white via-slate-50/50 to-blue-50/30 overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-72 h-72 md:w-96 md:h-96 bg-[#0066B3]/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="absolute bottom-1/4 -right-20 w-80 h-80 md:w-[500px] md:h-[500px] bg-[#F5921E]/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-[#0066B3]/3 to-[#F5921E]/3 rounded-full blur-3xl opacity-50" />
+        <div className="absolute top-1/4 -left-20 w-72 h-72 md:w-96 md:h-96 bg-[#006068]/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 md:w-[500px] md:h-[500px] bg-[#EF4136]/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-[#006068]/3 to-[#EF4136]/3 rounded-full blur-3xl opacity-50" />
       </div>
 
       {/* Floating particles */}
       {[...Array(8)].map((_, i) => (
         <div
           key={i}
-          className="absolute w-2 h-2 bg-[#0066B3]/20 rounded-full animate-float hidden md:block"
+          className="absolute w-2 h-2 bg-[#006068]/20 rounded-full animate-float hidden md:block"
           style={{
             left: `${10 + i * 12}%`,
             top: `${15 + (i % 4) * 20}%`,
@@ -75,13 +75,17 @@ export default function Hero() {
       <div className={`flex items-center gap-4 md:gap-8 mb-8 md:mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <div className="bg-slate-900 rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl hover:scale-105 transition-transform">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-white flex items-center justify-center">
-              <span className="text-slate-900 font-black text-lg md:text-xl">E</span>
-            </div>
+            <Image
+              src="/logos/etoto-logo.png"
+              alt="ETOTO Media"
+              width={40}
+              height={40}
+              className="w-8 h-8 md:w-10 md:h-10"
+            />
             <span className="text-white font-black text-lg md:text-2xl tracking-tight">ETOTO</span>
           </div>
         </div>
-        <span className="text-[#0066B3] font-black text-xl md:text-3xl animate-pulse">×</span>
+        <span className="text-[#006068] font-black text-xl md:text-3xl animate-pulse">×</span>
         <div className="bg-white rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl border border-slate-200 hover:scale-105 transition-transform">
           <Image
             src="/logos/solarwatt-logo.png"
@@ -110,7 +114,7 @@ export default function Hero() {
       {/* Badge */}
       <div className={`mb-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
         <span className="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-600 text-xs md:text-sm font-medium px-4 py-2 rounded-full shadow-sm">
-          <span className="w-2 h-2 bg-[#0066B3] rounded-full animate-pulse" />
+          <span className="w-2 h-2 bg-[#006068] rounded-full animate-pulse" />
           The 6-Month Go-to-Market Sprint
         </span>
       </div>
@@ -119,9 +123,9 @@ export default function Hero() {
       <div className={`text-center max-w-5xl transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
         <h1 className="text-3xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-6 text-balance">
           BMW-Backed. German Engineered.
-          <span className="block text-[#0066B3] relative">
+          <span className="block text-[#006068] relative">
             UK-Installer Ready by 2026.
-            <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#0066B3]/20" viewBox="0 0 200 8" preserveAspectRatio="none">
+            <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#006068]/20" viewBox="0 0 200 8" preserveAspectRatio="none">
               <path d="M0,5 Q50,0 100,5 T200,5" fill="none" stroke="currentColor" strokeWidth="3" className="animate-draw" />
             </svg>
           </span>
@@ -155,7 +159,7 @@ export default function Hero() {
                   {stat.prefix}{stat.value}{stat.suffix}
                 </p>
                 <p className="text-xs md:text-sm text-slate-500 font-medium mt-1 md:mt-2">{stat.label}</p>
-                <button className="mt-2 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-[#0066B3] transition-colors">
+                <button className="mt-2 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-[#006068] transition-colors">
                   <Info className="w-3 h-3" />
                   <span className="hidden md:inline">View details</span>
                   <span className="md:hidden">Details</span>
@@ -166,7 +170,7 @@ export default function Hero() {
               {expandedStat === i && (
                 <div className="absolute top-full left-0 right-0 mt-2 z-20 bg-slate-900 text-white text-xs md:text-sm p-4 rounded-xl shadow-2xl animate-fade-in-up">
                   <div className="flex items-start gap-2">
-                    <Info className="w-4 h-4 text-[#F5921E] flex-shrink-0 mt-0.5" />
+                    <Info className="w-4 h-4 text-[#EF4136] flex-shrink-0 mt-0.5" />
                     <p className="leading-relaxed">{stat.context}</p>
                   </div>
                   <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-900 rotate-45" />
@@ -180,7 +184,7 @@ export default function Hero() {
       {/* CTA Button */}
       <a 
         href="#why-solarwatt"
-        className={`mt-10 md:mt-12 inline-flex items-center gap-2 md:gap-3 bg-[#0066B3] hover:bg-[#004d8a] text-white px-6 md:px-10 py-3 md:py-4 text-base md:text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-[#0066B3]/30 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`mt-10 md:mt-12 inline-flex items-center gap-2 md:gap-3 bg-[#006068] hover:bg-[#004d4d] text-white px-6 md:px-10 py-3 md:py-4 text-base md:text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-[#006068]/30 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         style={{ transitionDelay: '700ms' }}
       >
         See the Full Sprint

@@ -62,24 +62,7 @@ export default function SolaFlowSection() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          {/* BMW + SOLARWATT trust badge */}
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Image
-              src="/logos/bmw-solarwatt-color.png"
-              alt="BMW"
-              width={40}
-              height={40}
-              className="h-10 w-10 object-contain"
-            />
-            <span className="text-slate-300 text-xl font-light">×</span>
-            <Image
-              src="/logos/solarwatt-logo.png"
-              alt="SOLARWATT"
-              width={120}
-              height={28}
-              className="h-7 w-auto"
-            />
-          </div>
+          /* BMW + SOLARWATT trust badge - removed per request */
           
           <span className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-semibold px-4 py-2 rounded-full mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -139,7 +122,7 @@ export default function SolaFlowSection() {
                     SolaFlow demo · live
                   </span>
                   <span className="hidden sm:inline-flex bg-emerald-100 text-emerald-700 border border-emerald-200 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-full">
-                    BMW × ETOTO
+                    LIVE
                   </span>
                 </div>
                 <span className="text-[10px] md:text-[11px] text-slate-500 truncate block font-mono">

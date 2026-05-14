@@ -1,11 +1,14 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Calendar, CheckCircle, Zap, Users } from 'lucide-react'
+import { Calendar, CheckCircle, Rocket, Users, Zap, Target, TrendingUp } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Timeline() {
   const [isVisible, setIsVisible] = useState(false)
+  const [visibleMonths, setVisibleMonths] = useState<number[]>([])
   const sectionRef = useRef<HTMLElement>(null)
+  const monthRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,140 +24,199 @@ export default function Timeline() {
     return () => observer.disconnect()
   }, [])
 
+  // Individual month observers for scroll-triggered reveal
+  useEffect(() => {
+    const observers: IntersectionObserver[] = []
+    monthRefs.current.forEach((ref, index) => {
+      if (ref) {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setVisibleMonths(prev => [...prev, index])
+              observer.disconnect()
+            }
+          },
+          { threshold: 0.3 }
+        )
+        observer.observe(ref)
+        observers.push(observer)
+      }
+    })
+    return () => observers.forEach(o => o.disconnect())
+  }, [isVisible])
+
   const months = [
     {
       month: 'M1',
-      internal: 'Asset build · CRM setup · domain warm · first hero shoot · Meta cap',
-      external: 'Onboard Green Energy Solar + SOLARWATT-pick installer · brief Wave 1 creative',
+      title: 'Build + Ramp',
+      icon: Rocket,
+      color: '#006068',
+      internal: ['Asset build', 'CRM setup', 'Domain warm', 'First hero shoot', 'Meta cap'],
+      external: ['Onboard installers', 'Brief Wave 1 creative'],
       installers: '0-3',
     },
     {
       month: 'M2',
-      internal: 'Full Meta velocity · email programme live · LinkedIn cadence · 2nd hero shoot',
-      external: 'External campaigns LIVE · sponsored ad spend in market · homeowner leads flowing',
+      title: 'Full Velocity',
+      icon: Zap,
+      color: '#006068',
+      internal: ['Full Meta velocity', 'Email programme live', 'LinkedIn cadence', '2nd hero shoot'],
+      external: ['Campaigns LIVE', 'Homeowner leads flowing'],
       installers: '5-8',
     },
     {
       month: 'M3',
-      internal: 'Onboarding cohort 1 · soft-incentive Shepperton training day delivered · 3rd hero shoot',
-      external: 'External campaigns at peak · creative refresh · CRM lead routing tested',
+      title: 'First Cohort',
+      icon: Users,
+      color: '#EF4136',
+      internal: ['Onboarding cohort 1', 'Shepperton training day', '3rd hero shoot'],
+      external: ['Campaigns at peak', 'Creative refresh'],
       installers: '12-16',
     },
     {
       month: 'M4',
-      internal: 'Cohort 2 onboarded · LinkedIn thought leadership push · 4th hero shoot',
-      external: 'External programme close-out · final lead push · 3-month results pack',
+      title: 'Scale Up',
+      icon: TrendingUp,
+      color: '#EF4136',
+      internal: ['Cohort 2 onboarded', 'LinkedIn thought leadership', '4th hero shoot'],
+      external: ['Final lead push', '3-month results pack'],
       installers: '20-26',
     },
     {
       month: 'M5',
-      internal: 'Cohort 3 onboarded · SOLARWATT case-study content (existing Premium Partners) · 5th hero shoot',
-      external: 'Track B winds down · ETOTO produces \'what worked\' case study',
+      title: 'Momentum',
+      icon: Target,
+      color: '#006068',
+      internal: ['Cohort 3 onboarded', 'Case-study content', '5th hero shoot'],
+      external: ['Track B winds down', '\'What worked\' case study'],
       installers: '28-34',
     },
     {
       month: 'M6',
-      internal: 'Final cohort onboarded · year-end push · 6th hero shoot · Year-2 retainer scoping conversation',
-      external: 'Track B closed · case study published as marketing asset',
+      title: 'Target Hit',
+      icon: CheckCircle,
+      color: '#10B981',
+      internal: ['Final cohort', 'Year-end push', '6th hero shoot', 'Year-2 scoping'],
+      external: ['Case study published'],
       installers: '40',
       target: true,
     },
   ]
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-28 px-4 md:px-6 bg-white relative overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section ref={sectionRef} className="py-16 md:py-28 px-4 md:px-6 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-flex items-center gap-2 bg-[#0066B3]/10 text-[#0066B3] text-sm font-semibold px-4 py-2 rounded-full mb-6">
+        <div className={`text-center mb-12 md:mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="inline-flex items-center gap-2 bg-[#006068]/10 text-[#006068] text-sm font-semibold px-4 py-2 rounded-full mb-6">
             <Calendar className="w-4 h-4" />
-            The 6-Month Timeline
+            The 6-Month Roadmap
           </span>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
             What Lands Every Month.
           </h2>
-          <h3 className="text-xl md:text-2xl text-[#0066B3] font-bold mb-4">
-            From Kick-off to 40 Installers.
-          </h3>
-          <p className="text-base md:text-lg text-slate-500 max-w-3xl mx-auto">
-            This is the sprint timeline ETOTO works against from Day 1 of approval. Both tracks visible. Cumulative installer counts assume Month 1 is build + warm + ramp.
+          <p className="text-base md:text-lg text-slate-500 max-w-2xl mx-auto">
+            From kick-off to <span className="font-bold text-[#006068]">40 installers</span>. 
+            <span className="block mt-2 text-sm text-slate-400">40 isn&apos;t a stretch — it&apos;s the floor. We consistently over-deliver.</span>
           </p>
         </div>
 
-        {/* Timeline table - Desktop */}
-        <div className={`hidden md:block bg-white rounded-xl md:rounded-2xl overflow-hidden border border-slate-100 shadow-lg transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {/* Header */}
-          <div className="grid grid-cols-4 gap-4 px-6 py-4 bg-slate-900 text-xs font-semibold text-white uppercase tracking-wide">
-            <div>Month</div>
-            <div className="text-[#0066B3]">Internal Track Activity</div>
-            <div className="text-[#F5921E]">External Track Activity</div>
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1">
-                <Users className="w-3 h-3" />
-                Cumulative Installers
-              </div>
-            </div>
-          </div>
+        {/* Animated roadmap */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#006068] via-[#EF4136] to-[#10B981] rounded-full md:-translate-x-1/2" />
 
-          {/* Rows */}
-          {months.map((item, index) => (
-            <div 
-              key={index} 
-              className={`grid grid-cols-4 gap-4 px-6 py-5 border-t border-slate-100 hover:bg-slate-50 transition-colors ${item.target ? 'bg-[#10B981]/5' : ''}`}
-              style={{ transitionDelay: `${300 + index * 50}ms` }}
-            >
-              <div className={`font-black text-2xl ${item.target ? 'text-[#10B981]' : 'text-slate-900'}`}>{item.month}</div>
-              <div className="text-sm text-slate-600">{item.internal}</div>
-              <div className="text-sm text-slate-600">{item.external}</div>
-              <div className="text-center">
-                <span className={`inline-flex items-center justify-center px-4 py-2 rounded-full font-bold ${item.target ? 'bg-[#10B981] text-white text-lg' : 'bg-slate-100 text-slate-700'}`}>
-                  {item.installers}
-                  {item.target && <CheckCircle className="w-4 h-4 ml-1" />}
-                </span>
-              </div>
-            </div>
-          ))}
+          {/* Month cards */}
+          <div className="space-y-8 md:space-y-12">
+            {months.map((item, index) => {
+              const Icon = item.icon
+              const isLeft = index % 2 === 0
+              const isVisibleMonth = visibleMonths.includes(index)
+              
+              return (
+                <div
+                  key={index}
+                  ref={(el) => { monthRefs.current[index] = el }}
+                  className={`relative flex items-start gap-4 md:gap-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                >
+                  {/* Timeline dot */}
+                  <div className={`absolute left-6 md:left-1/2 w-4 h-4 rounded-full border-4 border-white shadow-lg md:-translate-x-1/2 z-10 transition-all duration-500 ${isVisibleMonth ? 'scale-100' : 'scale-0'}`} style={{ backgroundColor: item.color }} />
+                  
+                  {/* Spacer for mobile */}
+                  <div className="w-12 md:hidden" />
+                  
+                  {/* Card */}
+                  <div className={`flex-1 md:w-[calc(50%-2rem)] transition-all duration-700 ${isVisibleMonth ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
+                    <div className={`group bg-white border-2 rounded-2xl p-5 md:p-6 hover:shadow-xl transition-all duration-300 ${item.target ? 'border-[#10B981] shadow-lg shadow-[#10B981]/20' : 'border-slate-100 hover:border-slate-200'}`}>
+                      {/* Header */}
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6" style={{ backgroundColor: `${item.color}15` }}>
+                          <Icon className="w-6 h-6" style={{ color: item.color }} />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-black text-2xl" style={{ color: item.color }}>{item.month}</span>
+                            <span className="text-slate-400 text-sm">·</span>
+                            <span className="font-semibold text-slate-700">{item.title}</span>
+                          </div>
+                        </div>
+                        <div className={`ml-auto px-3 py-1 rounded-full font-bold text-sm ${item.target ? 'bg-[#10B981] text-white' : 'bg-slate-100 text-slate-600'}`}>
+                          {item.installers}
+                        </div>
+                      </div>
+                      
+                      {/* Activities */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-wider text-[#006068] mb-2">Internal</p>
+                          <ul className="space-y-1">
+                            {item.internal.map((activity, i) => (
+                              <li key={i} className="text-xs text-slate-600 flex items-start gap-1">
+                                <span className="w-1 h-1 rounded-full bg-[#006068] mt-1.5 shrink-0" />
+                                {activity}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-wider text-[#EF4136] mb-2">External</p>
+                          <ul className="space-y-1">
+                            {item.external.map((activity, i) => (
+                              <li key={i} className="text-xs text-slate-600 flex items-start gap-1">
+                                <span className="w-1 h-1 rounded-full bg-[#EF4136] mt-1.5 shrink-0" />
+                                {activity}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      {item.target && (
+                        <div className="mt-4 pt-4 border-t border-[#10B981]/20 flex items-center gap-2">
+                          <CheckCircle className="w-5 h-5 text-[#10B981]" />
+                          <span className="font-bold text-[#10B981]">Target achieved — 40 
+                            <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={80} height={20} className="h-4 w-auto inline mx-1" />
+                            installers
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  {/* Spacer for desktop */}
+                  <div className="hidden md:block md:w-[calc(50%-2rem)]" />
+                </div>
+              )
+            })}
+          </div>
         </div>
 
-        {/* Timeline cards - Mobile */}
-        <div className={`md:hidden space-y-4 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {months.map((item, index) => (
-            <div 
-              key={index}
-              className={`bg-white border rounded-xl p-5 ${item.target ? 'border-[#10B981] bg-[#10B981]/5' : 'border-slate-100'}`}
-              style={{ transitionDelay: `${300 + index * 50}ms` }}
-            >
-              <div className="flex items-center justify-between mb-4">
-                <span className={`font-black text-2xl ${item.target ? 'text-[#10B981]' : 'text-slate-900'}`}>{item.month}</span>
-                <span className={`inline-flex items-center px-3 py-1 rounded-full font-bold text-sm ${item.target ? 'bg-[#10B981] text-white' : 'bg-slate-100 text-slate-700'}`}>
-                  {item.installers} installers
-                  {item.target && <CheckCircle className="w-3 h-3 ml-1" />}
-                </span>
-              </div>
-              <div className="space-y-3">
-                <div>
-                  <p className="text-xs font-semibold text-[#0066B3] uppercase tracking-wide mb-1">Internal</p>
-                  <p className="text-sm text-slate-600">{item.internal}</p>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold text-[#F5921E] uppercase tracking-wide mb-1">External</p>
-                  <p className="text-sm text-slate-600">{item.external}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Progress visualization */}
-        <div className={`mt-10 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="bg-slate-100 rounded-full h-4 overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-[#0066B3] via-[#F5921E] to-[#10B981] rounded-full" style={{ width: '100%' }} />
-          </div>
-          <div className="flex justify-between mt-2 text-xs text-slate-500 font-medium">
-            <span>Kick-off</span>
-            <span>Month 3</span>
-            <span className="text-[#10B981] font-bold">40 Installers</span>
-          </div>
+        {/* Bottom reinforcement */}
+        <div className={`mt-12 text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-lg font-bold text-slate-700">
+            40 is the <span className="text-[#006068]">floor</span>, not the ceiling. 
+            <span className="block text-sm text-slate-500 font-normal mt-1">We under-promise and always over-deliver.</span>
+          </p>
         </div>
       </div>
     </section>
