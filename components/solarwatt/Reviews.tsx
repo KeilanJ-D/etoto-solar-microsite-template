@@ -95,7 +95,8 @@ export default function Reviews() {
               alt="ETOTO Media"
               width={140}
               height={46}
-              className="h-10 md:h-12 w-auto"
+              className="h-10 md:h-12"
+              style={{ width: 'auto' }}
             />
           </div>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3">

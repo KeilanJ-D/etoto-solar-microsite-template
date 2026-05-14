@@ -65,7 +65,7 @@ export default function TheAsk() {
             <PoundSterling className="w-8 h-8 text-white/50 mx-auto mb-2" />
             <p className="text-4xl md:text-5xl font-black text-white">£{investment}K</p>
             <p className="text-xs md:text-sm text-white/70 font-medium mt-1">
-              <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={60} height={14} className="h-3 md:h-4 w-auto inline brightness-0 invert" /> investment
+              <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={60} height={14} className="h-3 md:h-4 inline brightness-0 invert" style={{ width: 'auto' }} /> investment
             </p>
           </div>
           <div className="bg-[#EF4136] rounded-2xl p-5 md:p-6 text-center">
@@ -77,7 +77,7 @@ export default function TheAsk() {
             <Target className="w-8 h-8 text-[#10B981]/70 mx-auto mb-2" />
             <p className="text-4xl md:text-5xl font-black text-[#10B981]">{installers}</p>
             <p className="text-xs md:text-sm text-slate-400 font-medium mt-1">
-              <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={60} height={14} className="h-3 md:h-4 w-auto inline brightness-0 invert" /> installers
+              <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={60} height={14} className="h-3 md:h-4 inline brightness-0 invert" style={{ width: 'auto' }} /> installers
             </p>
           </div>
         </div>

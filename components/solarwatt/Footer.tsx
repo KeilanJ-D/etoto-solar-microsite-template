@@ -14,7 +14,8 @@ export default function Footer() {
               alt="ETOTO Media"
               width={100}
               height={32}
-              className="h-6 md:h-7 w-auto brightness-0 invert"
+              className="h-6 md:h-7 brightness-0 invert"
+              style={{ width: 'auto' }}
             />
             <span className="text-white/30 text-lg">×</span>
             <Image
@@ -22,7 +23,8 @@ export default function Footer() {
               alt="SOLARWATT"
               width={100}
               height={24}
-              className="h-5 w-auto brightness-0 invert opacity-70"
+              className="h-5 brightness-0 invert opacity-70"
+              style={{ width: 'auto' }}
             />
           </div>
           

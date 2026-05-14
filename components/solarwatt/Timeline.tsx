@@ -253,7 +253,7 @@ export default function Timeline() {
                     <div className="mt-6 pt-6 border-t border-[#10B981]/20 flex items-center justify-center gap-3">
                       <CheckCircle className="w-6 h-6 text-[#10B981]" />
                       <span className="font-bold text-[#10B981] text-lg">Target achieved — 40 
-                        <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={90} height={22} className="h-5 w-auto inline mx-2" />
+                        <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={90} height={22} className="h-5 inline mx-2" style={{ width: 'auto' }} />
                         installers onboarded
                       </span>
                     </div>

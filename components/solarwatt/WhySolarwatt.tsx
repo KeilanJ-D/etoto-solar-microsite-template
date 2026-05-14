@@ -60,7 +60,8 @@ export default function WhySolarwatt() {
               alt="ETOTO Media"
               width={120}
               height={40}
-              className="h-8 md:h-9 w-auto"
+              className="h-8 md:h-9"
+              style={{ width: 'auto' }}
             />
             <span className="text-slate-300 text-xl">×</span>
             <Image
@@ -68,7 +69,8 @@ export default function WhySolarwatt() {
               alt="SOLARWATT"
               width={140}
               height={32}
-              className="h-7 md:h-8 w-auto"
+              className="h-7 md:h-8"
+              style={{ width: 'auto' }}
             />
           </div>
           

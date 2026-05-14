@@ -60,7 +60,8 @@ export default function Investment() {
               alt="SOLARWATT"
               width={100}
               height={24}
-              className="h-5 md:h-6 w-auto opacity-60"
+              className="h-5 md:h-6 opacity-60"
+              style={{ width: 'auto' }}
             />
           </div>
           <span className="inline-flex items-center gap-2 bg-[#0066B3]/10 text-[#0066B3] text-sm font-semibold px-4 py-2 rounded-full mb-6">
@@ -164,7 +165,7 @@ export default function Investment() {
             <h3 className="text-lg font-bold text-white">The Outcome</h3>
           </div>
           <p className="text-white/90 leading-relaxed text-lg">
-            By <span className="font-bold text-white">December 2026</span>, <span className="font-bold text-[#006068]">40 additional installers</span> in the UK will be advertising and selling <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={100} height={24} className="h-5 w-auto inline brightness-0 invert mx-1" /> to the masses. Working with the right agency, this could equate to an average of <span className="font-bold text-[#10B981]">12+ SOLARWATT Vision systems</span> being sold, per installer, extra, per month. That&apos;s almost <span className="font-bold text-[#EF4136]">6,000 Vision systems per year</span>, from 2027.
+            By <span className="font-bold text-white">December 2026</span>, <span className="font-bold text-[#006068]">40 additional installers</span> in the UK will be advertising and selling <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={100} height={24} className="h-5 inline brightness-0 invert mx-1" style={{ width: 'auto' }} /> to the masses. Working with the right agency, this could equate to an average of <span className="font-bold text-[#10B981]">12+ SOLARWATT Vision systems</span> being sold, per installer, extra, per month. That&apos;s almost <span className="font-bold text-[#EF4136]">6,000 Vision systems per year</span>, from 2027.
           </p>
           <p className="text-slate-500 text-xs mt-6 italic">
             Cost modelled against published distributor wholesale pricing. SOLARWATT-direct AOV may vary on confirmation — model conservative on £3K/system to leave room for upside.

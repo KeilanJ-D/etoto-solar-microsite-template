@@ -35,7 +35,8 @@ export default function CTA() {
             alt="ETOTO Media"
             width={120}
             height={40}
-            className="h-8 md:h-10 w-auto"
+            className="h-8 md:h-10"
+            style={{ width: 'auto' }}
           />
           <span className="text-slate-300 text-2xl">×</span>
           <Image
@@ -43,7 +44,8 @@ export default function CTA() {
             alt="SOLARWATT"
             width={140}
             height={32}
-            className="h-7 md:h-8 w-auto"
+            className="h-7 md:h-8"
+            style={{ width: 'auto' }}
           />
         </div>
 
@@ -96,7 +98,8 @@ export default function CTA() {
                   alt="ETOTO Media"
                   width={100}
                   height={32}
-                  className="h-6 w-auto brightness-0 invert"
+                  className="h-6 brightness-0 invert"
+                  style={{ width: 'auto' }}
                 />
                 <span className="text-white/30 text-lg">×</span>
                 <Image
@@ -104,7 +107,8 @@ export default function CTA() {
                   alt="SOLARWATT"
                   width={100}
                   height={24}
-                  className="h-5 w-auto brightness-0 invert opacity-80"
+                  className="h-5 brightness-0 invert opacity-80"
+                  style={{ width: 'auto' }}
                 />
               </div>
               <p className="text-white/90 text-sm md:text-base leading-relaxed italic">

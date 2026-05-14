@@ -45,7 +45,7 @@ export default function TrackAInternal() {
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3">
             £8,000/month.{' '}
             <span className="text-[#006068]">Forty</span>{' '}
-            <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={120} height={28} className="h-5 md:h-7 w-auto inline align-middle mx-1" />{' '}
+            <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={120} height={28} className="h-5 md:h-7 inline align-middle mx-1" style={{ width: 'auto' }} />{' '}
             <span className="text-[#006068]">installers.</span>
           </h2>
           <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto">

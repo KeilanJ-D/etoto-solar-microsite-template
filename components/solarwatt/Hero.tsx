@@ -79,7 +79,8 @@ export default function Hero() {
             alt="ETOTO Media"
             width={120}
             height={40}
-            className="h-7 md:h-9 w-auto brightness-0 invert"
+            className="h-7 md:h-9 brightness-0 invert"
+            style={{ width: 'auto' }}
           />
         </div>
         <span className="text-[#006068] font-black text-xl md:text-3xl animate-pulse">×</span>
@@ -90,7 +91,8 @@ export default function Hero() {
             width={180}
             height={40}
             loading="eager"
-            className="h-8 md:h-10 w-auto"
+            className="h-8 md:h-10"
+            style={{ width: 'auto' }}
           />
         </div>
       </div>

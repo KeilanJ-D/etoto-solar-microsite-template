@@ -98,7 +98,8 @@ export default function WhyEtoto() {
               alt="SOLARWATT"
               width={120}
               height={28}
-              className="h-6 md:h-7 w-auto opacity-70"
+              className="h-6 md:h-7 opacity-70"
+              style={{ width: 'auto' }}
             />
             <span className="text-slate-300 text-xl">×</span>
             <Image
@@ -106,7 +107,8 @@ export default function WhyEtoto() {
               alt="ETOTO Media"
               width={120}
               height={40}
-              className="h-8 md:h-9 w-auto"
+              className="h-8 md:h-9"
+              style={{ width: 'auto' }}
             />
           </div>
           
@@ -115,7 +117,7 @@ export default function WhyEtoto() {
             Why ETOTO is the right partner
           </span>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4 text-balance leading-tight">
-            <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={140} height={32} className="h-6 md:h-8 w-auto inline mx-2 align-middle" />
+            <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={140} height={32} className="h-6 md:h-8 inline mx-2 align-middle" style={{ width: 'auto' }} />
             picked the agency{' '}
             <span className="text-[#006068]">200+ installers already trust.</span>
           </h2>
@@ -242,7 +244,8 @@ export default function WhyEtoto() {
                         alt="ETOTO Media"
                         width={80}
                         height={26}
-                        className="h-5 md:h-6 w-auto"
+                        className="h-5 md:h-6"
+                        style={{ width: 'auto' }}
                       />
                     </div>
                     <p className="text-xs text-amber-600 font-semibold mt-2">South East Energy Efficiency Awards 2026</p>
@@ -269,7 +272,8 @@ export default function WhyEtoto() {
                     alt="ETOTO"
                     width={100}
                     height={32}
-                    className="h-7 md:h-8 w-auto brightness-0 invert"
+                    className="h-7 md:h-8 brightness-0 invert"
+                    style={{ width: 'auto' }}
                   />
                 </div>
                 <p className="text-amber-300 text-xs font-semibold">Award-Winning Marketing Agency</p>

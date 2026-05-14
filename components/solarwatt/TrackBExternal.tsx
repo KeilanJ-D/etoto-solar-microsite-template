@@ -38,7 +38,7 @@ export default function TrackBExternal() {
             <span className="text-[#EF4136]">Two installers. Three months.</span>
           </h2>
           <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto">
-            <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={80} height={20} className="h-4 md:h-5 w-auto inline mx-1 align-middle" />
+            <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={80} height={20} className="h-4 md:h-5 inline mx-1 align-middle" style={{ width: 'auto' }} />
             shows up directly in front of UK homeowners through sponsored campaigns.
           </p>
         </div>
@@ -58,7 +58,7 @@ export default function TrackBExternal() {
             </div>
             <p className="text-2xl md:text-3xl font-black">£2.5K</p>
             <p className="text-[10px] md:text-xs text-white/70 font-medium mt-1">
-              <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={60} height={14} className="h-3 w-auto inline brightness-0 invert" /> funds ads/m
+              <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={60} height={14} className="h-3 inline brightness-0 invert" style={{ width: 'auto' }} /> funds ads/m
             </p>
           </div>
           <div className="bg-[#EF4136] rounded-2xl p-4 md:p-6 text-center text-white">
@@ -76,7 +76,7 @@ export default function TrackBExternal() {
           <div className="group bg-white border-2 border-[#006068]/20 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             <div className="bg-[#006068]/5 px-5 py-3 border-b border-[#006068]/10 flex items-center justify-between">
               <span className="text-[10px] md:text-xs font-bold text-[#006068] bg-[#006068]/10 px-3 py-1 rounded-full">ETOTO Recommendation</span>
-              <Image src="/logos/green-energy-solar.png" alt="Green Energy Solar" width={80} height={30} className="h-6 w-auto object-contain opacity-80" />
+              <Image src="/logos/green-energy-solar.png" alt="Green Energy Solar" width={80} height={30} className="h-6 object-contain opacity-80" style={{ width: 'auto' }} />
             </div>
             <div className="p-5 md:p-6">
               <div className="flex items-center gap-3 mb-3">
@@ -95,7 +95,7 @@ export default function TrackBExternal() {
           <div className="group bg-white border-2 border-[#EF4136]/20 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             <div className="bg-[#EF4136]/5 px-5 py-3 border-b border-[#EF4136]/10 flex items-center justify-between">
               <span className="text-[10px] md:text-xs font-bold text-[#EF4136] bg-[#EF4136]/10 px-3 py-1 rounded-full">To Be Selected</span>
-              <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={80} height={20} className="h-5 w-auto object-contain opacity-80" />
+              <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={80} height={20} className="h-5 object-contain opacity-80" style={{ width: 'auto' }} />
             </div>
             <div className="p-5 md:p-6">
               <div className="flex items-center gap-3 mb-3">
@@ -135,7 +135,7 @@ export default function TrackBExternal() {
               </div>
               <p className="text-3xl md:text-4xl font-black text-white">84-120</p>
               <p className="text-[10px] md:text-xs text-slate-400 mt-1">
-                <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={60} height={14} className="h-3 w-auto inline brightness-0 invert" /> installs
+                <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={60} height={14} className="h-3 inline brightness-0 invert" style={{ width: 'auto' }} /> installs
               </p>
             </div>
           </div>
