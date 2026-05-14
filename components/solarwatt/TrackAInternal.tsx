@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Camera, BarChart3, Mail, Linkedin, Database, Users, Sparkles, Check, TrendingUp, Target } from 'lucide-react'
+import { Camera, BarChart3, Mail, Linkedin, Database, Users, Check, Target, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 
 export default function TrackAInternal() {
@@ -23,137 +23,105 @@ export default function TrackAInternal() {
   }, [])
 
   const workstreams = [
-    { icon: Camera, title: 'Hero content shoot', stat: '1/month', description: '60-90s hero + 4-6 cut-downs + install b-roll' },
-    { icon: BarChart3, title: 'Paid Meta management', stat: 'Daily', description: 'Brand awareness + engagement + installer lead-gen' },
-    { icon: Mail, title: 'Email to MCS list', stat: '8/month', description: '5,500 installer database — largest in UK' },
-    { icon: Linkedin, title: 'LinkedIn organic', stat: '4/week', description: 'UK page + team amplification' },
-    { icon: Database, title: 'CRM + reporting', stat: 'Always-on', description: 'Live pipeline + weekly Monday pack' },
-    { icon: Users, title: 'Strategy calls', stat: 'Bi-weekly', description: 'Funnel review + creative refresh' },
+    { icon: Camera, title: 'Hero Content', stat: '1/month', color: '#006068' },
+    { icon: BarChart3, title: 'Paid Meta', stat: 'Daily', color: '#006068' },
+    { icon: Mail, title: 'Email to MCS', stat: '8/month', color: '#EF4136' },
+    { icon: Linkedin, title: 'LinkedIn', stat: '4/week', color: '#0A66C2' },
+    { icon: Database, title: 'CRM + Reports', stat: 'Always-on', color: '#10B981' },
+    { icon: Users, title: 'Strategy Calls', stat: 'Bi-weekly', color: '#006068' },
   ]
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-28 px-4 md:px-6 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-[#006068]/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-[#EF4136]/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-      </div>
-
-      <div className="max-w-6xl mx-auto relative">
+    <section ref={sectionRef} className="py-20 md:py-32 px-4 md:px-6 bg-slate-50 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#006068]/5 rounded-full blur-3xl pointer-events-none" />
+      
+      <div className="max-w-5xl mx-auto relative">
         {/* Header */}
         <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-flex items-center gap-2 bg-[#006068] text-white text-sm font-semibold px-4 py-2 rounded-full mb-6">
+          <span className="inline-flex items-center gap-2 bg-[#006068] text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-full mb-6">
             <Target className="w-4 h-4" />
             Track A · Internal · The Acquisition Engine
           </span>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3">
             £8,000/month.{' '}
-            <span className="inline-flex items-center gap-2">
-              <span className="text-[#006068]">Forty</span>
-              <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={140} height={32} className="h-6 md:h-8 w-auto inline" />
-              <span className="text-[#006068]">installers in six.</span>
-            </span>
+            <span className="text-[#006068]">Forty</span>{' '}
+            <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={120} height={28} className="h-5 md:h-7 w-auto inline align-middle mx-1" />{' '}
+            <span className="text-[#006068]">installers.</span>
           </h2>
-          <p className="text-base md:text-lg text-slate-500 max-w-2xl mx-auto">
-            The same engine that produced <span className="font-bold text-slate-700">£358K ad spend · 23.9M impressions · 11,020 leads</span> across 36 months.
+          <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto">
+            The same engine that delivered <span className="font-bold text-slate-700">£358K spend · 23.9M impressions · 11,020 leads</span> across 36 months.
           </p>
         </div>
 
-        {/* Visual workstreams grid */}
-        <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-12 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        {/* Visual workstreams - clean icon grid */}
+        <div className={`grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4 mb-12 md:mb-16 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {workstreams.map((item, index) => {
             const Icon = item.icon
             return (
               <div 
                 key={index}
-                className="group relative bg-white border border-slate-100 rounded-2xl p-5 md:p-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden"
-                style={{ transitionDelay: `${300 + index * 80}ms` }}
+                className="group bg-white border border-slate-100 rounded-2xl p-4 md:p-5 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#006068]/10 to-transparent rounded-bl-full" />
-                
-                <div className="relative">
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-[#006068] to-[#004d4d] flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                    <Icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
-                  </div>
-                  <div className="inline-block bg-[#006068]/10 text-[#006068] text-xs font-bold px-2 py-1 rounded-full mb-3">
-                    {item.stat}
-                  </div>
-                  <h4 className="font-bold text-slate-900 text-sm md:text-base mb-1">{item.title}</h4>
-                  <p className="text-xs text-slate-500">{item.description}</p>
+                <div 
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform"
+                  style={{ backgroundColor: `${item.color}10` }}
+                >
+                  <Icon className="w-6 h-6 md:w-7 md:h-7" style={{ color: item.color }} />
                 </div>
+                <p className="text-xs md:text-sm font-bold text-slate-900 mb-1">{item.title}</p>
+                <p className="text-[10px] md:text-xs text-slate-500 font-medium">{item.stat}</p>
               </div>
             )
           })}
         </div>
 
-        {/* Budget visual */}
-        <div className={`bg-slate-900 rounded-2xl md:rounded-3xl p-6 md:p-10 mb-12 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10">
-            <div className="flex-1">
-              <p className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Where £8K/month goes</p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-2xl bg-[#006068] flex items-center justify-center">
-                    <span className="text-white font-black text-xl">£5K</span>
-                  </div>
-                  <div>
-                    <p className="text-white font-bold">ETOTO retainer</p>
-                    <p className="text-slate-400 text-sm">All workstreams above. Fixed scope.</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-2xl bg-[#EF4136] flex items-center justify-center">
-                    <span className="text-white font-black text-xl">£3K</span>
-                  </div>
-                  <div>
-                    <p className="text-white font-bold">Paid Meta ad budget</p>
-                    <p className="text-slate-400 text-sm">Paid directly to Meta. ETOTO manages.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* 6-month total */}
-            <div className="text-center md:text-right">
-              <p className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">6-Month Total</p>
-              <p className="text-5xl md:text-7xl font-black text-white">£48K</p>
-              <p className="text-[#006068] font-bold mt-2">All-in for 40 installers</p>
-            </div>
+        {/* Budget breakdown - visual cards */}
+        <div className={`grid md:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="bg-[#006068] rounded-2xl p-6 md:p-8 text-white">
+            <p className="text-4xl md:text-5xl font-black mb-2">£5K</p>
+            <p className="text-white/90 font-semibold mb-1">ETOTO Retainer</p>
+            <p className="text-white/60 text-sm">All workstreams. Fixed scope. Per month.</p>
+          </div>
+          <div className="bg-[#EF4136] rounded-2xl p-6 md:p-8 text-white">
+            <p className="text-4xl md:text-5xl font-black mb-2">£3K</p>
+            <p className="text-white/90 font-semibold mb-1">Paid Meta Budget</p>
+            <p className="text-white/60 text-sm">Paid directly to Meta. ETOTO manages.</p>
           </div>
         </div>
 
-        {/* Soft incentive - visual cards */}
+        {/* 6-month total */}
+        <div className={`bg-slate-900 rounded-2xl p-6 md:p-8 text-center mb-12 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-slate-400 text-xs md:text-sm font-semibold uppercase tracking-wider mb-2">6-Month Total · Track A</p>
+          <p className="text-5xl md:text-6xl font-black text-white">£48K</p>
+          <p className="text-[#006068] font-bold mt-2">All-in for 40 installers</p>
+        </div>
+
+        {/* Soft incentives - clean cards */}
         <div className={`transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="flex items-center gap-3 mb-6">
-            <Sparkles className="w-6 h-6 text-[#EF4136]" />
-            <h3 className="text-xl font-bold text-slate-900">The Soft Incentive That Closes</h3>
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <Sparkles className="w-5 h-5 text-[#EF4136]" />
+            <h3 className="text-lg font-bold text-slate-900">The Soft Incentive That Closes</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="group relative bg-gradient-to-br from-[#006068] to-[#004d4d] rounded-2xl p-6 text-white overflow-hidden hover:scale-[1.02] transition-transform duration-300">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-              <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-4">
-                  <TrendingUp className="w-6 h-6" />
-                </div>
-                <h4 className="font-bold text-lg mb-2">Free Advanced Training Day</h4>
-                <p className="text-white/80 text-sm">At Shepperton centre — hands-on with the kit, certified by trainers, builds competence and loyalty.</p>
+            <div className="bg-white border border-slate-100 rounded-2xl p-5 md:p-6 flex items-start gap-4 hover:shadow-lg transition-all">
+              <div className="w-10 h-10 rounded-xl bg-[#006068]/10 flex items-center justify-center shrink-0">
+                <Check className="w-5 h-5 text-[#006068]" />
+              </div>
+              <div>
+                <p className="font-bold text-slate-900 mb-1">Free Advanced Training Day</p>
+                <p className="text-sm text-slate-500">Shepperton centre — hands-on with the kit, certified by trainers.</p>
               </div>
             </div>
-            <div className="group relative bg-gradient-to-br from-[#EF4136] to-[#c9352c] rounded-2xl p-6 text-white overflow-hidden hover:scale-[1.02] transition-transform duration-300">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-              <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-4">
-                  <Check className="w-6 h-6" />
-                </div>
-                <h4 className="font-bold text-lg mb-2">Free Showroom Display Unit</h4>
-                <p className="text-white/80 text-sm">Panel cut-away or Battery module for their office — visible to every customer who walks in.</p>
+            <div className="bg-white border border-slate-100 rounded-2xl p-5 md:p-6 flex items-start gap-4 hover:shadow-lg transition-all">
+              <div className="w-10 h-10 rounded-xl bg-[#EF4136]/10 flex items-center justify-center shrink-0">
+                <Check className="w-5 h-5 text-[#EF4136]" />
+              </div>
+              <div>
+                <p className="font-bold text-slate-900 mb-1">Free Showroom Display Unit</p>
+                <p className="text-sm text-slate-500">Panel cut-away or Battery module for their office.</p>
               </div>
             </div>
           </div>
-          <p className="text-sm text-[#006068] font-semibold mt-4 text-center">
-            Premium-brand-aligned. No product giveaway. Pure brand-immersion.
-          </p>
         </div>
       </div>
     </section>

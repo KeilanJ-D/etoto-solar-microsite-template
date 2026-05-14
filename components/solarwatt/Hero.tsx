@@ -92,6 +92,7 @@ export default function Hero() {
             alt="SOLARWATT"
             width={180}
             height={40}
+            loading="eager"
             className="h-8 md:h-10 w-auto"
           />
         </div>
