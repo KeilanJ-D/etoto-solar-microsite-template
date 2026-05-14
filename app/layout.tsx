@@ -10,8 +10,8 @@ const raleway = Raleway({
 })
 
 export const metadata: Metadata = {
-  title: 'ETOTO Media × Energy Concerns — Website & Growth Strategy',
-  description: 'A website audit, growth strategy, and live SolaFlow preview prepared exclusively for Todd at Energy Concerns.',
+  title: 'ETOTO Media × SOLARWATT — The 6-Month Go-to-Market Sprint',
+  description: 'A two-track go-to-market sprint to land 40 SOLARWATT-installing partners by year-end. BMW-backed. German engineered. UK-installer ready by 2026.',
   generator: 'v0.app',
   icons: {
     icon: [

@@ -4,7 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --ec-accent: #0D9488;
+  --sw-blue: #0066B3;
+  --sw-orange: #F5921E;
+  --ec-accent: #0066B3;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
