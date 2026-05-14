@@ -50,13 +50,10 @@ export default function CTA() {
 
         <div className={`text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-2 leading-tight">
-            BMW-backed technology.
-          </h2>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-2 leading-tight">
-            German engineering heritage.
+            BMW-backed. German engineered.
           </h2>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-[#006068] mb-8 leading-tight">
-            UK installers ready by December.
+            UK installer-ready by 2026.
           </h2>
         </div>
 

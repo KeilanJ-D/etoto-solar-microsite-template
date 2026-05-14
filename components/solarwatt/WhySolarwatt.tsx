@@ -78,12 +78,11 @@ export default function WhySolarwatt() {
             Why SOLARWATT Wins This Moment
           </span>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
-            BMW-backed technology.
-            <span className="block">German engineering heritage.</span>
-            <span className="block text-[#006068]">UK installers ready by December.</span>
+            BMW-backed. German engineered.
+            <span className="block text-[#006068]">UK installer-ready by 2026.</span>
           </h2>
           <p className="text-sm md:text-base text-slate-500 max-w-2xl mx-auto">
-            The UK residential storage market is in its biggest specification reset since GivEnergy. SOLARWATT is the premium European brand with the heritage to take that slot.
+            The UK residential storage market is in its biggest specification reset since GivEnergy. SOLARWATT is the premium European brand with the heritage and technology pedigree to lead that shift.
           </p>
         </div>
 
