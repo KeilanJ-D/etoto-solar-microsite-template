@@ -49,7 +49,7 @@ export default function TrackAInternal() {
             <span className="text-[#006068]">installers.</span>
           </h2>
           <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto">
-            The same engine that delivered <span className="font-bold text-slate-700">£358K spend · 23.9M impressions · 11,020 leads</span> across 36 months.
+            The same engine that delivered <span className="font-bold text-slate-700">£358K spend · 23.9M impressions · 11,020 leads</span> across 12-months.
           </p>
         </div>
 
