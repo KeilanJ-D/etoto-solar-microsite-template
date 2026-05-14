@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ChevronDown, Info, Zap } from 'lucide-react'
+import { ChevronDown, Info, Zap, Battery, Sun, Building2 } from 'lucide-react'
 import { useCountUp } from '@/hooks/use-animate-on-scroll'
+import Image from 'next/image'
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
@@ -25,6 +26,7 @@ export default function Hero() {
       suffix: '', 
       label: 'Onboarded Installers', 
       color: '#0066B3',
+      icon: Building2,
       context: 'Target: 40 SOLARWATT-installing partners by 31 Dec 2026. Using ETOTO\'s 5,500-strong MCS-accredited installer marketing list — the largest in the UK.'
     },
     { 
@@ -33,6 +35,7 @@ export default function Hero() {
       suffix: 'K', 
       label: 'Total Investment', 
       color: '#F5921E',
+      icon: Sun,
       context: '£48K internal (£8K/m × 6 months) + £15K external sponsored ad spend. Cost per onboarded installer: £1,575.'
     },
     { 
@@ -40,6 +43,7 @@ export default function Hero() {
       suffix: ':1', 
       label: 'LTV:CAC Ratio', 
       color: '#10B981',
+      icon: Battery,
       context: '~£4.8M projected installer LTV vs £63K commitment. 40 installers × £120,000 5-year LTV each = £4.8M wholesale revenue.'
     },
   ]
@@ -54,34 +58,52 @@ export default function Hero() {
       </div>
 
       {/* Floating particles */}
-      {[...Array(6)].map((_, i) => (
+      {[...Array(8)].map((_, i) => (
         <div
           key={i}
           className="absolute w-2 h-2 bg-[#0066B3]/20 rounded-full animate-float hidden md:block"
           style={{
-            left: `${15 + i * 15}%`,
-            top: `${20 + (i % 3) * 25}%`,
-            animationDelay: `${i * 0.5}s`,
+            left: `${10 + i * 12}%`,
+            top: `${15 + (i % 4) * 20}%`,
+            animationDelay: `${i * 0.4}s`,
             animationDuration: `${4 + i * 0.5}s`,
           }}
         />
       ))}
 
-      {/* Logos - ETOTO × SOLARWATT */}
+      {/* Logos - ETOTO × SOLARWATT with actual logos */}
       <div className={`flex items-center gap-4 md:gap-8 mb-8 md:mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
-        <div className="bg-slate-900 rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl">
-          <img 
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ETOTO_Joel-Sp4sI6W29ziGLLM0CGKbh7tBi3HDbM.png" 
-            alt="ETOTO Media" 
-            className="h-6 md:h-10 object-contain"
-          />
+        <div className="bg-slate-900 rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl hover:scale-105 transition-transform">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-white flex items-center justify-center">
+              <span className="text-slate-900 font-black text-lg md:text-xl">E</span>
+            </div>
+            <span className="text-white font-black text-lg md:text-2xl tracking-tight">ETOTO</span>
+          </div>
         </div>
         <span className="text-[#0066B3] font-black text-xl md:text-3xl animate-pulse">×</span>
-        <div className="bg-white rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl border border-slate-200">
-          <div className="flex items-center gap-2">
-            <Zap className="w-6 h-6 md:w-8 md:h-8 text-[#0066B3]" />
-            <span className="text-lg md:text-2xl font-black text-[#0066B3]">SOLARWATT</span>
-          </div>
+        <div className="bg-white rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-xl border border-slate-200 hover:scale-105 transition-transform">
+          <Image
+            src="/logos/solarwatt-logo.png"
+            alt="SOLARWATT"
+            width={180}
+            height={40}
+            className="h-8 md:h-10 w-auto"
+          />
+        </div>
+      </div>
+
+      {/* BMW trust badge */}
+      <div className={`mb-4 transition-all duration-700 delay-50 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+        <div className="flex items-center gap-3 bg-slate-100 border border-slate-200 px-4 py-2 rounded-full">
+          <Image
+            src="/logos/bmw-solarwatt-color.png"
+            alt="BMW"
+            width={28}
+            height={28}
+            className="h-7 w-7 object-contain"
+          />
+          <span className="text-xs md:text-sm text-slate-600 font-medium">BMW-backed battery technology</span>
         </div>
       </div>
 
@@ -89,7 +111,7 @@ export default function Hero() {
       <div className={`mb-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
         <span className="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-600 text-xs md:text-sm font-medium px-4 py-2 rounded-full shadow-sm">
           <span className="w-2 h-2 bg-[#0066B3] rounded-full animate-pulse" />
-          ETOTO Media × SOLARWATT — The 6-Month Go-to-Market Sprint
+          The 6-Month Go-to-Market Sprint
         </span>
       </div>
 
@@ -114,39 +136,45 @@ export default function Hero() {
 
       {/* Animated stats with expandable context */}
       <div className={`grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 mt-10 md:mt-14 w-full max-w-3xl transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-        {stats.map((stat, i) => (
-          <div 
-            key={i} 
-            className="text-center relative"
-            style={{ transitionDelay: `${i * 100}ms` }}
-          >
+        {stats.map((stat, i) => {
+          const Icon = stat.icon
+          return (
             <div 
-              className="px-2 md:px-6 py-4 md:py-6 bg-white/90 backdrop-blur-sm rounded-xl md:rounded-2xl border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer"
-              onClick={() => setExpandedStat(expandedStat === i ? null : i)}
+              key={i} 
+              className="text-center relative"
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <p className="text-2xl md:text-5xl font-black transition-transform group-hover:scale-110" style={{ color: stat.color }}>
-                {stat.prefix}{stat.value}{stat.suffix}
-              </p>
-              <p className="text-xs md:text-sm text-slate-500 font-medium mt-1 md:mt-2">{stat.label}</p>
-              <button className="mt-2 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-[#0066B3] transition-colors">
-                <Info className="w-3 h-3" />
-                <span className="hidden md:inline">View details</span>
-                <span className="md:hidden">Details</span>
-              </button>
-            </div>
-            
-            {/* Expanded context */}
-            {expandedStat === i && (
-              <div className="absolute top-full left-0 right-0 mt-2 z-20 bg-slate-900 text-white text-xs md:text-sm p-4 rounded-xl shadow-2xl animate-fade-in-up">
-                <div className="flex items-start gap-2">
-                  <Info className="w-4 h-4 text-[#F5921E] flex-shrink-0 mt-0.5" />
-                  <p className="leading-relaxed">{stat.context}</p>
+              <div 
+                className="px-2 md:px-6 py-4 md:py-6 bg-white/90 backdrop-blur-sm rounded-xl md:rounded-2xl border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer"
+                onClick={() => setExpandedStat(expandedStat === i ? null : i)}
+              >
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-2 transition-transform group-hover:scale-110 group-hover:rotate-6" style={{ backgroundColor: `${stat.color}15` }}>
+                  <Icon className="w-5 h-5" style={{ color: stat.color }} />
                 </div>
-                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-900 rotate-45" />
+                <p className="text-2xl md:text-5xl font-black transition-transform group-hover:scale-110" style={{ color: stat.color }}>
+                  {stat.prefix}{stat.value}{stat.suffix}
+                </p>
+                <p className="text-xs md:text-sm text-slate-500 font-medium mt-1 md:mt-2">{stat.label}</p>
+                <button className="mt-2 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-[#0066B3] transition-colors">
+                  <Info className="w-3 h-3" />
+                  <span className="hidden md:inline">View details</span>
+                  <span className="md:hidden">Details</span>
+                </button>
               </div>
-            )}
-          </div>
-        ))}
+              
+              {/* Expanded context */}
+              {expandedStat === i && (
+                <div className="absolute top-full left-0 right-0 mt-2 z-20 bg-slate-900 text-white text-xs md:text-sm p-4 rounded-xl shadow-2xl animate-fade-in-up">
+                  <div className="flex items-start gap-2">
+                    <Info className="w-4 h-4 text-[#F5921E] flex-shrink-0 mt-0.5" />
+                    <p className="leading-relaxed">{stat.context}</p>
+                  </div>
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-900 rotate-45" />
+                </div>
+              )}
+            </div>
+          )
+        })}
       </div>
 
       {/* CTA Button */}

@@ -2,11 +2,14 @@
 
 import Hero from '@/components/solarwatt/Hero'
 import WhySolarwatt from '@/components/solarwatt/WhySolarwatt'
+import WhyEtoto from '@/components/solarwatt/WhyEtoto'
+import CaseStudies from '@/components/solarwatt/CaseStudies'
 import Headline from '@/components/solarwatt/Headline'
 import TwoTrackStructure from '@/components/solarwatt/TwoTrackStructure'
 import TrackAInternal from '@/components/solarwatt/TrackAInternal'
 import Month1Reality from '@/components/solarwatt/Month1Reality'
 import TrackBExternal from '@/components/solarwatt/TrackBExternal'
+import SolaFlowSection from '@/components/solarwatt/SolaFlowSection'
 import CRMVisibility from '@/components/solarwatt/CRMVisibility'
 import Investment from '@/components/solarwatt/Investment'
 import Timeline from '@/components/solarwatt/Timeline'
@@ -23,6 +26,13 @@ export default function SolarwattProposal() {
           ================================ */}
       <Hero />
       <WhySolarwatt />
+      
+      {/* ================================
+          PART 1.5: WHY ETOTO (NEW)
+          ================================ */}
+      <WhyEtoto />
+      <CaseStudies />
+      
       <Headline />
       
       {/* ================================
@@ -32,6 +42,11 @@ export default function SolarwattProposal() {
       <TrackAInternal />
       <Month1Reality />
       <TrackBExternal />
+      
+      {/* ================================
+          PART 2.5: SOLAFLOW DEMO (NEW)
+          ================================ */}
+      <SolaFlowSection />
       
       {/* ================================
           PART 3: VISIBILITY & INVESTMENT
