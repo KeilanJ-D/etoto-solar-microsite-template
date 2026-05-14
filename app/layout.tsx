@@ -39,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={raleway.variable}>
-      <body className="font-sans antialiased bg-[#FAFBFC]">
+      <body className="font-sans antialiased bg-[#1A1A1A]">
         {children}
         <Analytics />
       </body>
