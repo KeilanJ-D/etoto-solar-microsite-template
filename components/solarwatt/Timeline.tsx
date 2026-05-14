@@ -7,7 +7,7 @@ import Image from 'next/image'
 export default function Timeline() {
   const [isVisible, setIsVisible] = useState(false)
   const [visibleMonths, setVisibleMonths] = useState<number[]>([])
-  const [activeMonth, setActiveMonth] = useState<number | null>(null)
+  const [activeMonth, setActiveMonth] = useState<number>(0)
   const sectionRef = useRef<HTMLElement>(null)
   const monthRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -134,14 +134,14 @@ export default function Timeline() {
         </div>
 
         {/* Month selector - horizontal scroll on mobile */}
-        <div className={`flex justify-center gap-2 md:gap-3 mb-8 overflow-x-auto pb-2 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`flex justify-center gap-2 md:gap-3 mb-10 overflow-x-auto pb-2 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           {months.map((item, index) => {
             const Icon = item.icon
             const isActive = activeMonth === index
             return (
               <button
                 key={index}
-                onClick={() => setActiveMonth(isActive ? null : index)}
+                onClick={() => setActiveMonth(index)}
                 className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
                   isActive 
                     ? 'bg-slate-900 text-white shadow-lg scale-105' 
@@ -158,35 +158,6 @@ export default function Timeline() {
           })}
         </div>
 
-        {/* Progress bar */}
-        <div className={`mb-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="relative h-3 bg-slate-100 rounded-full overflow-hidden">
-            <div 
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#006068] via-[#EF4136] to-[#10B981] rounded-full transition-all duration-1000"
-              style={{ width: activeMonth !== null ? `${months[activeMonth].progress}%` : '100%' }}
-            />
-            {/* Month markers */}
-            {months.map((item, index) => (
-              <div 
-                key={index}
-                className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-3 border-white shadow-md transition-all duration-300 cursor-pointer hover:scale-125 ${
-                  activeMonth === index ? 'scale-125 ring-2 ring-offset-2' : ''
-                }`}
-                style={{ 
-                  left: `${item.progress}%`, 
-                  transform: 'translate(-50%, -50%)',
-                  backgroundColor: item.color,
-                  ringColor: item.color
-                }}
-                onClick={() => setActiveMonth(activeMonth === index ? null : index)}
-              />
-            ))}
-          </div>
-          <div className="flex justify-between mt-2 text-xs text-slate-400 font-medium">
-            <span>Kick-off</span>
-            <span>40 Installers</span>
-          </div>
-        </div>
 
         {/* Expanded month detail - shows when a month is selected */}
         {activeMonth !== null && (
@@ -275,7 +246,7 @@ export default function Timeline() {
               <div
                 key={index}
                 ref={(el) => { monthRefs.current[index] = el }}
-                onClick={() => setActiveMonth(isActive ? null : index)}
+                onClick={() => setActiveMonth(index)}
                 className={`cursor-pointer group bg-white border-2 rounded-2xl p-4 transition-all duration-500 ${
                   isVisibleMonth ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 } ${isActive ? 'border-slate-900 shadow-xl scale-105' : item.target ? 'border-[#10B981]/50 hover:border-[#10B981]' : 'border-slate-100 hover:border-slate-200 hover:shadow-lg'}`}
