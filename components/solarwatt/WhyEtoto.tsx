@@ -10,7 +10,6 @@ import {
   Zap,
 } from 'lucide-react'
 import { useCountUp } from '@/hooks/use-animate-on-scroll'
-import { ETOTO_STATS } from '@/lib/etoto-data'
 import Image from 'next/image'
 
 export default function WhyEtoto() {
@@ -103,11 +102,11 @@ export default function WhyEtoto() {
             />
             <span className="text-slate-300 text-xl">×</span>
             <Image
-              src="/logos/etoto-logo.png"
+              src="/logos/etoto-logo-black.png"
               alt="ETOTO Media"
-              width={44}
-              height={44}
-              className="w-10 h-10 md:w-11 md:h-11"
+              width={120}
+              height={40}
+              className="h-8 md:h-9 w-auto"
             />
           </div>
           
@@ -285,25 +284,6 @@ export default function WhyEtoto() {
             </div>
           </div>
           
-          {/* Impact stats line - more prominent */}
-          <div className={`mt-12 md:mt-16 text-center transition-all duration-700 delay-500 ${awardsVisible ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="inline-flex flex-wrap items-center justify-center gap-4 md:gap-8 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-2xl px-6 md:px-10 py-4 md:py-5 shadow-xl">
-              <div className="text-center">
-                <p className="text-2xl md:text-3xl font-black text-[#006068]">{ETOTO_STATS.proofPoints.installedCapacityMWp}</p>
-                <p className="text-[10px] md:text-xs text-slate-400 font-semibold uppercase tracking-wide">MWp Installed</p>
-              </div>
-              <div className="w-px h-10 bg-slate-700 hidden md:block" />
-              <div className="text-center">
-                <p className="text-2xl md:text-3xl font-black text-amber-500">{ETOTO_STATS.proofPoints.annualGenerationGWh.toLocaleString()}</p>
-                <p className="text-[10px] md:text-xs text-slate-400 font-semibold uppercase tracking-wide">GWh / Year</p>
-              </div>
-              <div className="w-px h-10 bg-slate-700 hidden md:block" />
-              <div className="text-center">
-                <p className="text-2xl md:text-3xl font-black text-emerald-500">{ETOTO_STATS.proofPoints.co2OffsetTonnes.toLocaleString()}</p>
-                <p className="text-[10px] md:text-xs text-slate-400 font-semibold uppercase tracking-wide">Tonnes CO₂ Offset</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

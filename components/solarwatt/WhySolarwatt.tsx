@@ -123,15 +123,6 @@ export default function WhySolarwatt() {
           })}
         </div>
 
-        {/* 6-month window callout */}
-        <div className={`text-center transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 bg-[#EF4136]/10 border border-[#EF4136]/20 rounded-full px-5 py-2.5">
-            <span className="w-2 h-2 bg-[#EF4136] rounded-full animate-pulse" />
-            <p className="text-xs md:text-sm text-slate-700">
-              <span className="font-bold text-[#EF4136]">We have a 6-month window</span> to lock this in before someone else does.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   )
