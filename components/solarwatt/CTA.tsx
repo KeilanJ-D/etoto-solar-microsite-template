@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Zap, Mail, Award, ArrowRight } from 'lucide-react'
+import { Mail, Award, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
 export default function CTA() {
@@ -93,14 +93,21 @@ export default function CTA() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-[#006068]/20 rounded-full blur-3xl pointer-events-none" />
             
             <div className="relative">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <Zap className="w-5 h-5 text-[#EF4136]" />
+              <div className="flex items-center justify-center gap-3 mb-6">
                 <Image
-                  src="/logos/bmw-solarwatt-color.png"
-                  alt="BMW"
-                  width={24}
+                  src="/logos/etoto-logo.png"
+                  alt="ETOTO Media"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8"
+                />
+                <span className="text-white/30 text-lg">×</span>
+                <Image
+                  src="/logos/solarwatt-logo.png"
+                  alt="SOLARWATT"
+                  width={100}
                   height={24}
-                  className="h-6 w-6 object-contain brightness-0 invert opacity-50"
+                  className="h-5 w-auto brightness-0 invert opacity-80"
                 />
               </div>
               <p className="text-white/90 text-sm md:text-base leading-relaxed italic">
