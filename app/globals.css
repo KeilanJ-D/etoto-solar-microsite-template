@@ -4,9 +4,11 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --sw-blue: #0066B3;
-  --sw-orange: #F5921E;
-  --ec-accent: #0066B3;
+  --hinen-red: #ED1C24;
+  --hinen-black: #1A1A1A;
+  --hinen-gold: #F5A623;
+  --hinen-green: #10B981;
+  --ec-accent: #ED1C24;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

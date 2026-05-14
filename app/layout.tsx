@@ -10,8 +10,8 @@ const raleway = Raleway({
 })
 
 export const metadata: Metadata = {
-  title: 'ETOTO Media × SOLARWATT — The 6-Month Go-to-Market Sprint',
-  description: 'A two-track go-to-market sprint to land 40 SOLARWATT-installing partners by year-end. BMW-backed. German engineered. UK-installer ready by 2026.',
+  title: 'ETOTO Media × HINEN — Sprint v4 · The Simplified Plan',
+  description: 'One offer. One month. One hundred installers. Then a points engine that runs forever — building the most loyal installer network in the UK residential storage market.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -39,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={raleway.variable}>
-      <body className="font-sans antialiased bg-white">
+      <body className="font-sans antialiased bg-[#FAFBFC]">
         {children}
         <Analytics />
       </body>
