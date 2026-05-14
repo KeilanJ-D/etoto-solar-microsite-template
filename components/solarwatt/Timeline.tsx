@@ -1,12 +1,13 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Calendar, CheckCircle, Rocket, Users, Zap, Target, TrendingUp } from 'lucide-react'
+import { Calendar, CheckCircle, Rocket, Users, Zap, Target, TrendingUp, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Timeline() {
   const [isVisible, setIsVisible] = useState(false)
   const [visibleMonths, setVisibleMonths] = useState<number[]>([])
+  const [activeMonth, setActiveMonth] = useState<number | null>(null)
   const sectionRef = useRef<HTMLElement>(null)
   const monthRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -24,7 +25,6 @@ export default function Timeline() {
     return () => observer.disconnect()
   }, [])
 
-  // Individual month observers for scroll-triggered reveal
   useEffect(() => {
     const observers: IntersectionObserver[] = []
     monthRefs.current.forEach((ref, index) => {
@@ -54,6 +54,7 @@ export default function Timeline() {
       internal: ['Asset build', 'CRM setup', 'Domain warm', 'First hero shoot', 'Meta cap'],
       external: ['Onboard installers', 'Brief Wave 1 creative'],
       installers: '0-3',
+      progress: 5,
     },
     {
       month: 'M2',
@@ -63,6 +64,7 @@ export default function Timeline() {
       internal: ['Full Meta velocity', 'Email programme live', 'LinkedIn cadence', '2nd hero shoot'],
       external: ['Campaigns LIVE', 'Homeowner leads flowing'],
       installers: '5-8',
+      progress: 20,
     },
     {
       month: 'M3',
@@ -72,6 +74,7 @@ export default function Timeline() {
       internal: ['Onboarding cohort 1', 'Shepperton training day', '3rd hero shoot'],
       external: ['Campaigns at peak', 'Creative refresh'],
       installers: '12-16',
+      progress: 40,
     },
     {
       month: 'M4',
@@ -81,6 +84,7 @@ export default function Timeline() {
       internal: ['Cohort 2 onboarded', 'LinkedIn thought leadership', '4th hero shoot'],
       external: ['Final lead push', '3-month results pack'],
       installers: '20-26',
+      progress: 60,
     },
     {
       month: 'M5',
@@ -88,8 +92,9 @@ export default function Timeline() {
       icon: Target,
       color: '#006068',
       internal: ['Cohort 3 onboarded', 'Case-study content', '5th hero shoot'],
-      external: ['Track B winds down', '\'What worked\' case study'],
+      external: ['Track B winds down', '"What worked" case study'],
       installers: '28-34',
+      progress: 80,
     },
     {
       month: 'M6',
@@ -98,16 +103,23 @@ export default function Timeline() {
       color: '#10B981',
       internal: ['Final cohort', 'Year-end push', '6th hero shoot', 'Year-2 scoping'],
       external: ['Case study published'],
-      installers: '40',
+      installers: '40+',
+      progress: 100,
       target: true,
     },
   ]
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-28 px-4 md:px-6 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto">
+    <section ref={sectionRef} className="py-16 md:py-28 px-4 md:px-6 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[#006068]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#EF4136]/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-6xl mx-auto relative">
         {/* Header */}
-        <div className={`text-center mb-12 md:mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-flex items-center gap-2 bg-[#006068]/10 text-[#006068] text-sm font-semibold px-4 py-2 rounded-full mb-6">
             <Calendar className="w-4 h-4" />
             The 6-Month Roadmap
@@ -121,94 +133,170 @@ export default function Timeline() {
           </p>
         </div>
 
-        {/* Animated roadmap */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#006068] via-[#EF4136] to-[#10B981] rounded-full md:-translate-x-1/2" />
+        {/* Month selector - horizontal scroll on mobile */}
+        <div className={`flex justify-center gap-2 md:gap-3 mb-8 overflow-x-auto pb-2 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          {months.map((item, index) => {
+            const Icon = item.icon
+            const isActive = activeMonth === index
+            return (
+              <button
+                key={index}
+                onClick={() => setActiveMonth(isActive ? null : index)}
+                className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
+                  isActive 
+                    ? 'bg-slate-900 text-white shadow-lg scale-105' 
+                    : item.target 
+                      ? 'bg-[#10B981]/10 text-[#10B981] hover:bg-[#10B981]/20' 
+                      : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:shadow'
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span>{item.month}</span>
+                {item.target && <CheckCircle className="w-3.5 h-3.5" />}
+              </button>
+            )
+          })}
+        </div>
 
-          {/* Month cards */}
-          <div className="space-y-8 md:space-y-12">
-            {months.map((item, index) => {
+        {/* Progress bar */}
+        <div className={`mb-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="relative h-3 bg-slate-100 rounded-full overflow-hidden">
+            <div 
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#006068] via-[#EF4136] to-[#10B981] rounded-full transition-all duration-1000"
+              style={{ width: activeMonth !== null ? `${months[activeMonth].progress}%` : '100%' }}
+            />
+            {/* Month markers */}
+            {months.map((item, index) => (
+              <div 
+                key={index}
+                className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-3 border-white shadow-md transition-all duration-300 cursor-pointer hover:scale-125 ${
+                  activeMonth === index ? 'scale-125 ring-2 ring-offset-2' : ''
+                }`}
+                style={{ 
+                  left: `${item.progress}%`, 
+                  transform: 'translate(-50%, -50%)',
+                  backgroundColor: item.color,
+                  ringColor: item.color
+                }}
+                onClick={() => setActiveMonth(activeMonth === index ? null : index)}
+              />
+            ))}
+          </div>
+          <div className="flex justify-between mt-2 text-xs text-slate-400 font-medium">
+            <span>Kick-off</span>
+            <span>40 Installers</span>
+          </div>
+        </div>
+
+        {/* Expanded month detail - shows when a month is selected */}
+        {activeMonth !== null && (
+          <div className={`mb-10 transition-all duration-500 ${visibleMonths.includes(activeMonth) ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+            {(() => {
+              const item = months[activeMonth]
               const Icon = item.icon
-              const isLeft = index % 2 === 0
-              const isVisibleMonth = visibleMonths.includes(index)
-              
               return (
-                <div
-                  key={index}
-                  ref={(el) => { monthRefs.current[index] = el }}
-                  className={`relative flex items-start gap-4 md:gap-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                >
-                  {/* Timeline dot */}
-                  <div className={`absolute left-6 md:left-1/2 w-4 h-4 rounded-full border-4 border-white shadow-lg md:-translate-x-1/2 z-10 transition-all duration-500 ${isVisibleMonth ? 'scale-100' : 'scale-0'}`} style={{ backgroundColor: item.color }} />
-                  
-                  {/* Spacer for mobile */}
-                  <div className="w-12 md:hidden" />
-                  
-                  {/* Card */}
-                  <div className={`flex-1 md:w-[calc(50%-2rem)] transition-all duration-700 ${isVisibleMonth ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
-                    <div className={`group bg-white border-2 rounded-2xl p-5 md:p-6 hover:shadow-xl transition-all duration-300 ${item.target ? 'border-[#10B981] shadow-lg shadow-[#10B981]/20' : 'border-slate-100 hover:border-slate-200'}`}>
-                      {/* Header */}
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6" style={{ backgroundColor: `${item.color}15` }}>
-                          <Icon className="w-6 h-6" style={{ color: item.color }} />
-                        </div>
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <span className="font-black text-2xl" style={{ color: item.color }}>{item.month}</span>
-                            <span className="text-slate-400 text-sm">·</span>
-                            <span className="font-semibold text-slate-700">{item.title}</span>
-                          </div>
-                        </div>
-                        <div className={`ml-auto px-3 py-1 rounded-full font-bold text-sm ${item.target ? 'bg-[#10B981] text-white' : 'bg-slate-100 text-slate-600'}`}>
-                          {item.installers}
-                        </div>
+                <div className={`bg-white rounded-3xl border-2 p-6 md:p-8 shadow-xl ${item.target ? 'border-[#10B981]' : 'border-slate-100'}`}>
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div className="flex items-center gap-4">
+                      <div 
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                        style={{ backgroundColor: `${item.color}15` }}
+                      >
+                        <Icon className="w-8 h-8" style={{ color: item.color }} />
                       </div>
-                      
-                      {/* Activities */}
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <p className="text-[10px] font-bold uppercase tracking-wider text-[#006068] mb-2">Internal</p>
-                          <ul className="space-y-1">
-                            {item.internal.map((activity, i) => (
-                              <li key={i} className="text-xs text-slate-600 flex items-start gap-1">
-                                <span className="w-1 h-1 rounded-full bg-[#006068] mt-1.5 shrink-0" />
-                                {activity}
-                              </li>
-                            ))}
-                          </ul>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-black text-3xl" style={{ color: item.color }}>{item.month}</span>
+                          <ArrowRight className="w-5 h-5 text-slate-300" />
+                          <span className="font-bold text-xl text-slate-700">{item.title}</span>
                         </div>
-                        <div>
-                          <p className="text-[10px] font-bold uppercase tracking-wider text-[#EF4136] mb-2">External</p>
-                          <ul className="space-y-1">
-                            {item.external.map((activity, i) => (
-                              <li key={i} className="text-xs text-slate-600 flex items-start gap-1">
-                                <span className="w-1 h-1 rounded-full bg-[#EF4136] mt-1.5 shrink-0" />
-                                {activity}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                        <p className="text-slate-500 text-sm">Month {activeMonth + 1} of 6</p>
                       </div>
-
-                      {item.target && (
-                        <div className="mt-4 pt-4 border-t border-[#10B981]/20 flex items-center gap-2">
-                          <CheckCircle className="w-5 h-5 text-[#10B981]" />
-                          <span className="font-bold text-[#10B981]">Target achieved — 40 
-                            <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={80} height={20} className="h-4 w-auto inline mx-1" />
-                            installers
-                          </span>
-                        </div>
-                      )}
+                    </div>
+                    <div className={`px-5 py-3 rounded-xl font-black text-2xl ${item.target ? 'bg-[#10B981] text-white' : 'bg-slate-100 text-slate-700'}`}>
+                      {item.installers} <span className="text-sm font-semibold opacity-70">installers</span>
                     </div>
                   </div>
                   
-                  {/* Spacer for desktop */}
-                  <div className="hidden md:block md:w-[calc(50%-2rem)]" />
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-[#006068]/5 rounded-2xl p-5">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#006068] mb-4 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-[#006068]" />
+                        Internal Track
+                      </p>
+                      <ul className="space-y-2.5">
+                        {item.internal.map((activity, i) => (
+                          <li key={i} className="flex items-center gap-3 text-sm text-slate-700">
+                            <CheckCircle className="w-4 h-4 text-[#006068] shrink-0" />
+                            {activity}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="bg-[#EF4136]/5 rounded-2xl p-5">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#EF4136] mb-4 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-[#EF4136]" />
+                        External Track
+                      </p>
+                      <ul className="space-y-2.5">
+                        {item.external.map((activity, i) => (
+                          <li key={i} className="flex items-center gap-3 text-sm text-slate-700">
+                            <CheckCircle className="w-4 h-4 text-[#EF4136] shrink-0" />
+                            {activity}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {item.target && (
+                    <div className="mt-6 pt-6 border-t border-[#10B981]/20 flex items-center justify-center gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#10B981]" />
+                      <span className="font-bold text-[#10B981] text-lg">Target achieved — 40 
+                        <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={90} height={22} className="h-5 w-auto inline mx-2" />
+                        installers onboarded
+                      </span>
+                    </div>
+                  )}
                 </div>
               )
-            })}
+            })()}
           </div>
+        )}
+
+        {/* Month cards grid - compact overview */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+          {months.map((item, index) => {
+            const Icon = item.icon
+            const isVisibleMonth = visibleMonths.includes(index)
+            const isActive = activeMonth === index
+            
+            return (
+              <div
+                key={index}
+                ref={(el) => { monthRefs.current[index] = el }}
+                onClick={() => setActiveMonth(isActive ? null : index)}
+                className={`cursor-pointer group bg-white border-2 rounded-2xl p-4 transition-all duration-500 ${
+                  isVisibleMonth ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                } ${isActive ? 'border-slate-900 shadow-xl scale-105' : item.target ? 'border-[#10B981]/50 hover:border-[#10B981]' : 'border-slate-100 hover:border-slate-200 hover:shadow-lg'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <div 
+                    className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
+                    style={{ backgroundColor: `${item.color}15` }}
+                  >
+                    <Icon className="w-5 h-5" style={{ color: item.color }} />
+                  </div>
+                  <span className={`text-xs font-bold px-2 py-1 rounded-full ${item.target ? 'bg-[#10B981] text-white' : 'bg-slate-100 text-slate-600'}`}>
+                    {item.installers}
+                  </span>
+                </div>
+                <p className="font-black text-xl mb-1" style={{ color: item.color }}>{item.month}</p>
+                <p className="text-xs text-slate-500 font-medium">{item.title}</p>
+              </div>
+            )
+          })}
         </div>
 
         {/* Bottom reinforcement */}

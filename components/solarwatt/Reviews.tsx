@@ -91,27 +91,18 @@ export default function Reviews() {
         <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="flex items-center justify-center gap-3 mb-6">
             <Image
-              src="/logos/etoto-logo.png"
+              src="/logos/etoto-logo-black.png"
               alt="ETOTO Media"
-              width={44}
-              height={44}
-              className="w-11 h-11"
+              width={140}
+              height={46}
+              className="h-10 md:h-12 w-auto"
             />
-            <div className="text-left">
-              <p className="font-black text-slate-900 text-sm md:text-base">ETOTO Media</p>
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                ))}
-                <span className="text-xs text-slate-600 ml-1">5.0</span>
-              </div>
-            </div>
           </div>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3">
             What Our Clients Say
           </h2>
           <p className="text-slate-500 text-sm md:text-base">
-            <span className="font-bold text-slate-700">40+ verified Google reviews</span> · 100% 5-star
+            <span className="font-bold text-slate-700">35+ verified Google reviews</span> · 100% 5-star
           </p>
         </div>
 

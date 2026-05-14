@@ -158,13 +158,13 @@ export default function Investment() {
         {/* Boardroom sentence */}
         <div className={`bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl md:rounded-2xl p-6 md:p-8 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-[#F5921E]/20 flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-[#F5921E]" />
+            <div className="w-10 h-10 rounded-xl bg-[#006068]/20 flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-[#006068]" />
             </div>
-            <h3 className="text-lg font-bold text-white">The Boardroom Sentence (For BMW)</h3>
+            <h3 className="text-lg font-bold text-white">The Outcome</h3>
           </div>
           <p className="text-white/90 leading-relaxed text-lg">
-            SOLARWATT invests <span className="font-bold text-[#0066B3]">£63,000</span> across 6 months to acquire <span className="font-bold text-white">40 onboarded UK installer partners</span> and unlock approximately <span className="font-bold text-[#10B981]">£4.8 million</span> of installer-driven UK wholesale revenue across the next 5 years. <span className="font-bold text-[#F5921E]">LTV-to-CAC ratio of 76:1.</span> Plus a sponsored installer programme that surfaces SOLARWATT brand to ~420-600 UK homeowners directly. Plus a permanent CRM-tracked partner network that compounds beyond Year 1.
+            By <span className="font-bold text-white">December 2026</span>, <span className="font-bold text-[#006068]">40 additional installers</span> in the UK will be advertising and selling <Image src="/logos/solarwatt-logo.png" alt="SOLARWATT" width={100} height={24} className="h-5 w-auto inline brightness-0 invert mx-1" /> to the masses. Working with the right agency, this could equate to an average of <span className="font-bold text-[#10B981]">12+ SOLARWATT Vision systems</span> being sold, per installer, extra, per month. That&apos;s almost <span className="font-bold text-[#EF4136]">6,000 Vision systems per year</span>, from 2027.
           </p>
           <p className="text-slate-500 text-xs mt-6 italic">
             Cost modelled against published distributor wholesale pricing. SOLARWATT-direct AOV may vary on confirmation — model conservative on £3K/system to leave room for upside.
