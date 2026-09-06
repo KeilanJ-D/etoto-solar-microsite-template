@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f4f2e8">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Sunward Studio — Design your solar system</title>
+  <meta name="description" content="Explore your property, design a solar and battery system, compare products and build an itemised quote with Sunward Studio.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip" href="#workspace">Skip to designer</a>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Sunward home"><span class="brand-mark">S</span><span>sunward</span></a>
+    <div class="topbar-center"><span class="status-dot"></span><span id="saveState">Design saved on this device</span></div>
+    <div class="top-actions"><button class="ghost small" id="resetBtn">Start again</button><button class="primary small" data-jump="quote">See my quote</button></div>
+  </header>
+
+  <main id="workspace" class="workspace">
+    <aside class="rail" aria-label="Sunward Studio steps">
+      <div class="rail-intro"><span class="eyebrow">SUNWARD STUDIO</span><strong>Build your system</strong><span>Property-led solar design in your hands</span></div>
+      <nav id="stepNav" class="step-nav">
+        <button class="step active" data-step="discover"><span>01</span><div><b>Discover</b><small>Your goals</small></div></button>
+        <button class="step" data-step="property"><span>02</span><div><b>Property</b><small>Your home</small></div></button>
+        <button class="step" data-step="design"><span>03</span><div><b>Design</b><small>Your roof</small></div></button>
+        <button class="step" data-step="system"><span>04</span><div><b>System</b><small>Your hardware</small></div></button>
+        <button class="step" data-step="quote"><span>05</span><div><b>Quote</b><small>Your numbers</small></div></button>
+      </nav>
+      <div class="rail-trust"><span>✓ No sales call required to explore</span><span>✓ Transparent assumptions</span><span>✓ Edit everything</span></div>
+    </aside>
+
+    <section class="mainstage">
+      <section class="view active" data-view="discover">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">YOUR HOME. YOUR ENERGY. YOUR DESIGN.</span>
+            <h1>See what solar could look like <em>before</em> you speak to anyone.</h1>
+            <p>Tell us what matters, optionally pull property data, then build your own system on a Sunward model of your home.</p>
+            <div class="hero-pills"><span>Solar</span><span>Battery</span><span>Backup</span><span>Tariffs</span></div>
+          </div>
+          <div class="start-card card">
+            <div class="card-head"><div><span class="eyebrow">START WITH YOUR HOME</span><h2>Where are we designing?</h2></div><span class="stepbadge">~ 4 mins</span></div>
+            <label class="field"><span>UK address or postcode</span><div class="input-action"><input id="addressInput" autocomplete="postal-code" placeholder="e.g. GU1 4AB or 12 High Street"><button id="lookupBtn" class="primary">Find my home</button></div></label>
+            <div class="provider-note" id="providerNote">Property lookup checks roof and EPC records when Searchland is configured. You can always continue manually.</div>
+            <div id="addressResults" class="address-results" aria-live="polite"></div>
+            <button class="text-button" id="manualProperty">Skip lookup — I’ll tell you about my home →</button>
+          </div>
+        </div>
+        <div class="quiz-shell card">
+          <div class="quiz-progress"><span id="quizCount">1 of 5</span><div><i id="quizBar"></i></div></div>
+          <div id="quizHost"></div>
+        </div>
+      </section>
+
+      <section class="view" data-view="property">
+        <div class="section-head"><div><span class="eyebrow">PROPERTY INTELLIGENCE</span><h1 id="propertyTitle">Let’s model your home.</h1><p id="propertySub">Use retrieved records where available, then correct anything that doesn’t look right.</p></div><button class="primary" data-jump="design">Open roof designer →</button></div>
+        <div class="property-grid">
+          <div class="card property-model-card">
+            <div class="model-preview" id="miniHouse"></div>
+            <div class="data-banner"><b id="modelLabel">Sunward model</b><span id="modelStatus">Built from your answers</span></div>
+          </div>
+          <div class="card facts-card"><div class="card-head"><div><span class="eyebrow">WHAT WE KNOW</span><h2>Property snapshot</h2></div><span id="propertySource" class="source-chip">Manual</span></div><div id="propertyFacts" class="facts"></div><div id="constraintNotice" class="notice hidden"></div></div>
+        </div>
+        <div class="card edit-home"><div class="card-head"><div><span class="eyebrow">CORRECT THE MODEL</span><h2>House geometry</h2></div><span class="muted">Your edits update the designer instantly</span></div><div class="control-grid">
+          <label><span>House type</span><select id="houseType"><option value="detached">Detached</option><option value="semi">Semi-detached</option><option value="terrace">Terrace</option><option value="bungalow">Bungalow</option></select></label>
+          <label><span>Roof type</span><select id="roofType"><option value="gable">Gable</option><option value="hip">Hipped</option><option value="flat">Flat</option></select></label>
+          <label><span>Building width <b id="widthOut">9.0m</b></span><input id="widthRange" type="range" min="3" max="18" step="0.1"></label>
+          <label><span>Building depth <b id="depthOut">8.0m</b></span><input id="depthRange" type="range" min="3" max="18" step="0.1"></label>
+          <label><span>Roof pitch <b id="pitchOut">32°</b></span><input id="pitchRange" type="range" min="5" max="55" step="1"></label>
+          <label><span>Main roof faces <b id="azimuthOut">South</b></span><input id="azimuthRange" type="range" min="0" max="359" step="5"></label>
+        </div><div class="truth-note">Sunward can use property records to inform roof area, orientation, height and EPC context. The interactive geometry remains an indicative model until measured roof facets, obstructions and a site survey are available.</div></div>
+      </section>
+
+      <section class="view" data-view="design">
+        <div class="designer-head"><div><span class="eyebrow">INTERACTIVE DESIGNER</span><h1>Build on the roof. Place the battery. Change your mind.</h1></div><div class="designer-actions"><button class="ghost" id="undoBtn">Undo</button><button class="ghost" id="clearPanels">Clear roof</button><button class="primary" data-jump="system">Choose hardware →</button></div></div>
+        <div class="designer-shell">
+          <div class="toolbox card">
+            <div class="tool-group"><span class="tool-label">Mode</span><div class="segmented"><button class="active" data-tool="panels">Panels</button><button data-tool="battery">Battery</button><button data-tool="obstacle">Obstacles</button></div></div>
+            <div id="panelTools">
+              <label><span>Panel</span><select id="panelSelect"></select></label>
+              <div class="segmented"><button id="portraitBtn" class="active">Portrait</button><button id="landscapeBtn">Landscape</button></div>
+              <label><span>Roof face</span><select id="faceSelect"></select></label>
+              <button class="secondary full" id="autoFillBtn">Auto-fill usable roof</button>
+              <p class="hint">Tap the active roof face to add individual panels. Setbacks, panel size and clashes are enforced.</p>
+            </div>
+            <div id="batteryTools" class="hidden"><label><span>Battery model</span><select id="batterySelect"></select></label><label><span>Quantity</span><input id="batteryQty" type="number" min="1" max="6" value="1"></label><label><span>Wall</span><select id="batteryWall"><option value="east">Right wall</option><option value="west">Left wall</option><option value="front">Front wall</option><option value="rear">Rear wall</option></select></label><label><span>Position</span><input id="batteryPosition" type="range" min="10" max="90" value="72"></label></div>
+            <div id="obstacleTools" class="hidden"><p class="hint">Add a simple keep-clear zone for a skylight, chimney or vent. Final obstruction dimensions require survey confirmation.</p><button id="addObstacle" class="secondary full">Add keep-clear zone</button></div>
+          </div>
+          <div class="scene-wrap card">
+            <div class="scene-topline"><div><span class="live-dot"></span><b>Live design</b><small id="sceneProperty">Manual property model</small></div><div class="scene-controls"><button id="rotateLeft" aria-label="Rotate model left">↶</button><button id="resetCamera">Front</button><button id="rotateRight" aria-label="Rotate model right">↷</button></div></div>
+            <div id="scene" class="scene" aria-label="Interactive property model"></div>
+            <div class="scene-foot"><span id="designValidation">Ready to design</span><span>Indicative layout — installer survey required</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-view="system">
+        <div class="section-head"><div><span class="eyebrow">SYSTEM BUILDER</span><h1>Choose the hardware you actually want on your home.</h1><p>Compare genuine product models, not anonymous “Tier 1” placeholders.</p></div><button class="primary" data-jump="quote">Price this design →</button></div>
+        <div class="catalogue-block"><div class="catalogue-title"><h2>Solar panels</h2><span id="panelCountLabel">0 panels on roof</span></div><div id="panelCatalogue" class="product-grid"></div></div>
+        <div class="catalogue-block"><div class="catalogue-title"><h2>Home batteries</h2><span>Place your chosen unit in the designer</span></div><div id="batteryCatalogue" class="product-grid battery-grid"></div></div>
+        <div class="card options-card"><div><span class="eyebrow">INSTALL OPTIONS</span><h2>Finish the system</h2></div><label class="toggle-row"><div><b>Backup capability</b><small>Include an allowance for compatible gateway / protected circuits</small></div><input id="backupToggle" type="checkbox"></label><label class="toggle-row"><div><b>Bird protection</b><small>Add an allowance for panel perimeter protection</small></div><input id="birdToggle" type="checkbox"></label></div>
+      </section>
+
+      <section class="view" data-view="quote">
+        <div class="section-head"><div><span class="eyebrow">YOUR SUNWARD QUOTE</span><h1>One design. Every number visible.</h1><p>Edit the system and the quote follows it. Nothing hidden behind “from £X”.</p></div><button class="ghost" data-jump="design">← Edit design</button></div>
+        <div class="quote-page-grid">
+          <div>
+            <div class="card quote-summary"><div class="quote-hero"><div><span class="eyebrow">DESIGN SUMMARY</span><h2 id="quoteSystemName">Build your system</h2><p id="quotePropertyName">Your property</p></div><div class="quote-price"><span>Indicative total</span><strong id="quoteTotal">£0</strong><small id="quoteMode">Example pricing</small></div></div><div id="quoteMetrics" class="metric-strip"></div></div>
+            <div class="card line-items"><div class="card-head"><div><span class="eyebrow">ITEMISED</span><h2>Where the money goes</h2></div><span id="pricebookChip" class="source-chip">Preview</span></div><div id="lineItems"></div><div class="quote-total-row"><span>Total</span><strong id="lineTotal">£0</strong></div></div>
+            <div class="card assumptions"><div class="card-head"><div><span class="eyebrow">CONTEXT</span><h2>Advice for this design</h2></div></div><div id="adviceList"></div></div>
+          </div>
+          <aside class="card accept-card">
+            <span class="eyebrow">NEXT STEP</span><h2 id="acceptTitle">Save this design</h2><p id="acceptIntro">Create a quote record for this configuration. Preview quotes are non-binding until Sunward’s approved live pricebook and contract service are switched on.</p>
+            <div id="quoteTerms" class="terms-box"></div>
+            <label class="field"><span>Name</span><input id="customerName" autocomplete="name" placeholder="Your name"></label>
+            <label class="field"><span>Email</span><input id="customerEmail" type="email" autocomplete="email" placeholder="you@example.com"></label>
+            <label class="check"><input id="scopeAgree" type="checkbox"><span>I’ve reviewed the system scope and price shown above</span></label>
+            <label class="check"><input id="termsAgree" type="checkbox"><span>I agree to the quote terms shown for this version</span></label>
+            <button id="acceptBtn" class="primary full large">Create my quote</button>
+            <p class="tiny" id="acceptLegal">Preview mode does not create a binding order or payment obligation.</p>
+            <div id="receipt" class="receipt hidden" aria-live="polite"></div>
+          </aside>
+        </div>
+      </section>
+    </section>
+
+    <aside class="livequote" aria-label="Live system summary">
+      <div class="livequote-head"><span class="eyebrow">LIVE SYSTEM</span><span id="liveMode" class="source-chip">Preview</span></div>
+      <div class="system-figure"><strong id="sideKwp">0.00</strong><span>kWp solar</span></div>
+      <div class="side-stats"><div><span>Panels</span><b id="sidePanels">0</b></div><div><span>Storage</span><b id="sideStorage">0 kWh</b></div><div><span>Est. generation</span><b id="sideGeneration">0 kWh</b></div><div><span>Indicative saving</span><b id="sideSaving">£0/yr</b></div></div>
+      <div class="side-price"><span>Indicative installed total</span><strong id="sideTotal">£0</strong><small>Based on the current preview pricebook</small></div>
+      <button class="primary full" data-jump="quote">See itemised quote →</button>
+      <button class="ghost full" data-jump="design">Edit system</button>
+      <div class="confidence"><span>Design confidence</span><div><i id="confidenceBar"></i></div><small id="confidenceText">Add property details to improve context</small></div>
+    </aside>
+  </main>
+
+  <nav class="mobile-nav" aria-label="Studio navigation"><button class="active" data-step="discover">Start</button><button data-step="property">Home</button><button data-step="design">Design</button><button data-step="system">System</button><button data-step="quote">Quote</button></nav>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
