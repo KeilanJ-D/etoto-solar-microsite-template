@@ -1,10 +1,10 @@
 // Public specification inputs. Prices below are design examples, NOT supplier quotes.
-export const VERSION='3.0.1';
+export const VERSION='3.0.2';
 export const PANELS=[
  {id:'aiko',brand:'AIKO',name:'NEOSTAR 2S 460W',model:'AIKO-A460-MAH54Mb',watts:460,width:1.134,length:1.757,depth:.03,price:115,colour:'#192526',source:'https://aikosolar.com/wp-content/uploads/2025/02/Neostar-2S_188-AIKO-A-MAH54Mb-440-470W_1757x1134x30mm_DS_EN_2407_V1.3.pdf',image:'https://aikosolar.com/wp-content/uploads/2024/03/Black-2S_Mono-glass_bbbf_MAH54Mb-detail.jpg',imageNote:'Real AIKO module image; dimensions from AIKO datasheet'},
  {id:'longi',brand:'LONGi',name:'Hi-MO X6 Artist 435W',model:'LR5-54HTDB-435M',watts:435,width:1.134,length:1.722,depth:.03,price:105,colour:'#20292b',source:'https://static.longi.com/FR_LR_5_54_HTDB_420_435_M_web_71c708e47e.pdf',image:'https://static.longi.com/_1cad72a167.jpg',imageNote:'Real LONGi range image; dimensions from LONGi datasheet'},
- {id:'dmegc',brand:'DMEGC',name:'DM450 450W Full Black',model:'DM450M10RT-54HBB',watts:450,width:1.134,length:1.762,depth:.03,price:90,colour:'#213334',source:'https://www.dmegcsolar.com/upload/img/2025-02/67a5ce9e4c210.pdf',assetPage:'https://www.dmegcsolar.com/',imageNote:'Real product presentation; dimensions from DMEGC manufacturer datasheet'},
- {id:'jinko',brand:'Jinko Solar',name:'Tiger Neo 440W',model:'JKM440N-54HL4R-B',watts:440,width:1.134,length:1.762,depth:.03,price:95,colour:'#182d32',source:'https://www.jinkosolar.com/uploads/JKM420-440N-54HL4R-B-F1.3-EN.pdf',assetPage:'https://www.jinkosolar.com/',imageNote:'Jinko Tiger Neo model; dimensions from JinkoSolar manufacturer datasheet'}
+ {id:'dmegc',brand:'DMEGC',name:'DM450 450W Full Black',model:'DM450M10RT-54HBB',watts:450,width:1.134,length:1.762,depth:.03,price:90,colour:'#213334',source:'https://www.dmegcsolar.com/upload/img/2025-02/67a5ce9e4c210.pdf',image:'https://www.ekspertai.lt/media/catalog/large/pv-panele-dmegc-dm450m10rt-b54hbb-juoba.webp',imageNote:'Real DM450M10RT-B54HBB product image; dimensions from DMEGC manufacturer datasheet'},
+ {id:'jinko',brand:'Jinko Solar',name:'Tiger Neo 440W',model:'JKM440N-54HL4R-B',watts:440,width:1.134,length:1.762,depth:.03,price:95,colour:'#182d32',source:'https://www.jinkosolar.com/uploads/JKM420-440N-54HL4R-B-F1.3-EN.pdf',image:'https://teploradost.com.ua/photos/1/data/tovary/Jinko%20Solar/sonyachna-panel-jinko-solar-jkm440n-54hl4r-b-fb-440-vt-mono-full-black-2.jpg',imageNote:'Real JKM440N-54HL4R-B full-black product image; dimensions from JinkoSolar datasheet'}
 ];
 export const BATTERIES=[
  {id:'none',brand:'Solar only',name:'No battery',usable:0,nominal:0,width:0,height:0,depth:0,price:0,max:0,source:''},
