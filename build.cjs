@@ -35,14 +35,31 @@ fs.rmSync('dist/studio-src',{recursive:true,force:true});
 fs.cpSync('studio-app','dist/studio',{recursive:true});
 fs.cpSync('studio-src','dist/studio-src',{recursive:true});
 
-// Make Studio an obvious first-class route without altering the archived source bundle.
+// Ship one tiny progressive-enhancement layer across the whole site.
+fs.rmSync('dist/growth',{recursive:true,force:true});
+fs.cpSync('growth','dist/growth',{recursive:true});
+
+// Make Studio a first-class route on legacy/source pages, then inject growth assets everywhere.
 const home='dist/index.html';
 if(fs.existsSync(home)){
  let html=fs.readFileSync(home,'utf8');
- const studioCta=`<a class="sunward-studio-launch" href="/studio/" aria-label="Design and price your solar system"><span>NEW · SUNWARD STUDIO</span><strong>Design my system</strong><em>→</em></a><style>.sunward-studio-launch{position:fixed;right:20px;bottom:20px;z-index:90;display:grid;grid-template-columns:1fr auto;gap:2px 18px;align-items:center;min-width:245px;padding:14px 16px;border-radius:16px;background:#10271f;color:#fff;text-decoration:none;box-shadow:0 15px 42px #10271f44}.sunward-studio-launch span{grid-column:1;font:700 9px/1.2 system-ui;letter-spacing:.12em;color:#d9ff64}.sunward-studio-launch strong{grid-column:1;font:800 15px/1.2 system-ui}.sunward-studio-launch em{grid-column:2;grid-row:1/3;font:normal 24px system-ui;color:#d9ff64}@media(max-width:600px){.sunward-studio-launch{left:12px;right:12px;bottom:12px;min-width:0}}</style>`;
+ const studioCta=`<a class="sunward-studio-launch" href="/studio/" aria-label="Design and price your solar system"><span>NEW · SUNWARD STUDIO</span><strong>Design my system</strong><em>→</em></a><style>.sunward-studio-launch{position:fixed;right:20px;bottom:20px;z-index:88;display:grid;grid-template-columns:1fr auto;gap:2px 18px;align-items:center;min-width:245px;padding:14px 16px;border-radius:16px;background:#10271f;color:#fff;text-decoration:none;box-shadow:0 15px 42px #10271f44}.sunward-studio-launch span{grid-column:1;font:700 9px/1.2 system-ui;letter-spacing:.12em;color:#d9ff64}.sunward-studio-launch strong{grid-column:1;font:800 15px/1.2 system-ui}.sunward-studio-launch em{grid-column:2;grid-row:1/3;font:normal 24px system-ui;color:#d9ff64}@media(max-width:600px){.sunward-studio-launch{display:none}}</style>`;
  if(!html.includes('sunward-studio-launch'))html=html.replace('</body>',studioCta+'</body>');
  fs.writeFileSync(home,html);
 }
+function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]);}
+const htmlFiles=walk('dist').filter(f=>f.endsWith('.html'));
+for(const file of htmlFiles){
+ let html=fs.readFileSync(file,'utf8');
+ if(!html.includes('/growth/growth.css'))html=html.replace('</head>','<link rel="stylesheet" href="/growth/growth.css"></head>');
+ if(!html.includes('/growth/growth.js'))html=html.replace('</body>','<script src="/growth/growth.js" defer></script></body>');
+ // Improve perceived rendering cost without changing semantics. Native lazy loading only for non-critical images.
+ html=html.replace(/<img(?![^>]*loading=)([^>]*?)>/g,(m,a)=>/hero|logo|fetchpriority/i.test(a)?m:`<img loading="lazy" decoding="async"${a}>`);
+ fs.writeFileSync(file,html);
+}
+
+// Production-ready acquisition manifest. Preview remains deliberately noindex.
+write('dist/acquisition.json',JSON.stringify({version:'1.0',primaryConversion:'/studio/',secondaryConversion:'/tariffs/',events:['page_view','engaged_cta_shown','internal_click','studio_step_view','studio_step_change','property_lookup_focus','property_lookup_submit','manual_property_selected','roof_autofill','system_change','quote_primary_action'],attribution:['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid']}));
 write('dist/robots.txt','User-agent: *\nDisallow: /\n');
-write('dist/deployment-info.json',JSON.stringify({version:'3.0.0-studio-preview',preview:true,sourceSHA256:expected,commit:process.env.VERCEL_GIT_COMMIT_SHA||null,studio:true}));
-console.log('Verified Sunward v2 + Studio v3 source deployed as a non-sending, non-indexed preview.');
+write('dist/deployment-info.json',JSON.stringify({version:'3.1.0-growth-preview',preview:true,sourceSHA256:expected,commit:process.env.VERCEL_GIT_COMMIT_SHA||null,studio:true,growth:true,htmlPages:htmlFiles.length}));
+console.log(`Verified Sunward v2 + Studio + growth layer across ${htmlFiles.length} HTML pages as a non-sending, non-indexed preview.`);
