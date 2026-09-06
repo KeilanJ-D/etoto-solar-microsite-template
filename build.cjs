@@ -38,6 +38,7 @@ fs.cpSync('studio-src','dist/studio-src',{recursive:true});
 // Ship one tiny progressive-enhancement layer across the whole site.
 fs.rmSync('dist/growth',{recursive:true,force:true});
 fs.cpSync('growth','dist/growth',{recursive:true});
+write('dist/start/index.html',fs.readFileSync('growth/start.html','utf8'));
 
 // Make Studio a first-class route on legacy/source pages, then inject growth assets everywhere.
 const home='dist/index.html';
@@ -53,13 +54,12 @@ for(const file of htmlFiles){
  let html=fs.readFileSync(file,'utf8');
  if(!html.includes('/growth/growth.css'))html=html.replace('</head>','<link rel="stylesheet" href="/growth/growth.css"></head>');
  if(!html.includes('/growth/growth.js'))html=html.replace('</body>','<script src="/growth/growth.js" defer></script></body>');
- // Improve perceived rendering cost without changing semantics. Native lazy loading only for non-critical images.
  html=html.replace(/<img(?![^>]*loading=)([^>]*?)>/g,(m,a)=>/hero|logo|fetchpriority/i.test(a)?m:`<img loading="lazy" decoding="async"${a}>`);
  fs.writeFileSync(file,html);
 }
 
 // Production-ready acquisition manifest. Preview remains deliberately noindex.
-write('dist/acquisition.json',JSON.stringify({version:'1.0',primaryConversion:'/studio/',secondaryConversion:'/tariffs/',events:['page_view','engaged_cta_shown','internal_click','studio_step_view','studio_step_change','property_lookup_focus','property_lookup_submit','manual_property_selected','roof_autofill','system_change','quote_primary_action'],attribution:['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid']}));
+write('dist/acquisition.json',JSON.stringify({version:'1.1',primaryConversion:'/studio/',campaignEntry:'/start/',secondaryConversion:'/tariffs/',events:['page_view','engaged_cta_shown','internal_click','studio_step_view','studio_step_change','property_lookup_focus','property_lookup_submit','manual_property_selected','roof_autofill','system_change','quote_primary_action','acquisition_intent','web_vitals'],attribution:['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid']}));
 write('dist/robots.txt','User-agent: *\nDisallow: /\n');
-write('dist/deployment-info.json',JSON.stringify({version:'3.1.0-growth-preview',preview:true,sourceSHA256:expected,commit:process.env.VERCEL_GIT_COMMIT_SHA||null,studio:true,growth:true,htmlPages:htmlFiles.length}));
+write('dist/deployment-info.json',JSON.stringify({version:'3.2.0-growth-preview',preview:true,sourceSHA256:expected,commit:process.env.VERCEL_GIT_COMMIT_SHA||null,studio:true,growth:true,campaignStart:true,htmlPages:htmlFiles.length}));
 console.log(`Verified Sunward v2 + Studio + growth layer across ${htmlFiles.length} HTML pages as a non-sending, non-indexed preview.`);
