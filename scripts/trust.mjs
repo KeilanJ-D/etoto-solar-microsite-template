@@ -1,0 +1,55 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {CHECKED,TARIFFS} from '../src/trust/data.mjs';
+import {esc,hero,evidenceStrip,brandRail,setupCards,kitSection,videoSection,videoDialog,trustJourney,tariffTeaser,nextStep,tariffPage,productsPage,productDetail,allProducts,productRoute,link,productImage} from '../src/trust/components.mjs';
+const read=p=>fs.readFileSync(p,'utf8'),write=(p,s)=>{fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,s);};
+const media=JSON.parse(read('src/trust/media.json'));
+const report=JSON.parse(read('build-report.json'));
+const oldHome=read('dist/index.html');
+function section(html,test){const start=html.search(test);if(start<0)return '';let depth=0;const tags=/<\/?section\b[^>]*>/g;tags.lastIndex=start;for(let m;(m=tags.exec(html));){depth+=m[0].startsWith('</')?-1:1;if(depth===0)return html.slice(start,tags.lastIndex);}throw Error('Unclosed section');}
+const symbols=oldHome.match(/<svg xmlns=[\s\S]*?<\/defs><\/svg>/)?.[0]||'';
+const nav=oldHome.match(/<header class="header"[\s\S]*?<\/header>/)[0]
+ .replace(/<a href="\/?#savings">The numbers<\/a>/,'<a href="/products/">Products</a><a href="/tariffs/">Tariffs</a>')
+ .replace('<a href="/guides/">The bright guide</a>','<a href="/#journey">How it works</a>')
+ .replace(/href="\/\?quote=1"/g,'href="/studio/"')
+ .replace('Build my solar plan','Design my system')
+ .replace(/(<nav class="mobile-nav"[^>]*>)/,'$1<a href="/products/">Compare products ↗</a>');
+const footer=oldHome.match(/<footer class="footer">[\s\S]*?<\/footer>/)[0]
+ .replace('href="#top"','href="/"').replace(/<button data-info="privacy">Privacy<\/button>/g,'<a href="/privacy/">Privacy</a>')
+ .replace(/<button data-info="website">About this website<\/button>/g,'<a href="/methodology/">How estimates work</a>')
+ .replace('href="#savings"','href="/methodology/"')
+ .replace('<div class="national-footer-links">','<div class="national-footer-links"><a href="/products/">Product catalogue</a>');
+const sticky='<div class="mobile-cta"><span>Your home. Your numbers.</span><a class="btn btn-dark" href="/studio/">Design my system <span aria-hidden="true">↗</span></a></div>';
+const schema=(title,description,entity)=>`<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':entity?'Product':'WebPage',name:title,description,inLanguage:'en-GB',...(entity?{brand:{'@type':'Brand',name:entity.brand},model:entity.model,image:entity.image,additionalProperty:[{'@type':'PropertyValue',name:entity.watts?'Rated power':'Usable capacity',value:entity.watts||entity.usable,unitText:entity.watts?'W':'kWh'}]}:{dateModified:'2026-09-07'})}).replace(/</g,'\\u003c')}</script>`;
+function page(route,title,description,body,entity){const file=path.join(route.slice(1),'index.html');write('dist/'+file,`<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="robots" content="noindex, nofollow"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="website"><meta property="og:locale" content="en_GB"><link rel="icon" href="/assets/favicon.svg"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/national.css"><link rel="stylesheet" href="/upgrade.css">${schema(title,description,entity)}</head><body class="national-page">${symbols}<a class="skip-link" href="#main">Skip to content</a>${nav}<nav class="breadcrumbs container" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">${esc(title.split('|')[0].trim())}</span></nav><main id="main">${body}</main>${footer}${sticky}${body.includes('data-video=')?videoDialog():''}<script src="/national.js" defer></script></body></html>`);const existing=report.pageRecords.find(p=>p.route===route);if(existing){existing.title=title;existing.indexable=false;}else report.pageRecords.push({route,file,title,indexable:false});}
+const savings=section(oldHome,/<section(?=[^>]*id="savings")[^>]*>/);
+const energyDay=section(oldHome,/<section(?=[^>]*id="energy-day")[^>]*>/);
+const map=section(oldHome,/<section(?=[^>]*id="your-area")[^>]*>/);
+const faq=section(oldHome,/<section(?=[^>]*id="questions")[^>]*>/);
+if(!savings||!energyDay||!map||!faq)throw Error('A retained homepage capability is missing');
+const main=hero(media)+evidenceStrip()+brandRail()+setupCards()+kitSection()+videoSection(media)+tariffTeaser()+energyDay+savings+trustJourney()+map+faq+nextStep();
+let home=oldHome.replace(/<main\b[^>]*>[\s\S]*?<\/main>/,'<main id="main">'+main+'</main>');
+home=home.replace('</body>',videoDialog()+'</body>');
+home=home.replace(/<title>[^<]*<\/title>/,'<title>Solar panels, home batteries & smarter tariffs | Sunward</title>');
+home=home.replace(/<meta name="description" content="[^"]*">/,'<meta name="description" content="Explore real solar panels and home batteries, compare current energy tariff examples, and build a clear, itemised estimate for your home in Sunward Studio.">');
+write('dist/index.html',home);
+for(const [route,kind,title,description]of[
+ ['/tariffs/','all','Solar, battery & EV tariff guide | Sunward','Compare official Octopus, OVO, British Gas and E.ON Next tariff examples. Match import and export offers to your solar, battery, EV or heat-pump setup.'],
+ ['/tariffs/import/','import','Home battery & EV import tariffs explained | Sunward','Understand whole-home off-peak rates, EV-only charging credits and battery tariff eligibility, with a transparent whole-bill comparison tool.'],
+ ['/tariffs/export/','export','Solar export tariff rates & eligibility | Sunward','Compare current solar export examples, supplier restrictions and installer-exclusive rates. Find a sensible tariff starting point for your home.']])page(route,title,description,tariffPage(kind));
+page('/products/','Solar panel & home battery comparison | Sunward','Compare real Tesla, Sigenergy and Duracell batteries, plus AIKO, LONGi, DMEGC and Jinko panels. Explore manufacturer imagery, model data and product films.',productsPage(media));
+const made=new Set();for(const p of allProducts){const route=productRoute(p);if(made.has(route))continue;made.add(route);page(route,`${p.id.startsWith('sigen')?'Sigenergy SigenStor':p.brand+' '+p.name} | Specification & design | Sunward`,`Explore ${p.brand} product imagery, usable capacity or output, dimensions, manufacturer documents and the installation questions to check before choosing.`,productDetail(p,media),p);}
+// Core service routes retain their explanations while replacing the illustrative hero.
+for(const[route,goal,title,intro,p]of[
+ ['solar-pv','solar','Your roof.<br>More possibility.','Explore a roof-led design, compare real modules and understand what the daylight could do for your home.',allProducts.find(p=>p.id==='aiko')],
+ ['battery-storage','battery','Store it.<br>Use it your way.','A home battery should fit the energy you need later. Compare usable capacity, physical space and the tariff behind the numbers.',allProducts.find(p=>p.id==='dura16')],
+ ['solar-and-battery-storage','both','Generate by day.<br>Keep some for later.','Bring your roof, battery and daily routine together. Explore the whole system with real products and clear assumptions.',allProducts.find(p=>p.id==='tesla')]
+]){const file=`dist/${route}/index.html`;let html=read(file),original=section(html,/<section class="service-hero container">/);if(!original)throw Error('Missing service hero');const real=`<section class="t-product-hero container"><div><p class="eyebrow">SOLAR & STORAGE / DESIGNED AROUND YOU</p><h1>${title}</h1><p class="t-lede">${intro}</p><div class="t-page-links">${link('Build my '+(goal==='both'?'combined':goal)+' plan','/studio/?goal='+goal)}<a class="t-text-link" href="/products/">Compare real products ↗</a></div></div><figure class="t-detail-photo">${productImage(p)}<figcaption>${esc(p.brand+' '+p.name+' · manufacturer product artwork')}</figcaption></figure></section>`;html=html.replace(original,real);const oldKit=section(html,/<section(?=[^>]*id="batteries")[^>]*>/);if(oldKit)html=html.replace(oldKit,'');html=html.replace('</main>',kitSection()+tariffTeaser()+nextStep()+'</main>');write(file,html);}
+// Keep the wider location/guide architecture connected to real equipment and sources.
+function support(){return `<section class="t-support-strip"><div class="container t-support-inner"><div><p class="eyebrow">FROM LOCAL QUESTIONS TO A PERSONAL PLAN</p><h2>Know the equipment.<br>Understand the running costs.</h2><p>Compare real manufacturer products and check which tariff types fit your setup.</p><a class="t-text-link" href="/tariffs/">Explore the tariff guide ↗</a></div><div class="t-support-products">${[allProducts.find(p=>p.id==='tesla'),allProducts.find(p=>p.id==='aiko'),allProducts.find(p=>p.id==='dura16')].map(p=>`<a href="${productRoute(p)}">${productImage(p)}<strong>${p.brand}</strong></a>`).join('')}</div></div></section>`;}
+function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]);}
+for(const file of walk('dist').filter(f=>f.endsWith('.html')&&!f.includes('/studio/'))){let html=read(file);html=html.replace(/<header class="header"[\s\S]*?<\/header>/,nav);html=html.replace(/<footer class="footer">[\s\S]*?<\/footer>/,footer);if(file!=='dist/index.html'&&!html.includes('t-section')&&!html.includes('t-support-strip'))html=html.replace('</main>',support()+'</main>');html=html.replace(/<body([^>]*)>/,(m,a)=>a.includes('class=')?m.replace(/class="([^"]*)"/,'class="$1 trust-site"'):`<body${a} class="trust-site">`);html=html.replace('</head>','<link rel="stylesheet" href="/trust/trust.css"></head>').replace('</body>','<script type="module" src="/trust/trust.js"></script></body>');html=html.replace(/Original 3D-style product illustration\./g,'Manufacturer product artwork.').replace(/Illustrative product renders, not manufacturer CAD\./g,'Manufacturer product imagery; complete system configuration needs confirmation.');write(file,html);}
+fs.mkdirSync('dist/trust',{recursive:true});for(const name of ['trust.css','trust.js','data.mjs','media.json'])fs.copyFileSync('src/trust/'+name,'dist/trust/'+name);
+write('docs/tariff-sources.json',JSON.stringify({checked:CHECKED,scope:'Great Britain domestic public examples; postcode quotes and eligibility still required',tariffs:TARIFFS},null,2)+'\n');
+report.pages=report.pageRecords.length;report.trust={checked:CHECKED,productRoutes:[...made],supplierExamples:TARIFFS.length,videoCount:media.videos.length,videoLoading:'on user activation only'};write('build-report.json',JSON.stringify(report,null,2));
+console.log(`Trust layer: ${TARIFFS.length} sourced tariff examples, ${allProducts.length} products, ${media.videos.length} official manufacturer films.`);

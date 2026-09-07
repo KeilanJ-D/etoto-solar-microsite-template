@@ -1,0 +1,9 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {compareBill,TARIFFS,PROFILES,shortlist} from '../src/trust/data.mjs';
+const base={annual:5000,share:50,day:30,night:8,standing:50,baseRate:25,baseStanding:50};
+test('Whole-bill comparison includes annual standing charges and both export credits',()=>{const r=compareBill({...base,exports:1000,exportRate:13,baseExportRate:12});assert.equal(r.baseline,1312.5);assert.equal(r.candidate,1002.5);assert.equal(r.difference,310);assert.equal(r.cheap+r.regular,5000);});
+test('Shifting threshold changes the sign of the tariff difference',()=>{const r=compareBill(base);assert.ok(r.required>22&&r.required<23);assert.ok(compareBill({...base,share:r.required-1}).difference<0);assert.ok(compareBill({...base,share:r.required+1}).difference>0);assert.ok(Math.abs(compareBill({...base,share:r.required}).difference)<1e-8);});
+test('Invalid tariff inputs do not produce invented bill totals',()=>{assert.equal(compareBill({...base,share:101}),null);assert.equal(compareBill({...base,day:NaN}),null);assert.equal(compareBill({...base,night:-1}),null);assert.equal(compareBill({...base,annual:0}).required,null);});
+test('EV-only charging credits cannot be used as whole-home rate presets',()=>{const ovo=TARIFFS.find(t=>t.id==='ovo-charge');assert.equal(ovo.offpeak,null);assert.match(ovo.scope,/EV charging credit only/);assert.equal(TARIFFS.find(t=>t.id==='charge-power').offpeak,null);assert.match(TARIFFS.find(t=>t.id==='eon-export').checks,/Excludes time-of-use/);});
+test('Every setup has valid sourced suggestions and battery-only has no EV-only eligibility',()=>{for(const key of Object.keys(PROFILES)){for(const t of shortlist(key)){assert.ok(t);assert.match(t.source,/^https:/);assert.ok(t.fit&&t.why&&t.checks);}}assert.deepEqual(shortlist('battery').map(t=>t.id),['charge-power']);});

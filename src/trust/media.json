@@ -1,0 +1,61 @@
+{
+  "checked": "2026-09-07",
+  "hero": {
+    "local": "/assets/trust/solar-home-hero.webp",
+    "width": 1440,
+    "height": 617,
+    "alt": "Solar panels and a Powerwall on a stone-clad home, with an electric car charging outside.",
+    "sourcePage": "https://www.tesla.com/en_gb/powerwall",
+    "credit": "Image: Tesla"
+  },
+  "videos": [
+    {
+      "id": "tesla-powerwall",
+      "brand": "Tesla",
+      "title": "How Powerwall stores energy",
+      "type": "mp4",
+      "youtubeId": null,
+      "url": "https://digitalassets.tesla.com/tesla-contents/video/upload/f_auto,q_auto:best/powerwall-store-use-save-carousel-01.mp4",
+      "sourcePage": "https://www.tesla.com/en_gb/powerwall",
+      "localPoster": "/assets/trust/tesla-video-poster.webp",
+      "posterAlt": "Store Extra Energy with Powerwall manufacturer film still",
+      "context": "A short Powerwall family animation showing how solar energy can be stored. Silent film."
+    },
+    {
+      "id": "duracell-dura5",
+      "brand": "Duracell Energy",
+      "title": "Meet the Duracell Dura5",
+      "type": "youtube",
+      "youtubeId": "aaFSp5J9RGo",
+      "url": "https://www.youtube.com/embed/aaFSp5J9RGo?feature=oembed",
+      "sourcePage": "https://duracellenergy.com/en/",
+      "localPoster": "/assets/trust/duracell-video-poster.webp",
+      "posterAlt": "Dura5 Home Energy Battery | Duracell Energy manufacturer film still",
+      "context": "Duracell\u2019s Dura5 overview. The Dura16 available in Studio is a different model."
+    },
+    {
+      "id": "longi-himo-x6",
+      "brand": "LONGi",
+      "title": "Inside the LONGi Hi-MO X6",
+      "type": "mp4",
+      "youtubeId": null,
+      "url": "https://static.longi.com/Hi_MO_X6_TVC_EN_Batch_10dd865d04.mp4",
+      "sourcePage": "https://www.longi.com/en/products/modules/hi-mo-x6/",
+      "localPoster": "/assets/trust/longi-video-poster.webp",
+      "posterAlt": "Hi-MO X6 \u2014 Born for Light manufacturer film still",
+      "context": "The Hi-MO X6 product-family film. Cell-efficiency figures in the film are not module-efficiency ratings."
+    },
+    {
+      "id": "aiko-residential",
+      "brand": "AIKO",
+      "title": "AIKO at home in South Africa",
+      "type": "mp4",
+      "youtubeId": null,
+      "url": "https://aikosolar.com/wp-content/uploads/2024/07/South-Africa-cases-en-0708.mp4",
+      "sourcePage": "https://aikosolar.com/en/",
+      "localPoster": "/assets/trust/aiko-video-poster.webp",
+      "posterAlt": "Mission Zero \u2014 Residential Solar in South Africa manufacturer film still",
+      "context": "A residential solar case study in South Africa, published by AIKO."
+    }
+  ]
+}

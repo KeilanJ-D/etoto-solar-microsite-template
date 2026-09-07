@@ -1,0 +1,309 @@
+{
+  "verifiedOn": "2026-09-07",
+  "market": "United Kingdom",
+  "sources": {
+    "tesla": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/Datasheet/en-uk/Powerwall-3-Datasheet-EN.pdf",
+    "sigenergy": "https://www.sigenergy.com/uploads/en_download/1746004583307009.pdf",
+    "sigenergyCdn": "https://wwwstatic.sigenergy.com/content/assets/uploads/en_download/1746004583307009.pdf",
+    "sigenergyWarranty": "https://www.sigenergy.com/uploads/en_download/1750305008658844.pdf",
+    "duracell": "https://duracell.hacdn.io/media/documents/Dura16kWh_LV_Battery_Datasheet_v1.2_UK_web_PD.pdf",
+    "aiko": "https://aikosolar.com/wp-content/uploads/2025/10/Neostar-2S_188-AIKO-A-MAH54Mb_440-470W-1757x1134x30mm_V4.1_202510_DsDr_EN.pdf",
+    "longi": "https://static.longi.com/L_Gi_LE_PM_T_PMD_059_F129_LR_5_54_HTB_440_450_M_V1_30_30_and_15_Frame_Scientist_V19_0860168025.pdf",
+    "dmegc": "https://www.dmegcsolar.com/upload/img/2025-07/686350a164ddc.pdf",
+    "dmegcWarranty": "https://www.dmegcsolar.com/upload/img/2026-06/6a261f06194b8.pdf",
+    "jinko": "https://www.jinkosolar.com/uploads/JKM420-440N-54HL4R-B-F1.3-EN.pdf"
+  },
+  "productPages": {
+    "tesla": "https://www.tesla.com/en_gb/powerwall",
+    "sigenergy": "https://www.sigenergy.com/en/products/sigenstor",
+    "duracell": "https://duracellenergy.com/en/products/dura16/",
+    "aiko": "https://aikosolar.com/en/products/neostar-2s54-mono-glass/"
+  },
+  "displayGuidance": [
+    "Show usable kWh separately from model names. SigenStor BAT 10.0 does not provide 10 usable kWh.",
+    "Sigenergy dimensions describe one bare module; a working system needs a compatible controller, base and covers. Installation clearances are additional.",
+    "Sigenergy artwork shows several battery modules with controller and optional equipment. Caption it as a representative system on both BAT product cards.",
+    "Panel dimensions are length/height, width and frame thickness in millimetres. Wattages are STC ratings.",
+    "Specifications are verified; current UK supplier stock and installed prices were not researched."
+  ],
+  "reuseNotes": "Manufacturer artwork remains copyrighted. Public product pages and datasheets do not establish an open reuse licence. Retain provenance and confirm applicable manufacturer or installer marketing permission for commercial publication. No generated reconstruction or watermark removal was used.",
+  "batteries": [
+    {
+      "brand": "tesla",
+      "name": "Powerwall 3",
+      "model": "1707000-xx-y",
+      "nominalEnergyKwh": null,
+      "usableEnergyKwh": 13.5,
+      "dimensionsMm": {
+        "height": 1105,
+        "width": 609,
+        "depth": 193
+      },
+      "weightKg": 130,
+      "maxChargeDischargeKw": null,
+      "warrantyYears": 10,
+      "datasheetUrl": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/Datasheet/en-uk/Powerwall-3-Datasheet-EN.pdf",
+      "productPageUrl": "https://www.tesla.com/en_gb/powerwall",
+      "assetId": "tesla",
+      "note": "13.5 kWh is usable AC energy at beginning of life; total/nominal cell energy is not published in this UK datasheet. Full 10-year warranty requires reliable internet connectivity."
+    },
+    {
+      "brand": "sigenergy",
+      "name": "SigenStor BAT 6.0",
+      "model": "SigenStor BAT 6.0",
+      "nominalEnergyKwh": 6.02,
+      "usableEnergyKwh": 5.84,
+      "dimensionsMm": {
+        "height": 270,
+        "width": 767,
+        "depth": 265
+      },
+      "weightKg": 62,
+      "maxChargeDischargeKw": 3,
+      "warrantyYears": 10,
+      "datasheetUrl": "https://www.sigenergy.com/uploads/en_download/1746004583307009.pdf",
+      "productPageUrl": "https://www.sigenergy.com/en/products/sigenstor",
+      "assetId": "sigenergy",
+      "dimensionScope": "One bare BAT module, excluding controller, base and covers.",
+      "datasheetStatus": "Manufacturer PDF is marked Preliminary; Europe warranty independently confirms usable kWh.",
+      "verifiedDownloadUrl": "https://wwwstatic.sigenergy.com/content/assets/uploads/en_download/1746004583307009.pdf",
+      "warrantyUrl": "https://www.sigenergy.com/uploads/en_download/1750305008658844.pdf",
+      "warrantyNote": "Europe warranty: 60% usable energy retention for 10 years or warranted throughput, whichever comes first; internet and other conditions apply.",
+      "warrantedThroughputMwh": 20.44
+    },
+    {
+      "brand": "sigenergy",
+      "name": "SigenStor BAT 10.0",
+      "model": "SigenStor BAT 10.0",
+      "nominalEnergyKwh": 9.04,
+      "usableEnergyKwh": 8.76,
+      "dimensionsMm": {
+        "height": 270,
+        "width": 767,
+        "depth": 265
+      },
+      "weightKg": 78,
+      "maxChargeDischargeKw": 4.6,
+      "warrantyYears": 10,
+      "datasheetUrl": "https://www.sigenergy.com/uploads/en_download/1746004583307009.pdf",
+      "productPageUrl": "https://www.sigenergy.com/en/products/sigenstor",
+      "assetId": "sigenergy",
+      "dimensionScope": "One bare BAT module, excluding controller, base and covers.",
+      "datasheetStatus": "Manufacturer PDF is marked Preliminary; Europe warranty independently confirms usable kWh.",
+      "verifiedDownloadUrl": "https://wwwstatic.sigenergy.com/content/assets/uploads/en_download/1746004583307009.pdf",
+      "warrantyUrl": "https://www.sigenergy.com/uploads/en_download/1750305008658844.pdf",
+      "warrantyNote": "Europe warranty: 60% usable energy retention for 10 years or warranted throughput, whichever comes first; internet and other conditions apply.",
+      "warrantedThroughputMwh": 30.66
+    },
+    {
+      "brand": "duracell",
+      "name": "Dura16 LV",
+      "model": "PD-16KWH-50V-1G",
+      "nominalEnergyKwh": 16,
+      "usableEnergyKwh": 14.4,
+      "dimensionsMm": {
+        "height": 860,
+        "width": 520,
+        "depth": 236
+      },
+      "weightKg": 122,
+      "maxChargeDischargeKw": 6.6,
+      "warrantyYears": 10,
+      "datasheetUrl": "https://duracell.hacdn.io/media/documents/Dura16kWh_LV_Battery_Datasheet_v1.2_UK_web_PD.pdf",
+      "productPageUrl": "https://duracellenergy.com/en/products/dura16/",
+      "assetId": "duracell",
+      "datasheetVersion": "UK v1.2",
+      "dimensionToleranceMm": 2
+    }
+  ],
+  "panels": [
+    {
+      "brand": "aiko",
+      "name": "Neostar 2S all-black",
+      "model": "AIKO-A450-MAH54Mb",
+      "watts": 450,
+      "verifiedWattBins": [
+        440,
+        445,
+        450,
+        455,
+        460,
+        465,
+        470
+      ],
+      "dimensionsMm": {
+        "height": 1757,
+        "width": 1134,
+        "depth": 30
+      },
+      "weightKg": 20.6,
+      "efficiencyPercent": 22.6,
+      "productWarrantyYears": 25,
+      "performanceWarrantyYears": 30,
+      "datasheetVersion": "V4.1, October 2025",
+      "datasheetUrl": "https://aikosolar.com/wp-content/uploads/2025/10/Neostar-2S_188-AIKO-A-MAH54Mb_440-470W-1757x1134x30mm_V4.1_202510_DsDr_EN.pdf",
+      "productPageUrl": "https://aikosolar.com/en/products/neostar-2s54-mono-glass/",
+      "assetId": "aiko"
+    },
+    {
+      "brand": "longi",
+      "name": "Hi-MO X6 Scientist all-black",
+      "model": "LR5-54HTB-450M",
+      "watts": 450,
+      "verifiedWattBins": [
+        440,
+        445,
+        450
+      ],
+      "dimensionsMm": {
+        "height": 1722,
+        "width": 1134,
+        "depth": 30
+      },
+      "weightKg": 20.8,
+      "efficiencyPercent": 23,
+      "productWarrantyYears": 25,
+      "performanceWarrantyYears": 25,
+      "datasheetVersion": "20230926V19",
+      "datasheetUrl": "https://static.longi.com/L_Gi_LE_PM_T_PMD_059_F129_LR_5_54_HTB_440_450_M_V1_30_30_and_15_Frame_Scientist_V19_0860168025.pdf",
+      "productPageUrl": null,
+      "assetId": "longi"
+    },
+    {
+      "brand": "dmegc",
+      "name": "N-type all-black double-glass",
+      "model": "DM450M10RT-B54HBB",
+      "watts": 450,
+      "verifiedWattBins": [
+        440,
+        445,
+        450,
+        455,
+        460
+      ],
+      "dimensionsMm": {
+        "height": 1762,
+        "width": 1134,
+        "depth": 30
+      },
+      "weightKg": 24.5,
+      "efficiencyPercent": 22.5,
+      "productWarrantyYears": 25,
+      "performanceWarrantyYears": 30,
+      "datasheetVersion": "EN DS-M10RT-B54HBB-20250618",
+      "datasheetUrl": "https://www.dmegcsolar.com/upload/img/2025-07/686350a164ddc.pdf",
+      "productPageUrl": null,
+      "assetId": "dmegc",
+      "warrantyUrl": "https://www.dmegcsolar.com/upload/img/2026-06/6a261f06194b8.pdf",
+      "warrantyNote": "Current N-type warranty for supply agreements from 2026-06-01 grants 300 months product coverage to M10RT-B54 glass-glass modules. Older regional warranty sheets may differ."
+    },
+    {
+      "brand": "jinko",
+      "name": "Tiger Neo N-type all-black",
+      "model": "JKM440N-54HL4R-B",
+      "watts": 440,
+      "verifiedWattBins": [
+        420,
+        425,
+        430,
+        435,
+        440
+      ],
+      "dimensionsMm": {
+        "height": 1762,
+        "width": 1134,
+        "depth": 30
+      },
+      "weightKg": 22,
+      "efficiencyPercent": 22.02,
+      "productWarrantyYears": 25,
+      "performanceWarrantyYears": 30,
+      "datasheetVersion": "JKM420-440N-54HL4R-B-F1.3-EN",
+      "datasheetUrl": "https://www.jinkosolar.com/uploads/JKM420-440N-54HL4R-B-F1.3-EN.pdf",
+      "productPageUrl": null,
+      "assetId": "jinko"
+    }
+  ],
+  "assets": {
+    "tesla": {
+      "widthPx": 655,
+      "heightPx": 720,
+      "bytes": 50272,
+      "format": "WEBP",
+      "sourceUrl": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/Datasheet/en-uk/Powerwall-3-Datasheet-EN.pdf",
+      "directImageUrl": null,
+      "method": "Embedded manufacturer cut-out with original alpha, PDF page 1 xref 978; resized. Original floor shadow retained.",
+      "path": "studio-app/assets/tesla-powerwall3.webp"
+    },
+    "sigenergy": {
+      "widthPx": 372,
+      "heightPx": 720,
+      "bytes": 19574,
+      "format": "WEBP",
+      "sourceUrl": "https://wwwstatic.sigenergy.com/content/assets/uploads/en_download/1746004583307009.pdf",
+      "directImageUrl": null,
+      "method": "Embedded manufacturer cut-out with original alpha, PDF page 1 xref 46; transparent margins trimmed and resized. Representative multi-module system, not one BAT module.",
+      "path": "studio-app/assets/sigenergy-sigenstor-system.webp"
+    },
+    "duracell": {
+      "widthPx": 425,
+      "heightPx": 720,
+      "bytes": 10996,
+      "format": "WEBP",
+      "sourceUrl": "https://duracell.hacdn.io/media/documents/Dura16kWh_LV_Battery_Datasheet_v1.2_UK_web_PD.pdf",
+      "directImageUrl": null,
+      "method": "Embedded manufacturer cut-out with original alpha, PDF page 1 xref 640; transparent margins trimmed and resized.",
+      "path": "studio-app/assets/duracell-dura16.webp"
+    },
+    "aiko": {
+      "widthPx": 299,
+      "heightPx": 396,
+      "bytes": 3204,
+      "format": "WEBP",
+      "sourceUrl": "https://aikosolar.com/wp-content/uploads/2025/10/Neostar-2S_188-AIKO-A-MAH54Mb_440-470W-1757x1134x30mm_V4.1_202510_DsDr_EN.pdf",
+      "directImageUrl": "https://aikosolar.com/wp-content/uploads/2024/03/Black-2S_Mono-glass_bbbf_MAH54Mb-detail.jpg",
+      "method": "Official product JPEG cropped around the complete front-and-rear product artwork; white background.",
+      "path": "studio-app/assets/aiko-neostar2s.webp"
+    },
+    "longi": {
+      "widthPx": 475,
+      "heightPx": 720,
+      "bytes": 5358,
+      "format": "WEBP",
+      "sourceUrl": "https://static.longi.com/L_Gi_LE_PM_T_PMD_059_F129_LR_5_54_HTB_440_450_M_V1_30_30_and_15_Frame_Scientist_V19_0860168025.pdf",
+      "directImageUrl": null,
+      "method": "Embedded full-front manufacturer cut-out with original alpha, PDF page 2 xref 36; trimmed and resized.",
+      "path": "studio-app/assets/longi-himo-x6-450.webp"
+    },
+    "dmegc": {
+      "widthPx": 474,
+      "heightPx": 720,
+      "bytes": 16992,
+      "format": "WEBP",
+      "sourceUrl": "https://www.dmegcsolar.com/upload/img/2025-07/686350a164ddc.pdf",
+      "directImageUrl": null,
+      "method": "Embedded full-front manufacturer cut-out with original alpha, June 2025 datasheet page 1 xref 103; trimmed and resized.",
+      "path": "studio-app/assets/dmegc-all-black.webp"
+    },
+    "jinko": {
+      "widthPx": 397,
+      "heightPx": 720,
+      "bytes": 7938,
+      "format": "WEBP",
+      "sourceUrl": "https://www.jinkosolar.com/uploads/JKM420-440N-54HL4R-B-F1.3-EN.pdf",
+      "directImageUrl": null,
+      "method": "Rendered crop of product artwork from official PDF page 1, in original proportions. Manufacturer illustration, not an independent photograph.",
+      "path": "studio-app/assets/jinko-tiger-neo-440.webp"
+    }
+  },
+  "sigenergySystemExample": {
+    "description": "One BAT 10.0 plus EC three-phase controller, base and decorative covers in the manufacturer datasheet example; not every UK configuration.",
+    "dimensionsMm": {
+      "height": 640,
+      "width": 850,
+      "depth": 265
+    },
+    "additionalModuleHeightMm": 270,
+    "sourceUrl": "https://www.sigenergy.com/uploads/en_download/1746004583307009.pdf"
+  }
+}

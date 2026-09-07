@@ -1,0 +1,10 @@
+dist/
+node_modules/
+build-report.json
+.vercel/
+.env*
+!.env.example
+qa-artifacts/
+# Superseded recovery intermediates
+compact-areas.json
+compact-locations.json

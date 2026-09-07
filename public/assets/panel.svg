@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240"><defs><linearGradient id="pv" x2="1" y2="1"><stop stop-color="#304b4e"/><stop offset=".55" stop-color="#112d30"/><stop offset="1" stop-color="#54716a"/></linearGradient><filter id="s"><feGaussianBlur stdDeviation="8"/></filter></defs><ellipse cx="220" cy="202" rx="124" ry="17" fill="#2b3e35" opacity=".15" filter="url(#s)"/><path d="M114 60 315 30 337 173 136 207Z" fill="#aab8ad"/><path d="M109 54 310 25 332 168 131 201Z" fill="url(#pv)" stroke="#6f8a7c" stroke-width="3"/>
+<path d="M137.71428571428572 49.85714285714286L159.71428571428572 196.28571428571428" stroke="#a9bdb4" stroke-width=".7" opacity=".6"/>
+<path d="M166.42857142857142 45.714285714285715L188.42857142857142 191.57142857142858" stroke="#a9bdb4" stroke-width=".7" opacity=".6"/>
+<path d="M195.14285714285714 41.57142857142857L217.14285714285714 186.85714285714286" stroke="#a9bdb4" stroke-width=".7" opacity=".6"/>
+<path d="M223.85714285714283 37.42857142857143L245.85714285714283 182.14285714285714" stroke="#a9bdb4" stroke-width=".7" opacity=".6"/>
+<path d="M252.57142857142858 33.285714285714285L274.57142857142856 177.42857142857142" stroke="#a9bdb4" stroke-width=".7" opacity=".6"/>
+<path d="M281.2857142857143 29.142857142857146L303.2857142857143 172.71428571428572" stroke="#a9bdb4" stroke-width=".7" opacity=".6"/>
+<path d="M111.0 67.36363636363636L312.0 38.0" stroke="#a9bdb4" stroke-width=".65" opacity=".55"/>
+<path d="M113.0 80.72727272727272L314.0 51.0" stroke="#a9bdb4" stroke-width=".65" opacity=".55"/>
+<path d="M115.0 94.0909090909091L316.0 64.0" stroke="#a9bdb4" stroke-width=".65" opacity=".55"/>
+<path d="M117.0 107.45454545454545L318.0 77.0" stroke="#a9bdb4" stroke-width=".65" opacity=".55"/>
+<path d="M119.0 120.81818181818181L320.0 90.0" stroke="#a9bdb4" stroke-width=".65" opacity=".55"/>
+<path d="M121.0 134.1818181818182L322.0 103.0" stroke="#a9bdb4" stroke-width=".65" opacity=".55"/>
+<path d="M123.0 147.54545454545456L324.0 116.0" stroke="#a9bdb4" stroke-width=".65" opacity=".55"/>
+<path d="M125.0 160.9090909090909L326.0 129.0" stroke="#a9bdb4" stroke-width=".65" opacity=".55"/>
+<path d="M127.0 174.27272727272728L328.0 142.0" stroke="#a9bdb4" stroke-width=".65" opacity=".55"/>
+<path d="M129.0 187.63636363636363L330.0 155.0" stroke="#a9bdb4" stroke-width=".65" opacity=".55"/>
+<path d="m125 52 55-8 108 131-52 9z" fill="white" opacity=".05"/></svg>

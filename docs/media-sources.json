@@ -1,0 +1,165 @@
+{
+  "verified_at": "2026-09-07",
+  "asset_directory": "/workspace/scratch/96c5efa40883/product-research/new-media",
+  "hero": {
+    "file": "solar-home-hero.webp",
+    "absolute_path": "/workspace/scratch/96c5efa40883/product-research/new-media/solar-home-hero.webp",
+    "manufacturer": "Tesla",
+    "title": "Charge on Solar \u2014 home exterior",
+    "alt": "Solar panels and a Powerwall on a stone-clad home, with an electric car charging outside.",
+    "source_page": "https://www.tesla.com/en_gb/powerwall",
+    "source_media_url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Powerwall-Charge-on-Solar-Desktop.jpg",
+    "source_local_file": "tesla-hero-original.jpg",
+    "source_bytes": 387859,
+    "source_dimensions": [
+      2232,
+      956
+    ],
+    "dimensions": [
+      1440,
+      617
+    ],
+    "bytes": 163132,
+    "transform": "Proportional resize to 1440px, WebP quality 82, method 6. No generated or substituted scene elements.",
+    "suggested_object_position": "40% 40%",
+    "caption": "Home energy image from Tesla's UK Powerwall page.",
+    "provenance": "Downloaded from Tesla's official digital asset CDN; exact URL appears in the live UK Powerwall page HTML in the Charge on Solar section.",
+    "reuse": "Manufacturer copyright retained. No general third-party reuse licence was established; this manifest records provenance, not a rights clearance. Attribute Tesla when used in editorial product comparison."
+  },
+  "videos": [
+    {
+      "id": "tesla-powerwall",
+      "manufacturer": "Tesla",
+      "title": "Store Extra Energy with Powerwall",
+      "kind": "Official explanatory product animation",
+      "context": "Tesla's UK Powerwall page explains storing surplus solar and charging from the grid in the Store Extra Energy section. This short, silent animation is used directly on that page; it is a Powerwall family explainer, not a filmed Powerwall 3 installation.",
+      "source_page": "https://www.tesla.com/en_gb/powerwall",
+      "media_url": "https://digitalassets.tesla.com/tesla-contents/video/upload/f_auto,q_auto:best/powerwall-store-use-save-carousel-01.mp4",
+      "playback_type": "video/mp4",
+      "head_status": 200,
+      "head_content_length": 1888853,
+      "head_content_type": "video/mp4;codecs=avc1",
+      "accept_ranges": "bytes",
+      "duration_seconds": 10.176833,
+      "dimensions": [
+        3840,
+        2160
+      ],
+      "has_audio": false,
+      "poster_url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/powerwall-store-use-save-carousel-poster-01.jpg",
+      "poster_file": "tesla-video-poster.webp",
+      "poster_bytes": 34158,
+      "poster_dimensions": [
+        800,
+        450
+      ],
+      "verification": "Source URL and matching poster found in the official page's video element; HTTP HEAD 200; ffprobe successfully decoded the remote MP4 metadata."
+    },
+    {
+      "id": "duracell-dura5",
+      "manufacturer": "Duracell Energy",
+      "title": "Dura5 Home Energy Battery | Duracell Energy",
+      "kind": "Official manufacturer YouTube product overview",
+      "context": "The current Duracell Energy homepage embeds this exact video. It is about Dura5; do not label it as a Dura16 video. YouTube oEmbed confirms the author as Duracell Energy and the official channel linked in the manufacturer's own footer.",
+      "source_page": "https://duracellenergy.com/en/",
+      "watch_url": "https://www.youtube.com/watch?v=aaFSp5J9RGo",
+      "media_url": "https://www.youtube.com/embed/aaFSp5J9RGo?feature=oembed",
+      "playback_type": "youtube_embed",
+      "youtube_id": "aaFSp5J9RGo",
+      "author_name": "Duracell Energy",
+      "author_url": "https://www.youtube.com/@DuracellEnergy.",
+      "head_status": 200,
+      "head_content_length": null,
+      "head_size_note": "YouTube embed HTML returned Content-Length 0; this is not the video size. Actual streamed video byte size is not exposed by the embed endpoint.",
+      "head_content_type": "text/html; charset=utf-8",
+      "duration_seconds": null,
+      "poster_url": "https://img.youtube.com/vi/aaFSp5J9RGo/maxresdefault.jpg",
+      "poster_file": "duracell-video-poster.webp",
+      "poster_bytes": 50084,
+      "poster_dimensions": [
+        800,
+        450
+      ],
+      "verification": "Exact iframe with matching title is present in official homepage HTML. YouTube oEmbed author is Duracell Energy, matching the manufacturer's official footer channel."
+    },
+    {
+      "id": "longi-himo-x6",
+      "manufacturer": "LONGi",
+      "title": "Hi-MO X6 \u2014 Born for Light",
+      "kind": "Official Hi-MO X6 product film",
+      "context": "English promotional film embedded in the Born for light section of LONGi's Hi-MO X6 product-family page.",
+      "source_page": "https://www.longi.com/en/products/modules/hi-mo-x6/",
+      "media_url": "https://static.longi.com/Hi_MO_X6_TVC_EN_Batch_10dd865d04.mp4",
+      "source_html_url": "https://static.longi.com/Hi_MO_X6_TVC_EN_Batch_10dd865d04.mp4#t=0.001",
+      "playback_type": "video/mp4",
+      "head_status": 200,
+      "head_content_length": 44579297,
+      "head_content_type": "video/mp4",
+      "accept_ranges": "bytes",
+      "duration_seconds": 119.883333,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "has_audio": true,
+      "poster_url": null,
+      "poster_file": "longi-video-poster.webp",
+      "poster_dimensions": [
+        800,
+        450
+      ],
+      "poster_note": "Clean product still extracted at 95s from the official Hi-MO X6 film: black module against a silver textured background, without embedded text or efficiency claims.",
+      "verification": "Exact video src found in official Hi-MO X6 HTML; HTTP HEAD 200; ffprobe successfully decoded remote MP4 metadata.",
+      "poster_bytes": 47394,
+      "poster_timestamp_seconds": 95,
+      "official_caption_track": {
+        "status": "not_found",
+        "vtt_url": null,
+        "checked_at": "2026-09-07",
+        "evidence": "No HTML track elements or VTT/SRT URLs in the official source-page HTML; remote ffprobe found video and audio streams only. No official caption file surfaced in manufacturer-domain searches. This is a bounded absence finding, not proof no unpublished caption file exists."
+      }
+    },
+    {
+      "id": "aiko-residential",
+      "manufacturer": "AIKO",
+      "title": "Mission Zero \u2014 Residential Solar in South Africa",
+      "kind": "Official residential installation case study film",
+      "context": "AIKO's homepage case study identifies the Cotswold Downs residential project in South Africa; its published poster uses the spelling Costwold Downs. Video covers a real residential project in Hillcrest, KZN, South Africa.",
+      "source_page": "https://aikosolar.com/en/",
+      "media_url": "https://aikosolar.com/wp-content/uploads/2024/07/South-Africa-cases-en-0708.mp4",
+      "playback_type": "video/mp4",
+      "head_status": 200,
+      "head_content_length": 65663523,
+      "head_content_type": null,
+      "head_type_note": "HEAD did not provide a Content-Type header; ffprobe recognized a valid MP4 with video and audio streams.",
+      "accept_ranges": "bytes",
+      "duration_seconds": 85.6,
+      "dimensions": [
+        1912,
+        1080
+      ],
+      "has_audio": true,
+      "poster_url": "https://aikosolar.com/wp-content/uploads/2024/07/South-Africa-cases-en-0708.jpg",
+      "poster_file": "aiko-video-poster.webp",
+      "poster_bytes": 38554,
+      "poster_dimensions": [
+        800,
+        450
+      ],
+      "verification": "Exact video source and paired data-poster found in official AIKO homepage HTML; HTTP HEAD 200; ffprobe successfully decoded remote MP4 metadata.",
+      "official_caption_track": {
+        "status": "not_found",
+        "vtt_url": null,
+        "checked_at": "2026-09-07",
+        "evidence": "No HTML track elements or VTT/SRT URLs in the official source-page HTML; remote ffprobe found video and audio streams only. No official caption file surfaced in manufacturer-domain searches. This is a bounded absence finding, not proof no unpublished caption file exists."
+      }
+    }
+  ],
+  "integration_notes": [
+    "Use local optimized WebP posters and preload=none for the large LONGi and AIKO films; create the player on user activation.",
+    "The Tesla and Duracell videos are manufacturer-produced explanatory animations. The AIKO film is a residential case study. Do not describe animations as filmed installations.",
+    "The Dura5 film is official; Dura16 YouTube results from Solar Xpress and Glow Green were excluded because they were installer channels.",
+    "Manufacturer copyright is retained on all source media. No broad third-party reuse licence was established; this is a provenance manifest rather than a rights clearance.",
+    "Only final WebP files and this manifest are intended for integration. Other files in this directory are intermediate source downloads and research HTML."
+  ]
+}
